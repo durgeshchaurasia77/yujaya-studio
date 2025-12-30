@@ -1,0 +1,16 @@
+.login-logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.login-logo-img {
+  height: 40px  !important;
+  width: auto;
+  margin-right: 8px;
+}
+
+.login-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #9122c9;
+}

@@ -1,0 +1,162 @@
+[dir=ltr] .row {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+}
+input[type="file"] {
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid #d8d6de;
+  background-color: #fff;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  background: #9122c9b3;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background: #9122c9b3;
+}
+.dropdown-item {
+    width: 100% !important;
+}
+[dir] .active .bs-stepper-circle {
+    background-color: #9122c9b3;
+}
+.content-body .card{
+    background: #f0eeeef2 !important;
+}
+.bs-stepper-content .step-inner-card {
+  background: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 0.428rem;
+  box-shadow: 0 4px 24px 0 rgba(20, 22, 24, 0.08);
+}
+.smart-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  border: 1px solid #d8d6de;
+  border-radius: 0.5rem;
+  padding: 0.65rem 2.5rem 0.65rem 1rem;
+  font-size: 0.95rem;
+  color: #6f6b7d;
+  cursor: pointer;
+}
+
+/* focus */
+.smart-select:focus {
+  border-color: #9122c9b3;
+  box-shadow: 0 0 0 0.15rem rgba(115, 103, 240, 0.25);
+}
+/* Stepper active label */
+.bs-stepper .step.active .bs-stepper-label {
+  color: #9122c9b3; /* Vuexy primary */
+  font-weight: 600;
+}
+
+/* Optional: active circle */
+.bs-stepper .step.active .bs-stepper-circle {
+  background-color: #9122c9b3;
+  color: #fff;
+}
+
+/* Optional: completed steps */
+.bs-stepper .step.completed .bs-stepper-circle {
+  background-color: #28c76f; /* success */
+  color: #fff;
+}
+
+.bs-stepper .step.completed .bs-stepper-label {
+  color: #28c76f;
+}
+
+/* limited support */
+.smart-select option {
+  padding: 12px;
+  font-size: 0.95rem;
+}
+/* hide native radio */
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* label wrapper */
+.radio-label {
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  color: #6f6b7d;
+  margin-right: 1rem;
+}
+
+/* outer circle */
+.radio-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d8d6de;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+/* inner dot */
+.radio-label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 8px;
+  height: 8px;
+  background-color: #9122c9b3; /* active color */
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+/* ✅ CHECKED STATE (FIXED) */
+.radio-label input[type="radio"]:checked + span {
+  color: #9122c9b3;
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-label::before {
+  border-color: #9122c9b3;
+}
+
+.radio-label input[type="radio"]:checked ~ .radio-label::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* 🔥 THIS is the real correct selector */
+.radio-label input[type="radio"]:checked {
+  /* no styles here */
+}
+
+/* Use :has() if supported (modern browsers) */
+.radio-label:has(input[type="radio"]:checked)::before {
+  border-color: #9122c9b3;
+}
+
+.radio-label:has(input[type="radio"]:checked)::after {
+  transform: translateY(-50%) scale(1);
+}
+
+/* hover */
+.radio-label:hover::before {
+  border-color: #9122c9b3;
+}

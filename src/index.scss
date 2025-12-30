@@ -1,0 +1,77 @@
+@import '../node_modules/prismjs/themes/prism-tomorrow';
+@import './assets/scss/app.scss';
+.brand-logo-img{
+    width: 50px;
+    height: 50px;
+}
+/* Fix action dropdown */
+.action-dropdown {
+  min-width: 170px;
+  padding: 0.35rem 0;
+}
+
+/* Full-width hover */
+.action-dropdown .dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1rem;
+}
+
+/* Hover color */
+.action-dropdown .dropdown-item:hover {
+  background-color: rgba(115, 103, 240, 0.12); /* Vuexy purple */
+}
+
+/* Smooth animation */
+.dropdown-menu {
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Fix action dropdown */
+.action-dropdown {
+  min-width: 170px;
+  padding: 0.35rem 0;
+}
+
+/* Full-width hover */
+.action-dropdown .dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1rem;
+}
+
+/* Hover color */
+.action-dropdown .dropdown-item:hover {
+  background-color: rgba(115, 103, 240, 0.12); /* Vuexy purple */
+}
+
+/* Smooth animation */
+.dropdown-menu {
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
