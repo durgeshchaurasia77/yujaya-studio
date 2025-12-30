@@ -97,9 +97,9 @@
     "lint:fix": "eslint src/**/*.js --fix"
   },
   "engines": {
-  "node": "16.x",
-  "npm": "8.x"
-},
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
