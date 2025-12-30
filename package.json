@@ -2,6 +2,9 @@
   "name": "vuexy-react-admin-dashboard",
   "version": "6.4.0",
   "private": true,
+  "overrides": {
+    "node-sass": "npm:sass@1.26.8"
+  },
   "dependencies": {
     "@casl/ability": "5.2.2",
     "@casl/react": "2.1.1",
