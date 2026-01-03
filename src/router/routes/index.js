@@ -1,6 +1,7 @@
 // ** Routes Imports
 import AppRoutes from './Apps'
 import StudioRoutes from './Studio'
+import ClassRoutes from './Classes'
 import FormRoutes from './Forms'
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
@@ -11,7 +12,7 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 
 // ** Document title
-const TemplateTitle = '%s - Vuexy React Admin Template'
+const TemplateTitle = '%s - Yujaya Admin'
 
 // ** Default Route
 const DefaultRoute = '/dashboard/ecommerce'
@@ -21,6 +22,7 @@ const Routes = [
   ...DashboardRoutes,
   ...AppRoutes,
   ...StudioRoutes,
+  ...ClassRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,
   ...ExtensionsRoutes,
