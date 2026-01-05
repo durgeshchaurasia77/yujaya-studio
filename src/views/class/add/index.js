@@ -451,7 +451,7 @@ useEffect(() => {
 
               <FormGroup check className="option-item1">
                 <Input type="checkbox" />
-                <Label check className="ms-2">Featured Class</Label>
+                <Label check className="ms-2">This is Featured Class</Label>
               </FormGroup>
             </div>
           </Col>
@@ -476,10 +476,10 @@ useEffect(() => {
             <div className="seat-grid">
 
               <Row className="seat-header">
-                <Col md="3">Online</Col>
-                <Col md="3">Call</Col>
-                <Col md="3">Member</Col>
-                <Col md="3">VIP</Col>
+                <Col md="3">For Online Booking:</Col>
+                <Col md="3">Call Booking:</Col>
+                <Col md="3">Member Booking:</Col>
+                <Col md="3">VIP Booking:</Col>
               </Row>
 
               <Row className="seat-inputs">
@@ -490,10 +490,10 @@ useEffect(() => {
               </Row>
 
               <Row className="seat-header mt-3">
-                <Col md="3">Guest</Col>
-                <Col md="3">Staff</Col>
-                <Col md="3">Walk-in</Col>
-                <Col md="3">Waiting</Col>
+                <Col md="3">Guest Booking:</Col>
+                <Col md="3">Staff Booking:</Col>
+                <Col md="3">Walk-in Booking:</Col>
+                <Col md="3">Waiting Booking:</Col>
               </Row>
 
               <Row className="seat-inputs">
