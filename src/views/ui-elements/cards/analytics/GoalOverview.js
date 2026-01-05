@@ -42,7 +42,7 @@ const GoalOverview = props => {
               show: false
             },
             value: {
-              color: '#5e5873',
+              color: '#2e2c36',
               fontFamily: 'Montserrat',
               fontSize: '2.86rem',
               fontWeight: '600'

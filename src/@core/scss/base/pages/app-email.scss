@@ -169,7 +169,7 @@ $email_details_header_height: 5rem;
           }
           .mail-date {
             color: $text-muted;
-            font-size: 0.857rem;
+            font-size: 0.95rem;
           }
           .mail-message {
             p {
@@ -296,7 +296,7 @@ $email_details_header_height: 5rem;
           left: -2px;
           margin: 0;
           background-image: url(str-replace(str-replace($chevron-down, 'currentColor', $text-muted), '#', '%23'));
-          background-size: 0.857rem;
+          background-size: 0.95rem;
         }
         .dropdown-menu {
           padding: 0.5rem;

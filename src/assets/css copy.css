@@ -218,7 +218,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
   text-align: center;
 }
 
-/* Group container
+Group container
 .option-group {
   display: flex;
   gap: 16px !important ;
@@ -261,4 +261,4 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .option-item .form-check-label {
   cursor: pointer;
   font-weight: 500;
-} */
+}

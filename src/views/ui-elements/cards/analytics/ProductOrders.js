@@ -35,7 +35,7 @@ const ProductOrders = props => {
           dataLabels: {
             value: {
               fontSize: '1rem',
-              colors: '#5e5873',
+              colors: '#2e2c36',
               fontWeight: '500',
               offsetY: 5
             },
@@ -43,7 +43,7 @@ const ProductOrders = props => {
               show: true,
               label: 'Total',
               fontSize: '1.286rem',
-              colors: '#5e5873',
+              colors: '#2e2c36',
               fontWeight: '500',
 
               formatter() {

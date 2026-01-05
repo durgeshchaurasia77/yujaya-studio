@@ -17,7 +17,9 @@ input[type="file"]::-webkit-file-upload-button {
   border-radius: 4px;
   cursor: pointer;
 }
-
+.button-alignment-accouncement{
+  float: right;
+}
 input[type="file"]::-webkit-file-upload-button:hover {
   background: #7367f0b3;
 }
@@ -217,4 +219,77 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .seat-inputs input {
   text-align: center;
 }
+.custom-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
 
+.custom-switch input {
+  display: none;
+}
+
+.custom-switch .slider {
+  position: relative;
+  width: 44px;
+  height: 22px;
+  background-color: #ccc;
+  border-radius: 22px;
+  transition: background-color 0.3s;
+}
+
+.custom-switch .slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  top: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.custom-switch input:checked + .slider {
+  background-color: #0b234e;
+}
+
+.custom-switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+.switch-label {
+  font-weight: 500;
+  color: #7367f0b3;
+}
+.option-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 4vw, 36px); /* auto gap */
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;   /* 🔥 center fix */
+  gap: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.radio-option input {
+  margin: 0;
+  vertical-align: middle;
+}
+.radio-option input:checked {
+  /* accent-color: #7367f0b3; */
+}
+.select__multi-value {
+  margin: 1px 3px 1px 0 !important;
+}
+
+.select__value-container {
+  gap: 1px;
+}

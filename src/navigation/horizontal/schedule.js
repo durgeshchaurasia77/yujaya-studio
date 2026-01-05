@@ -15,8 +15,8 @@ export default [
       {
         id: 'analyticsDash',
         title: 'Announcement',
-        icon: <MessageSquare />,
-        navLink: '#'
+        icon: <PlusSquare />,
+        navLink: '/annoucement/add'
       }
     ]
   }

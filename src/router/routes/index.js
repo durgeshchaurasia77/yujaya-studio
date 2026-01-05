@@ -2,6 +2,7 @@
 import AppRoutes from './Apps'
 import StudioRoutes from './Studio'
 import ClassRoutes from './Classes'
+import AnnoucementRoutes from './Annoucement'
 import FormRoutes from './Forms'
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
@@ -23,6 +24,7 @@ const Routes = [
   ...AppRoutes,
   ...StudioRoutes,
   ...ClassRoutes,
+  ...AnnoucementRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,
   ...ExtensionsRoutes,

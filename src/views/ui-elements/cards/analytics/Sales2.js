@@ -57,7 +57,7 @@ const Sales2 = props => {
           offsetY: 5,
           style: {
             colors: '#b9b9c3',
-            fontSize: '0.857rem',
+            fontSize: '0.95rem',
             fontFamily: 'Montserrat'
           }
         },
@@ -75,7 +75,7 @@ const Sales2 = props => {
         labels: {
           style: {
             colors: '#b9b9c3',
-            fontSize: '0.857rem',
+            fontSize: '0.95rem',
             fontFamily: 'Montserrat'
           },
           formatter(val) {

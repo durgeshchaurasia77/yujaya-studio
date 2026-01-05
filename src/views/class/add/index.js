@@ -1,5 +1,6 @@
 // import { useState, useRef } from 'react'
 import { useEffect, useRef, useState } from 'react'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Card,
   CardBody,
@@ -74,6 +75,7 @@ const AddClass = () => {
 
   const [onlineEarlyBirdFee, setOnlineEarlyBirdFee] = useState('')
   const [onlineEarlyExpireDays, setOnlineEarlyExpireDays] = useState('')
+  const [status, setStatus] = useState(true)
 
 useEffect(() => {
   if (!isEarlyBird) {
@@ -88,8 +90,8 @@ useEffect(() => {
   <>
     <Card>
       <CardBody>
+        <h4 className="mb-2">Add Class Type</h4>
         <Row className="gx-2">
-
           {/* Language */}
           <Col md="4">
             <FormGroup>
@@ -108,7 +110,7 @@ useEffect(() => {
           {/* Program Level */}
           <Col md="4">
             <FormGroup>
-              <Label>Program Level</Label>
+              <Label>Program Level <span className="text-danger">*</span></Label>
               <Select
                 options={optionsProgramLevel}
                 placeholder="Select Program Level"
@@ -123,7 +125,7 @@ useEffect(() => {
           {/* Category */}
           <Col md="4">
             <FormGroup>
-              <Label>Category</Label>
+              <Label>Class Category</Label>
               <Select
                 options={optionsCategory}
                 placeholder="Select Category"
@@ -141,7 +143,7 @@ useEffect(() => {
           {/* Sub Category */}
           <Col md="4">
             <FormGroup>
-              <Label>Sub Category</Label>
+              <Label>Class Sub Category</Label>
               <Select
                 options={optionsSubCategory}
                 placeholder="Select Sub Category"
@@ -175,8 +177,8 @@ useEffect(() => {
           {/* Title */}
           <Col md="6">
             <FormGroup>
-              <Label>Title</Label>
-              <Input placeholder="Please enter title here..." required />
+              <Label>Class Name <span className="text-danger">*</span></Label>
+              <Input placeholder="Please enter calss name here..." required />
             </FormGroup>
           </Col>
 
@@ -191,7 +193,7 @@ useEffect(() => {
           {/* Description */}
           <Col md="6">
             <FormGroup>
-              <Label>Description</Label>
+              <Label>Description <span className="text-danger">*</span></Label>
               <Input
                 type="textarea"
                 rows="3"
@@ -204,7 +206,7 @@ useEffect(() => {
           {/* Instructor */}
           <Col md="6">
             <FormGroup>
-              <Label>Select Instructor</Label>
+              <Label>Select Instructor <span className="text-danger">*</span></Label>
               <Select
                 options={optionsInstructor}
                 placeholder="Select Category"
@@ -226,23 +228,47 @@ useEffect(() => {
     </Card>
     <Card className="mb-3">
       <CardBody>
-        <h5 className="mb-3">Venue & Fees</h5>
+        <h5 className="mb-3">Venue & Fees </h5>
 
         <Row className="gx-3">
           {/* Venue */}
           <Col md="6">
             <FormGroup>
-              <Label>Venue</Label>
-              <div className="d-flex gap-3 option-group">
-                <FormGroup check className="option-item">
-                  <Input type="radio" name="venue" value="online" onChange={(e) => setVenue(e.target.value)} /> Online
-                </FormGroup>
-                <FormGroup check className="option-item">
-                  <Input type="radio" name="venue" value="offline" onChange={(e) => setVenue(e.target.value)} /> Offline
-                </FormGroup>
-                <FormGroup check className="option-item">
-                  <Input type="radio" name="venue" value="hybrid" onChange={(e) => setVenue(e.target.value)} /> Hybrid
-                </FormGroup>
+              <Label>Venue<span className="text-danger">*</span></Label>
+
+              <div className="option-group">
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    name="venue"
+                    value="online"
+                    required
+                    onChange={(e) => setVenue(e.target.value)}
+                  />
+                  <span>Online</span>
+                </label>
+
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    name="venue"
+                    value="offline"
+                    required
+                    onChange={(e) => setVenue(e.target.value)}
+                  />
+                  <span>Offline</span>
+                </label>
+
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    name="venue"
+                    value="hybrid"
+                    required
+                    onChange={(e) => setVenue(e.target.value)}
+                  />
+                  <span>Hybrid</span>
+                </label>
               </div>
             </FormGroup>
           </Col>
@@ -250,13 +276,14 @@ useEffect(() => {
           {/* Fees */}
           <Col md="6">
             <FormGroup>
-              <Label>Fees</Label>
+              <Label>Fees <span className="text-danger">*</span></Label>
               <Select
                 options={optionsFees}
                 placeholder="Select Fee"
                 className="react-select"
                 classNamePrefix="select"
                 isSearchable={false}
+                required
                 onChange={(val) => {
                   setFeeType(val?.value)
                   setIsEarlyBird(false)
@@ -267,7 +294,7 @@ useEffect(() => {
         </Row>
 
         {/* Early Bird */}
-        <Row className="mt-2">
+        <Row className="mt-1">
           <Col md="6">
           <div className='option-group'>
 
@@ -283,11 +310,8 @@ useEffect(() => {
           </div>
           </Col>
         </Row>
-      </CardBody>
-    </Card>
-    <Card className="mb-3">
-      <CardBody>
-        <h5 className="mb-3">Location / Platform</h5>
+
+        <h5 className="mb-3 mt-1">Location / Platform</h5>
 
         <Row className="gx-3">
           {(venue === 'offline' || venue === 'hybrid') && (
@@ -325,6 +349,11 @@ useEffect(() => {
         </Row>
       </CardBody>
     </Card>
+    {/* <Card className="mb-3">
+      <CardBody>
+        
+      </CardBody>
+    </Card> */}
     <Card className="mb-3">
       <CardBody>
         <h5 className="mb-3">Fee Structure</h5>
@@ -363,7 +392,7 @@ useEffect(() => {
         <h5 className="mb-3">Visibility & Booking Settings</h5>
         <Row className="gx-3 ">
           <Col md="6">
-          <div className='option-group'>
+          <div className='option-group1'>
               <Label>Class Listing Display</Label>
               <FormGroup check className="option-item">
                 <Input type="radio" name="display" /> Display Instructor full name (Photo)
@@ -375,7 +404,7 @@ useEffect(() => {
           </Col>
 
           <Col md="6">
-          <div className='option-group'>
+          <div className='option-group1'>
             <FormGroup check className="option-item"><Input type="checkbox" /> Member Allowed</FormGroup>
             <FormGroup check className="option-item"><Input type="checkbox" defaultChecked /> Allowed Package</FormGroup>
           </div>
@@ -385,70 +414,57 @@ useEffect(() => {
     </Card>
     <Card className="mb-3">
       <CardBody>
-        <h5 className="mb-3">Bookings & Seat Allocation</h5>
+        <h5 className="mb-3">Bookings & Seat Allocation <span className="text-danger">*</span></h5>
 
         <Row className="gx-3">
-          {/* <Col md="6">
-            <FormGroup check className="ms-2"><Input type="checkbox" defaultChecked /> Allow Bookings</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" defaultChecked /> Default Close Booking Time</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" /> Bookings Paid</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" /> Display online seats in calendar</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" /> Display bookings in calendar</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" /> Display fees in calendar</FormGroup>
-            <FormGroup check className="ms-2"><Input type="checkbox" /> Featured Class</FormGroup>
-          </Col> */}
           <Col md="6">
-            <div className="booking-options option-group">
+            <div className="booking-options option-group1">
               <FormGroup check className="option-item">
                 <Input type="checkbox" defaultChecked />
                 <Label check className="ms-2"> Allow Bookings</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" defaultChecked />
                 <Label check className="ms-2"> Default Close Booking Time</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" />
                 <Label check className="ms-2"> Bookings Paid</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" />
                 <Label check className="ms-2"> Display online seats in calendar</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" />
                 <Label check className="ms-2">Display bookings in calendar</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" />
                 <Label check className="ms-2">Display fees in calendar</Label>
               </FormGroup>
 
-              <FormGroup check className="option-item">
+              <FormGroup check className="option-item1">
                 <Input type="checkbox" />
                 <Label check className="ms-2">Featured Class</Label>
               </FormGroup>
             </div>
           </Col>
 
-
-          {/* <Col md="6">
-            <Label>Seat Allocation</Label>
-            <Input type="number" placeholder="Fetch from room selected" />
-          </Col> */}
           <Col md="6">
             <FormGroup>
               <Label>
-                Seat Allocation <small className="text-muted">(Total seats)</small>
+                Seat Allocation <span className="text-danger">*</span> <small className="text-muted">(Total seats)</small>
               </Label>
               <Input
                 type="number"
                 placeholder="e.g. 50"
+                required
               />
               <small className="text-muted">
                 Seats will be distributed below
@@ -546,25 +562,21 @@ useEffect(() => {
             </FormGroup>
           </Col>
           <Col md="6">
-            <FormGroup switch>
-              <Label check className="ms-2">Status</Label>
-              <Input
-                type="switch"
-                defaultChecked
+            <label className="custom-switch">
+              <input
+                type="checkbox"
+                checked={status}
+                onChange={() => setStatus(!status)}
               />
-            </FormGroup>
+              <span className="slider"></span>
+              <span className="switch-label">Status</span>
+            </label>
           </Col>
-
           {/* Submit Button */}
-          {/* <Col md="6" className="text-end">
-            <Button color="primary" size="sm">
-              Submit
-            </Button>
-          </Col> */}
         </Row>
       </CardBody>
         <CardFooter className="text-end">
-          <div className="d-flex justify-content-between align-end">
+          <div className="d-flex justify-content-between align-end button-alignment-accouncement">
               <Button color="primary">Submit</Button>
             </div>
         </CardFooter>
