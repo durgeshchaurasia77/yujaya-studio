@@ -14,5 +14,5 @@ import formsAndTables from './forms-tables'
 import chartsAndMaps from './charts-maps'
 
 // ** Merge & Export
-export default [...dashboards, ...classes, ...schedule, ...packages, ...membership, ...settings, ...studio]
+export default [...dashboards, ...classes, ...schedule, ...packages, ...membership, ...settings]
 // export default [...dashboards, ...studio, ...apps, ...uiElements, ...formsAndTables, ...pages, ...chartsAndMaps, ...others]

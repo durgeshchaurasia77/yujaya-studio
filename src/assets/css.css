@@ -8,6 +8,59 @@ input[type="file"] {
   border: 1px solid #d8d6de;
   background-color: #fff;
 }
+[dir] .flatpickr-current-month .flatpickr-monthDropdown-months
+ {
+    background: #fff !important;
+        color: rgba(0, 0, 0, 0.9);
+    fill: rgba(0, 0, 0, 0.9);
+}
+[dir] .flatpickr-months .flatpickr-month {
+    background: #fff !important;
+    /* text-align: center; */    
+    color: rgba(0, 0, 0, 0.9);
+    fill: rgba(0, 0, 0, 0.9);
+}
+
+[dir] .flatpickr-months .flatpickr-prev-month, .flatpickr-months .flatpickr-next-month {    
+    color: rgba(0, 0, 0, 0.9)  !important;
+    fill: rgba(0, 0, 0, 0.9)  !important;
+}
+[dir] .flatpickr-weekdays
+ {
+    background: #fff !important;    
+    color: rgba(0, 0, 0, 0.9)  !important;
+    fill: rgba(0, 0, 0, 0.9)  !important;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  background: #fff !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  fill: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Style the options */
+.flatpickr-current-month
+.flatpickr-monthDropdown-months
+option {
+  background: #fff !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+[dir] span.flatpickr-weekday
+ {
+    /* cursor: default; */
+    background: #fff !important;
+    /* margin: 0;
+    text-align: center; */
+}
+[dir] .flatpickr-weekdaycontainer {
+    background: #fff !important;
+    /* text-align: center; */
+}
+[dir] .flatpickr-day.selected, [dir] .flatpickr-day.startRange, [dir] .flatpickr-day.endRange, [dir] .flatpickr-day.selected.inRange, [dir] .flatpickr-day.startRange.inRange, [dir] .flatpickr-day.endRange.inRange, [dir] .flatpickr-day.selected:focus, [dir] .flatpickr-day.startRange:focus, [dir] .flatpickr-day.endRange:focus, [dir] .flatpickr-day.selected:hover, [dir] .flatpickr-day.startRange:hover, [dir] .flatpickr-day.endRange:hover, [dir] .flatpickr-day.selected.prevMonthDay, [dir] .flatpickr-day.startRange.prevMonthDay, [dir] .flatpickr-day.endRange.prevMonthDay, [dir] .flatpickr-day.selected.nextMonthDay, [dir] .flatpickr-day.startRange.nextMonthDay, [dir] .flatpickr-day.endRange.nextMonthDay {
+    background: #fff !important;
+    /* box-shadow: none; */
+    border-color: #fff !important;
+}
+
 
 input[type="file"]::-webkit-file-upload-button {
   background: #7367f0b3;
@@ -253,16 +306,16 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 .custom-switch input:checked + .slider {
-  background-color: #0b234e;
+  background-color: #7367f0b3;
 }
 
 .custom-switch input:checked + .slider::before {
-  transform: translateX(22px);
+  transform: translateX(20px);
 }
 
 .switch-label {
-  font-weight: 500;
-  color: #7367f0b3;
+  font-weight: 550;
+  color: #574bd8b3;
 }
 .option-group {
   display: flex;
@@ -292,4 +345,69 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
 .select__value-container {
   gap: 1px;
+}/* ===== Fee Structure ===== */
+.fee-table {
+  border-top: 1px solid #e5e5e5;
+  margin-top: 8px;
+}
+
+.fee-header,
+.fee-row {
+  display: grid;
+  grid-template-columns: 120px 160px 160px 180px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.fee-header {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.fee-row input {
+  max-width: 140px;
+}
+
+.fee-label {
+  font-weight: 600;
+}
+
+/* Stable hide (NO layout jump) */
+.d-none {
+  display: none !important;
+}
+
+/* Checkbox / radio vertical rhythm */
+.option-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Seat allocation grid */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 12px;
+}
+
+/* Each seat cell */
+.seat-item label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* ALL number inputs same width */
+.seat-input {
+  max-width: 140px;
+}
+
+/* Mobile fallback */
+@media (max-width: 768px) {
+  .seat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

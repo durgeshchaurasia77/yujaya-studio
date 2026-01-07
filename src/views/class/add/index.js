@@ -10,21 +10,25 @@ import {
 import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
 import Select from 'react-select'
+import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 import '../../../assets/css.css'
+import { EditorState } from 'draft-js'
+import CommonEditor from '../../../component/common/CommonEditor'
 const optionsCountry = [
-  { value: '', label: 'Please select one' },
+  { value: '', label: 'Please select one', isDisabled: true},
   { value: 'india', label: 'India' },
   { value: 'usa', label: 'USA' },
   { value: 'china', label: 'China' }
 ]
-const optionsProgramLevel = [
-  { value: '', label: 'Please select one' },
+const optionsClassLevel = [
+  { value: '', label: 'Please select one', isDisabled: true},
   { value: 'beginer', label: 'Beginer' },
   { value: 'intermediate', label: ' Intermediate' },
   { value: 'advanced', label: 'Advanced' }
 ]
 const optionsCategory = [
-  { value: 'yoga', label: 'Yoga' },
+  // { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'yoga', label: 'Yoga'},
   { value: 'yoga_therapy', label: 'Yoga Therapy' },
   { value: 'ayurveda', label: 'Ayurveda' },
   { value: 'healing', label: 'Healing' },
@@ -35,7 +39,8 @@ const optionsCategory = [
 ]
 
 const optionsSubCategory = [
-  { value: 'class', label: 'Class' },
+  // { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'class', label: 'Class'},
   { value: 'course', label: 'Course' },
   { value: 'workshop', label: 'Workshop' },
   { value: 'personal_training', label: 'Personal Training' },
@@ -50,19 +55,19 @@ const optionsSubCategory = [
 
 
 const optionsInstructor = [
-  { value: '', label: 'Please select one' },
+  // { value: '', label: 'Please select one', isDisabled: true},
   { value: 'aron', label: 'Aron' },
   { value: 'kuldeep', label: 'Kuldeep' },
   { value: 'manoj', label: 'Manoj' }
 ]
 const optionsPhysicalLocation = [
-  { value: '', label: 'Please select one' },
+  // { value: '', label: 'Please select one', isDisabled: true},
   { value: 'vyasa_yoga', label: 'Vyasa Yoga' },
   { value: 'ashram', label: 'Ashram' },
   { value: 'online', label: 'Online' }
 ]
 const optionsFees = [
-  { value: '', label: 'Please select one' },
+  { value: '', label: 'Please select one', isDisabled: true},
   { value: 'free', label: 'Free' },
   { value: 'paid', label: 'Paid' }
 ]
@@ -76,7 +81,10 @@ const AddClass = () => {
   const [onlineEarlyBirdFee, setOnlineEarlyBirdFee] = useState('')
   const [onlineEarlyExpireDays, setOnlineEarlyExpireDays] = useState('')
   const [status, setStatus] = useState(true)
-
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  const [selectedCountry, setSelectedCountry] = useState(
+    optionsCountry.find(o => o.value === 'india')
+  )
 useEffect(() => {
   if (!isEarlyBird) {
     setOfflineEarlyBirdFee('')
@@ -95,13 +103,14 @@ useEffect(() => {
           {/* Language */}
           <Col md="4">
             <FormGroup>
-              <Label>Language</Label>
+              <Label>Class Language</Label>
               <Select
                 options={optionsCountry}
                 placeholder="Select country"
                 className="react-select"
                 classNamePrefix="select"
                 isSearchable={false}
+                value={selectedCountry}
                 required 
               />
             </FormGroup>
@@ -110,10 +119,10 @@ useEffect(() => {
           {/* Program Level */}
           <Col md="4">
             <FormGroup>
-              <Label>Program Level <span className="text-danger">*</span></Label>
+              <Label>Class Level <span className="text-danger">*</span></Label>
               <Select
-                options={optionsProgramLevel}
-                placeholder="Select Program Level"
+                options={optionsClassLevel}
+                placeholder="Select Class Level"
                 className="react-select"
                 classNamePrefix="select"
                 isSearchable={false}
@@ -123,7 +132,7 @@ useEffect(() => {
           </Col>
 
           {/* Category */}
-          <Col md="4">
+          {/* <Col md="4">
             <FormGroup>
               <Label>Class Category</Label>
               <Select
@@ -137,11 +146,22 @@ useEffect(() => {
                 required
               />
             </FormGroup>
+          </Col> */}
+          <Col md="4">
+            <FormGroup>
+              <Label>Class Category</Label>
+              <SelectAllMultiSelect
+                options={optionsCategory}
+                placeholderText="Select Category"
+                classNamePrefix="select"
+                required
+              />
+            </FormGroup>
           </Col>
 
 
           {/* Sub Category */}
-          <Col md="4">
+          {/* <Col md="4">
             <FormGroup>
               <Label>Class Sub Category</Label>
               <Select
@@ -156,6 +176,17 @@ useEffect(() => {
                 required
               />
             </FormGroup>
+          </Col> */}
+          <Col md="4">
+            <FormGroup>
+              <Label>Class Sub Category</Label>
+              <SelectAllMultiSelect
+                options={optionsSubCategory}
+                placeholderText="Select Sub Category"
+                classNamePrefix="select"
+                required
+              />
+            </FormGroup>
           </Col>
 
 
@@ -163,14 +194,14 @@ useEffect(() => {
           <Col md="4">
             <FormGroup>
               <Label>Theory Hours</Label>
-              <Input type="number" placeholder="Please enter hours here..." required/>
+              <Input type="number" placeholder="Please enter theory hours here..." required/>
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>Practical Hours</Label>
-              <Input type="number" placeholder="Please enter hours here..." required/>
+              <Input type="number" placeholder="Please enter practical hours here..." required/>
             </FormGroup>
           </Col>
 
@@ -178,7 +209,7 @@ useEffect(() => {
           <Col md="6">
             <FormGroup>
               <Label>Class Name <span className="text-danger">*</span></Label>
-              <Input placeholder="Please enter calss name here..." required />
+              <Input placeholder="Please enter class name here..." required />
             </FormGroup>
           </Col>
 
@@ -186,7 +217,7 @@ useEffect(() => {
           <Col md="6">
             <FormGroup>
               <Label>Class Code</Label>
-              <Input placeholder="Please enter code here..." />
+              <Input placeholder="Please enter class code here..." />
             </FormGroup>
           </Col>
 
@@ -194,11 +225,16 @@ useEffect(() => {
           <Col md="6">
             <FormGroup>
               <Label>Description <span className="text-danger">*</span></Label>
-              <Input
+              {/* <Input
                 type="textarea"
                 rows="3"
                 placeholder="Special notes for guests (reservation deadline, etc.)"
                 required
+              /> */}
+                <CommonEditor
+                editorState={editorState}
+                onChange={setEditorState}
+                height={180}
               />
             </FormGroup>
           </Col>
@@ -207,7 +243,7 @@ useEffect(() => {
           <Col md="6">
             <FormGroup>
               <Label>Select Instructor <span className="text-danger">*</span></Label>
-              <Select
+              {/* <Select
                 options={optionsInstructor}
                 placeholder="Select Category"
                 className="react-select"
@@ -215,6 +251,12 @@ useEffect(() => {
                 isMulti
                 isSearchable
                 closeMenuOnSelect={false}
+                required
+              /> */}
+              <SelectAllMultiSelect
+                options={optionsInstructor}
+                placeholderText="Select Instructor"
+                classNamePrefix="select"
                 required
               />
             </FormGroup>
@@ -228,62 +270,21 @@ useEffect(() => {
     </Card>
     <Card className="mb-3">
       <CardBody>
-        <h5 className="mb-3">Venue & Fees </h5>
 
-        <Row className="gx-3">
-          {/* Venue */}
-          <Col md="6">
-            <FormGroup>
-              <Label>Venue<span className="text-danger">*</span></Label>
+        {/* ================= Venue & Fees ================= */}
+        <h5 className="mb-3">Venue & Fees</h5>
 
-              <div className="option-group">
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="venue"
-                    value="online"
-                    required
-                    onChange={(e) => setVenue(e.target.value)}
-                  />
-                  <span>Online</span>
-                </label>
-
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="venue"
-                    value="offline"
-                    required
-                    onChange={(e) => setVenue(e.target.value)}
-                  />
-                  <span>Offline</span>
-                </label>
-
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="venue"
-                    value="hybrid"
-                    required
-                    onChange={(e) => setVenue(e.target.value)}
-                  />
-                  <span>Hybrid</span>
-                </label>
-              </div>
-            </FormGroup>
-          </Col>
-
+        <Row className="gx-4 align-items-start">
           {/* Fees */}
           <Col md="6">
             <FormGroup>
-              <Label>Fees <span className="text-danger">*</span></Label>
+              <Label className="fw-semibold">
+                Fees <span className="text-danger">*</span>
+              </Label>
               <Select
                 options={optionsFees}
-                placeholder="Select Fee"
-                className="react-select"
                 classNamePrefix="select"
                 isSearchable={false}
-                required
                 onChange={(val) => {
                   setFeeType(val?.value)
                   setIsEarlyBird(false)
@@ -291,178 +292,194 @@ useEffect(() => {
               />
             </FormGroup>
           </Col>
-        </Row>
-
-        {/* Early Bird */}
-        <Row className="mt-1">
+          {/* Venue */}
           <Col md="6">
-          <div className='option-group'>
+            <Label className="fw-semibold">
+              Venue <span className="text-danger">*</span>
+            </Label>
 
-            <FormGroup check className="option-item">
+            <div className="d-flex gap-4 mt-1">
+              {["online", "offline", "hybrid"].map((v) => (
+                <FormGroup check key={v}>
+                  <Input
+                    type="radio"
+                    name="venue"
+                    value={v}
+                    onChange={(e) => setVenue(e.target.value)}
+                    className="mr-3"
+                  />
+                  <Label check className="ms-1 text-capitalize mr-2">{v}</Label>
+                </FormGroup>
+              ))}
+            </div>
+
+            <FormGroup check className="mt-2">
               <Input
                 type="checkbox"
-                // disabled={feeType !== 'paid'}
                 checked={isEarlyBird}
                 onChange={(e) => setIsEarlyBird(e.target.checked)}
-              />{' '}
+              />
               <Label check className="ms-2">Is Class Early Bird</Label>
             </FormGroup>
-          </div>
           </Col>
         </Row>
 
-        <h5 className="mb-3 mt-1">Location / Platform</h5>
-
-        <Row className="gx-3">
-          {(venue === 'offline' || venue === 'hybrid') && (
+        {/* ================= Location / Platform ================= */}
+        <h5 className="mb-3 mt-4">Location / Platform</h5>
+        <Row className="gx-4">
+          {/* Physical */}
+          {(venue === "online" || venue === 'hybrid') && (
             <>
               <Col md="6">
-                <Label>Physical Location</Label>
-                <Select
-                  options={optionsPhysicalLocation}
-                  className="react-select"
-                  classNamePrefix="select"
-                  isMulti
-                />
-              </Col>
+                <FormGroup>
+                  <Label className="fw-semibold">Physical Location</Label>
+                  <SelectAllMultiSelect
+                    options={optionsPhysicalLocation}
+                    placeholderText="Select Physical Location"
+                    classNamePrefix="select"
+                    required
+                  />
+                </FormGroup>
 
-              <Col md="6">
-                <Label>Room</Label>
-                <div className="d-flex gap-3 mt-1 option-group">
-                  <FormGroup check className="option-item"><Input type="radio" /> Yoga Hall</FormGroup>
-                  <FormGroup check className="option-item"><Input type="radio" /> Therapy Room</FormGroup>
-                  <FormGroup check className="option-item"><Input type="radio" /> Massage Room</FormGroup>
+                <Label className="fw-semibold mt-2">Room</Label>
+                <div className="d-flex gap-4 mt-1">
+                  {["Yoga Hall", "Therapy Room", "Massage Room"].map((r) => (
+                    <FormGroup check key={r}>
+                      <Input type="radio" name="room" />
+                      <Label check className="ms-1  mr-2">{r}</Label>
+                    </FormGroup>
+                  ))}
                 </div>
-              </Col>
+              </Col> 
             </>
           )}
-
-          {(venue === 'online' || venue === 'hybrid') && (
-            <Col md="6">
-              <Label>Online Platform</Label>
-              <div className="d-flex gap-3 mt-1 option-group">
-                <FormGroup check className="option-item"><Input type="checkbox" /> Zoom</FormGroup>
-                <FormGroup check className="option-item"><Input type="checkbox" /> Google Meet</FormGroup>
-              </div>
-            </Col>
+          {(venue === "offline" || venue === 'hybrid') && (
+            <>
+              {/* Online */}
+              <Col md="6">
+                <Label className="fw-semibold">Online Platform</Label>
+                <div className="d-flex gap-4 mt-2">
+                  {["Zoom", "Google Meet"].map((p) => (
+                    <FormGroup check key={p}>
+                      <Input type="checkbox" />
+                      <Label check className="ms-1 mr-2">{p}</Label>
+                    </FormGroup>
+                  ))}
+                </div>
+              </Col>    
+          </>
           )}
         </Row>
-      </CardBody>
-    </Card>
-    {/* <Card className="mb-3">
-      <CardBody>
-        
-      </CardBody>
-    </Card> */}
-    <Card className="mb-3">
-      <CardBody>
-        <h5 className="mb-3">Fee Structure</h5>
+        {/* ================= Fee Structure ================= */}
+        {feeType === "paid" && (
+          <>
+            <h5 className="mb-3 mt-4">Fee Structure</h5>
 
-        {/* Header */}
-        <Row className="fw-bold text-center border-bottom pb-2">
-          <Col md="2"></Col>
-          <Col md="3">Normal</Col>
-          <Col md="3">Early Bird</Col>
-          <Col md="4">Early Expire (Days)</Col>
-        </Row>
+            <div className="fee-table">
+              {/* Header */}
+              <div className="fee-header">
+                <div></div>
+                <div>Normal</div>
+                <div>Early Bird</div>
+                <div>Early Expire (Days)</div>
+              </div>
 
-        {/* Offline */}
-        {(venue === 'offline' || venue === 'hybrid') && (
-          <Row className="align-items-center mt-2">
-            <Col md="2"><strong>Offline</strong></Col>
-            <Col md="3"><Input type="number"/></Col>
-            <Col md="3"><Input type="number" disabled={!isEarlyBird} /></Col>
-            <Col md="4"><Input type="number"/></Col>
-          </Row>
+              {/* Offline */}
+              <div className={`fee-row ${venue === "online" ? "d-none" : ""}`}>
+                <div className="fee-label">Offline</div>
+                <Input type="number" className="fee-input" />
+                <Input
+                  type="number"
+                  className="fee-input"
+                  disabled={!isEarlyBird}
+                />
+                <Input type="number" className="fee-input" />
+              </div>
+
+              {/* Online */}
+              <div className={`fee-row ${venue === "offline" ? "d-none" : ""}`}>
+                <div className="fee-label">Online</div>
+                <Input type="number" className="fee-input" />
+                <Input
+                  type="number"
+                  className="fee-input"
+                  disabled={!isEarlyBird}
+                />
+                <Input type="number" className="fee-input" />
+              </div>
+            </div>
+          </>
         )}
 
-        {/* Online */}
-        {(venue === 'online' || venue === 'hybrid') && (
-          <Row className="align-items-center mt-2">
-            <Col md="2"><strong>Online</strong></Col>
-            <Col md="3"><Input type="number"/></Col>
-            <Col md="3"><Input type="number" disabled={!isEarlyBird} /></Col>
-            <Col md="4"><Input type="number"/></Col>
-          </Row>
-        )}
       </CardBody>
     </Card>
     <Card className="mb-3">
       <CardBody>
+
+        {/* ================= Visibility & Booking ================= */}
         <h5 className="mb-3">Visibility & Booking Settings</h5>
-        <Row className="gx-3 ">
-          <Col md="6">
-          <div className='option-group1'>
-              <Label>Class Listing Display</Label>
-              <FormGroup check className="option-item">
-                <Input type="radio" name="display" /> Display Instructor full name (Photo)
-              </FormGroup>
-              <FormGroup check className="option-item">
-                <Input type="radio" name="display" defaultChecked /> Display Class image
-              </FormGroup>
-          </div>
-          </Col>
 
+        <Row className="gx-4">
+          {/* Left options */}
           <Col md="6">
-          <div className='option-group1'>
-            <FormGroup check className="option-item"><Input type="checkbox" /> Member Allowed</FormGroup>
-            <FormGroup check className="option-item"><Input type="checkbox" defaultChecked /> Allowed Package</FormGroup>
-          </div>
-          </Col>
-        </Row>
-      </CardBody>
-    </Card>
-    <Card className="mb-3">
-      <CardBody>
-        <h5 className="mb-3">Bookings & Seat Allocation <span className="text-danger">*</span></h5>
+            <Label className="fw-semibold">Class Listing Display</Label>
+            <div className="option-stack">
+              <FormGroup check>
+                <Input type="radio" name="display" />
+                <Label check className="ms-2 mb-1">Display Instructor full name (Photo)</Label>
+              </FormGroup>
+              <FormGroup check>
+                <Input type="radio" name="display" defaultChecked />
+                <Label check className="ms-2  mb">Display Class image</Label>
+              </FormGroup>
+            </div>
 
-        <Row className="gx-3">
-          <Col md="6">
-            <div className="booking-options option-group1">
-              <FormGroup check className="option-item">
+            <div className="option-stack mt-1">
+              <FormGroup check>
+                <Input type="checkbox" />
+                <Label check className="ms-2  mb-1">Member Allowed</Label>
+              </FormGroup>
+              <FormGroup check>
                 <Input type="checkbox" defaultChecked />
-                <Label check className="ms-2"> Allow Bookings</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" defaultChecked />
-                <Label check className="ms-2"> Default Close Booking Time</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" />
-                <Label check className="ms-2"> Bookings Paid</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" />
-                <Label check className="ms-2"> Display online seats in calendar</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" />
-                <Label check className="ms-2">Display bookings in calendar</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" />
-                <Label check className="ms-2">Display fees in calendar</Label>
-              </FormGroup>
-
-              <FormGroup check className="option-item1">
-                <Input type="checkbox" />
-                <Label check className="ms-2">This is Featured Class</Label>
+                <Label check className="ms-2">Allowed Package</Label>
               </FormGroup>
             </div>
           </Col>
 
+          {/* Booking rules */}
+          <Col md="6">
+            <Label className="fw-semibold">Booking Rules</Label>
+            <div className="option-stack">
+              {[
+                "Allow Bookings",
+                "Default Close Booking Time",
+                "Bookings Paid",
+                "Display online seats in calendar",
+                "Display bookings in calendar",
+                "Display fees in calendar",
+                "This is Featured Class"
+              ].map((t) => (
+                <FormGroup check key={t}>
+                  <Input type="checkbox" />
+                  <Label check className="ms-2">{t}</Label>
+                </FormGroup>
+              ))}
+            </div>
+          </Col>
+        </Row>
+
+        {/* ================= Seat Allocation ================= */}
+        <h5 className="mb-3 mt-4">Seat Allocation</h5>
+
+        <Row className="gx-4">
           <Col md="6">
             <FormGroup>
-              <Label>
-                Seat Allocation <span className="text-danger">*</span> <small className="text-muted">(Total seats)</small>
+              <Label className="fw-semibold">
+                Total Seats <span className="text-danger">*</span>
               </Label>
               <Input
                 type="number"
+                className="seat-input"
                 placeholder="e.g. 50"
                 required
               />
@@ -471,43 +488,56 @@ useEffect(() => {
               </small>
             </FormGroup>
           </Col>
-
-          <Col md="12">
-            <div className="seat-grid">
-
-              <Row className="seat-header">
-                <Col md="3">For Online Booking:</Col>
-                <Col md="3">Call Booking:</Col>
-                <Col md="3">Member Booking:</Col>
-                <Col md="3">VIP Booking:</Col>
-              </Row>
-
-              <Row className="seat-inputs">
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-              </Row>
-
-              <Row className="seat-header mt-3">
-                <Col md="3">Guest Booking:</Col>
-                <Col md="3">Staff Booking:</Col>
-                <Col md="3">Walk-in Booking:</Col>
-                <Col md="3">Waiting Booking:</Col>
-              </Row>
-
-              <Row className="seat-inputs">
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-                <Col md="3"><Input type="number" /></Col>
-              </Row>
-
-            </div>
-          </Col>
         </Row>
+
+        {/* ================= Seat Grid ================= */}
+        <div className="seat-grid">
+
+          <div className="seat-item">
+            <Label>For Online Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Call Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Member Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>VIP Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Guest Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Staff Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Walk-in Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+          <div className="seat-item">
+            <Label>Waiting Booking</Label>
+            <Input type="number" className="seat-input" />
+          </div>
+
+        </div>
+
       </CardBody>
     </Card>
+
     <Card className="mb-3">
       <CardBody>
         <h5 className="mb-3">Additional Information</h5>

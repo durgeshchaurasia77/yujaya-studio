@@ -10,7 +10,7 @@ export default [
         id: 'analyticsDash',
         title: 'Create Packages',
         icon: <PlusSquare />,
-        navLink: '#'
+        navLink: '/package/add'
       }
     ]
   }

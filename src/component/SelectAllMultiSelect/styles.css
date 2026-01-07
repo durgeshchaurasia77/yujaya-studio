@@ -1,0 +1,40 @@
+.select__option--is-selected {
+  background-color: #6f6af8 !important;
+  color: white;
+}
+
+/* Wrapper */
+.select-all-wrapper {
+  display: flex;
+  margin: 8px;
+  background: #e6e6e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Buttons */
+.select-all-btn {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Divider */
+.select-all-btn + .select-all-btn {
+  border-left: 1px solid #ccc;
+}
+
+/* Hover */
+.select-all-btn:hover {
+  background: #dcdcdc;
+}
+.select-value-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #495057;
+}

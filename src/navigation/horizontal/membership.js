@@ -10,7 +10,7 @@ export default [
         id: 'analyticsDash',
         title: 'Create Membership',
         icon: <PlusSquare />,
-        navLink: '#'
+        navLink: '/membership/add'
       },
       {
         id: 'analyticsDash',
