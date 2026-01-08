@@ -268,11 +268,11 @@ useEffect(() => {
       </CardBody>
 
     </Card>
-    <Card className="mb-3">
+    <Card className="mb-2">
       <CardBody>
 
         {/* ================= Venue & Fees ================= */}
-        <h5 className="mb-3">Venue & Fees</h5>
+        <h5 className="mb-2">Venue & Fees</h5>
 
         <Row className="gx-4 align-items-start">
           {/* Fees */}
@@ -325,7 +325,7 @@ useEffect(() => {
         </Row>
 
         {/* ================= Location / Platform ================= */}
-        <h5 className="mb-3 mt-4">Location / Platform</h5>
+        <h5 className="mb-3 mt-2">Location / Platform</h5>
         <Row className="gx-4">
           {/* Physical */}
           {(venue === "online" || venue === 'hybrid') && (
@@ -373,7 +373,7 @@ useEffect(() => {
         {/* ================= Fee Structure ================= */}
         {feeType === "paid" && (
           <>
-            <h5 className="mb-3 mt-4">Fee Structure</h5>
+            <h5 className="mb-3 mt-2">Fee Structure</h5>
 
             <div className="fee-table">
               {/* Header */}

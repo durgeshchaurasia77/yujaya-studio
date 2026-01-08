@@ -279,9 +279,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
   cursor: pointer;
   user-select: none;
 }
-
+/* ggoo */
 .custom-switch input {
-  display: none;
+  display: none; 
 }
 
 .custom-switch .slider {
@@ -374,9 +374,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 /* Stable hide (NO layout jump) */
-.d-none {
+/* .d-none {
   display: none !important;
-}
+} */
 
 /* Checkbox / radio vertical rhythm */
 .option-stack {
