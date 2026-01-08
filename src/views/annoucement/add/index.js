@@ -180,7 +180,6 @@ const AddAnnoucement = () => {
                 options={{
                   enableTime: true,
                   dateFormat: 'Y-m-d H:i',
-                  time_24hr: true,
                   minDate: startDate,
                   allowInput: true
                 }}
@@ -225,12 +224,6 @@ const AddAnnoucement = () => {
         <Col md="6">
           <FormGroup>
             <Label>Select Class</Label>
-            {/* <Select
-              placeholder="-- Please Select --"
-              className="react-select"
-              classNamePrefix="select"
-              isMulti
-            /> */}
             <SelectAllMultiSelect
                 options={optionsClassList}
                 placeholderText="Please Select"
@@ -264,12 +257,6 @@ const AddAnnoucement = () => {
         <Col md="6">
           <FormGroup>
             <Label>Select Membership Type</Label>
-            {/* <Select
-              placeholder="Please Select"
-              className="react-select"
-              classNamePrefix="select"
-              isMulti
-            /> */} 
             <SelectAllMultiSelect
                 options={optionsPackageList}
                 placeholderText="Please Membership Type"

@@ -16,13 +16,13 @@ export default [
         id: 'analyticsDash',
         title: 'Membership Policy',
         icon: <MessageSquare />,
-        navLink: '#'
+        navLink: '/membership/policy/add'
       },
       {
         id: 'analyticsDash',
         title: 'Add Membership',
         icon: <PlusSquare />,
-        navLink: '#'
+        navLink: '/members/add'
       }
     ]
   }

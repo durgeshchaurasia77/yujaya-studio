@@ -56,7 +56,32 @@ const combineClassOptions = [
   { value: 'hatha_yoga', label: 'Hatha Yoga for kuldeep' },
   { value: 'meditations', label: 'Meditations' }
 ]
+const optionsdurationTypeList = [
+  { value: '', label: 'Please Select', isDisabled: true },
+  { value: 'day', label: 'Day(s)' },
+  { value: 'week', label: 'Week(s)' },
+  { value: 'month', label: 'Month(s)' },
+  { value: 'year', label: 'Year(s)' }
+]
+const optionsdayTypeList = [
+  { value: '', label: 'Please Select', isDisabled: true },
+  { value: 'all_days', label: 'All Days' },
+  { value: 'weekdays', label: 'Weekdays' },
+  { value: 'weekends', label: 'Weekends' },
+  { value: 'custom', label: 'Custom' }
+]
 
+const optionshoursList = [
+  { value: '', label: 'Please Select', isDisabled: true },
+  { value: 'days', label: 'Days' },
+  { value: 'hours', label: 'Hours' }
+]
+const optionshoursDayList = [
+  { value: '', label: 'Please Select', isDisabled: true },
+  { value: 'days', label: 'Days' },
+  { value: 'weeks', label: 'Weeks' },
+  { value: 'months', label: 'Months' }
+]
 
 const AddAnnoucement = () => {
   const [venue, setVenue] = useState('')
@@ -238,12 +263,12 @@ const AddAnnoucement = () => {
           <Col md="5">
             <FormGroup>
               <Label>Duration Type</Label>
-              <Input type="select">
-                <option>Day(s)</option>
-                <option>Week(s)</option>
-                <option>Month(s)</option>
-                <option>Year(s)</option>
-              </Input>
+              <Select
+                  options={optionsdurationTypeList}
+                  placeholder="Please Duration Type"
+                  classNamePrefix="select"
+                  className="flex-grow-1 mr-2"
+                />
             </FormGroup>
           </Col>
 
@@ -466,12 +491,12 @@ const AddAnnoucement = () => {
           <Col md="4">
             <FormGroup>
               <Label className="fw-semibold">Days</Label>
-              <Input type="select">
-                <option>All Days</option>
-                <option>Weekdays</option>
-                <option>Weekends</option>
-                <option>Custom</option>
-              </Input>
+              <Select
+                  options={optionsdayTypeList}
+                  placeholder="Please Days Type"
+                  classNamePrefix="select"
+                  className="flex-grow-1 mr-2"
+                />
             </FormGroup>
           </Col>
 
@@ -577,11 +602,12 @@ const AddAnnoucement = () => {
               <Label className="fw-semibold">Days / Week / Month limit</Label>
               <div className="d-flex gap-2">
                 <Input type="number" defaultValue={60} />
-                <Input type="select" className="w-auto ml-1">
-                  <option>Days</option>
-                  <option>Weeks</option>
-                  <option>Months</option>
-                </Input>
+                <Select
+                  options={optionshoursDayList}
+                  placeholder="Please Type"
+                  classNamePrefix="select"
+                  className="flex-grow-1 mr-2"
+                />
               </div>
               <small className="text-muted">
                 User can book unlimited number of classes if left empty
@@ -601,10 +627,12 @@ const AddAnnoucement = () => {
               <Label className="fw-semibold">Total Allowed Hours</Label>
               <div className="d-flex gap-2">
                 <Input type="number" defaultValue={60} />
-                <Input type="select" className="w-auto ml-1">
-                  <option>Days</option>
-                  <option>Hours</option>
-                </Input>
+                <Select
+                  options={optionshoursList}
+                  placeholder="Please Hours Type"
+                  classNamePrefix="select"
+                  className="flex-grow-1 mr-2"
+                />
               </div>
               <small className="text-muted">
                 User can book unlimited number of classes if left empty
