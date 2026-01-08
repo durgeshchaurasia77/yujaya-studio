@@ -3,7 +3,7 @@ import { Home, Circle, PlusSquare } from 'react-feather'
 export default [
   {
     id: 'user',
-    title: 'User Management',
+    title: 'Add User',
     icon: <Home />,
     children: [
       {
@@ -14,7 +14,7 @@ export default [
       },
       {
         id: 'analyticsDash',
-        title: 'Create Student',
+        title: 'Add Student',
         icon: <PlusSquare />,
         navLink: '/user/create-student'
       }

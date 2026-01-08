@@ -23,7 +23,6 @@ const optionMobileType = [
   { value: '0', label: 'IND(+91)' },
   { value: '1', label: 'SING(+65)' }
 ]
-
 const AddStudent = () => {
   const [status, setStatus] = useState(true)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -177,7 +176,7 @@ const AddStudent = () => {
         </CardBody>        
           <CardFooter className="text-end">
             <div className="d-flex justify-content-between align-end button-alignment-accouncement">
-                <Button color="primary">Create Student</Button>
+                <Button color="primary">Add Student</Button>
               </div>
           </CardFooter>
       </Card>

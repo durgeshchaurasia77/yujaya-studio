@@ -27,6 +27,24 @@ const optionUserType = [
   { value: '5', label: 'Client (Patient)' },
   { value: '6', label: 'Affiliate Partner' }
 ]
+const optionMobileType = [
+  { value: '0', label: 'IND(+91)' },
+  { value: '1', label: 'SING(+65)' }
+]
+
+
+const optionCountryList = [
+  { value: 'India', label: 'India' },
+  { value: 'United States', label: 'United States' },
+  { value: 'United Kingdom', label: 'United Kingdom' },
+  { value: 'Germany', label: 'Germany' },
+  { value: 'Australia', label: 'Australia' },
+  { value: 'Canada', label: 'Canada' },
+  { value: 'Singapore', label: 'Singapore' },
+  { value: 'United Arab Emirates', label: 'United Arab Emirates' },
+  { value: 'France', label: 'France' },
+  { value: 'Netherlands', label: 'Netherlands' }
+]
 
 const optionaUserList = [
   {
@@ -149,12 +167,44 @@ const AddAccount = () => {
               </FormGroup>
             </Col>
 
-            <Col md="6">
+            {/* <Col md="6">
               <FormGroup>
                 <Label>
                   Mobile <span className="text-danger">*</span>
                 </Label>
                 <Input type="tel" placeholder="Enter Mobile Number" required />
+              </FormGroup>
+            </Col> */}
+            <Col md="6">
+              <FormGroup>
+                <Label>
+                  Mobile <span className="text-danger">*</span>
+                </Label>
+
+                <div className="d-flex gap-2">
+                  {/* Country Code */}
+                  <Select
+                    options={optionMobileType}
+                    className="react-select"
+                    classNamePrefix="select"
+                    isSearchable={false}
+                    placeholder="Code"
+                    styles={{
+                      container: base => ({
+                        ...base,
+                        width: '140px'
+                      })
+                    }}
+                  />
+
+                  {/* Mobile Number */}
+                  <Input
+                    type="tel"
+                    placeholder="Enter Mobile Number"
+                    className="ml-2"
+                    required
+                  />
+                </div>
               </FormGroup>
             </Col>
 
@@ -164,6 +214,7 @@ const AddAccount = () => {
                   Country <span className="text-danger">*</span>
                 </Label>
                 <Select
+                  options={optionCountryList}
                   placeholder="Please Select"
                   className="react-select"
                   classNamePrefix="select"
