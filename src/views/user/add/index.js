@@ -13,7 +13,7 @@ import Select from 'react-select'
 import '../../../assets/css.css'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
-import CommonEditor from '../../../component/common/CommonEditor'
+import CommonEditor from '../../../component/common/CommonEditor.js'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/material_blue.css'
 import { Calendar } from 'react-feather'
@@ -158,21 +158,21 @@ const AddAnnoucement = () => {
           <Col md="4">
             <FormGroup>
               <Label>National ID Number<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter ID number" />
+              <Input type="text" placeholder="Enter ID number" required/>
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>Contact No<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter contact number" />
+              <Input type="text" placeholder="Enter contact number" required/>
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>Address<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter address" />
+              <Input type="text" placeholder="Enter address" required/>
             </FormGroup>
           </Col>
 
@@ -193,21 +193,21 @@ const AddAnnoucement = () => {
           <Col md="4">
             <FormGroup>
               <Label>State<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter state" />
+              <Input type="text" placeholder="Enter state" required/>
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>City<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter city" />
+              <Input type="text" placeholder="Enter city" required/>
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>Zip Code<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter zip code" />
+              <Input type="text" placeholder="Enter zip code" required/>
             </FormGroup>
           </Col>
         </Row>

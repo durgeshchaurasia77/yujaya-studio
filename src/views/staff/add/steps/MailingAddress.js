@@ -187,7 +187,7 @@ const MailingAddress = () => {
             <Row className="gx-2">
               <Col md="6">
                 <FormGroup>
-                  <Label>National ID Type</Label>                  
+                  <Label>National ID Type<span className="text-danger">*</span></Label>                  
                     <Select
                       options={optionsNationalType}
                       placeholder="Select national type"
@@ -201,7 +201,7 @@ const MailingAddress = () => {
 
               <Col md="6">
                 <FormGroup>
-                  <Label>National ID Number</Label>
+                  <Label>National ID Number<span className="text-danger">*</span></Label>
                   <Input placeholder="Enter ID number" required />
                 </FormGroup>
               </Col>
