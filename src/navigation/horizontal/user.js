@@ -8,6 +8,12 @@ export default [
     children: [
       {
         id: 'analyticsDash',
+        title: 'User List / Manage',
+        icon: <PlusSquare />,
+        navLink: '/user/list'
+      },
+      {
+        id: 'analyticsDash',
         title: 'Create Account',
         icon: <PlusSquare />,
         navLink: '/user/create-account'

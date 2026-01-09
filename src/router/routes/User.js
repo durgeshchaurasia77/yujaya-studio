@@ -3,6 +3,10 @@ import { Redirect } from 'react-router-dom'
 
 const UserRoutes = [
   {
+    path: '/user/list',
+    component: lazy(() => import('../../views/user/list'))
+  },
+  {
     path: '/user/create-account',
     component: lazy(() => import('../../views/user/create-account'))
   },

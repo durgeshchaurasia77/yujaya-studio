@@ -157,7 +157,6 @@ const AddStaff = () => {
             </FormGroup>
           </Col>
         </Row>
-
         </CardBody>        
           <CardFooter className="text-end">
             <div className="d-flex justify-content-between align-end button-alignment-accouncement">
