@@ -24,11 +24,17 @@ export default [
         icon: <PlusSquare />,
         navLink: '/settings/add-access-card'
       },
+      // {
+      //   id: 'analyticsDash',
+      //   title: 'Gift Card',
+      //   icon: <PlusSquare />,
+      //   navLink: '/settings/add-gift-card'
+      // },
       {
         id: 'analyticsDash',
-        title: 'Gift Card',
+        title: 'Gift Card List',
         icon: <PlusSquare />,
-        navLink: '/settings/add-gift-card'
+        navLink: '/settings/list-gift-card'
       }
       // ,
       // {

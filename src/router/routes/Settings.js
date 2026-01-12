@@ -13,6 +13,10 @@ const SettingsRoutes = [
   {
     path: '/settings/add-gift-card',
     component: lazy(() => import('../../views/settings/add-gift-card'))
+  },
+  {
+    path: '/settings/list-gift-card',
+    component: lazy(() => import('../../views/settings/list-gift-card'))
   }
 
 ]
