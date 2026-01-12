@@ -1,7 +1,9 @@
 import SummaryCards from './SummaryCards'
 import DataTable from 'react-data-table-component'
-import { columns } from './columns'
+// import { columns } from './columns'
+import { getColumns } from './columns'
 import { userData } from './data'
+import { addRecordOptions } from './dropdownAdd'
 import { roleOptions, planOptions, statusOptions } from './filters'
 import './styles.css'
 import {
@@ -27,17 +29,91 @@ import {
   Grid,
   File,
   Copy,
-  Plus
+  Plus,
+  PlusSquare
 } from 'react-feather'
-
+import { useHistory } from 'react-router-dom'
 
 import { useState, Fragment } from 'react'
 import Select from 'react-select'
 // import { ChevronDown } from 'react-feather'
 
-const UserList = () => {
-  const [searchValue, setSearchValue] = useState('')
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import '@styles/react/libs/tables/react-dataTable-component.scss'
+const MySwal = withReactContent(Swal)
 
+const UserList = () => {
+    const [searchValue, setSearchValue] = useState('')
+    const history = useHistory()
+
+const openView = row => {
+    // setSelectedRow(row)
+    // setViewModal(true)
+    console.log('VIEW', row)
+  }
+
+  const openEdit = row => {
+    // setSelectedRow(row)
+    // setEditModal(true)
+    console.log('Edit', row)
+  }
+   const handleDelete = row => {
+    MySwal.fire({
+      title: 'Delete User?',
+      text: `Delete "${row.fullName}"?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete',
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-outline-secondary ml-1'
+      },
+      buttonsStyling: false
+    }).then(res => {
+      if (res.isConfirmed) {
+        MySwal.fire('Deleted!', '', 'success')
+      }
+    })
+  }
+
+const handleStatusChange = row => {
+  const nextStatus = row.status === 'active' ? 'inactive' : 'active'
+
+  MySwal.fire({
+    title: 'Change Status?',
+    text: `User will be marked as ${nextStatus.toUpperCase()}`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: `Yes, set ${nextStatus}`,
+    cancelButtonText: 'Cancel',
+    customClass: {
+      confirmButton: 'btn btn-primary',
+      cancelButton: 'btn btn-outline-secondary ml-1'
+    },
+    buttonsStyling: false
+  }).then(result => {
+    if (result.isConfirmed) {
+      // 🔥 API call here
+      MySwal.fire({
+        icon: 'success',
+        title: 'Updated!',
+        text: `Status changed to ${nextStatus}`,
+        customClass: {
+          confirmButton: 'btn btn-success'
+        },
+        buttonsStyling: false
+      })
+    }
+  })
+}
+
+const columns = getColumns({
+    openView,
+    openEdit,
+    handleDelete,
+    handleStatusChange
+  })
     const filteredData = userData.filter(item => {
     return item.name.toLowerCase().includes(searchValue.toLowerCase())
     })
@@ -99,7 +175,7 @@ const UserList = () => {
                     </Input>
                 </Col>
 
-                <Col md="4" />
+                <Col md="3" />
 
                 <Col md="3">
                     <Input
@@ -109,14 +185,14 @@ const UserList = () => {
                     onChange={e => setSearchValue(e.target.value)}
                     />
                 </Col>
-                <Col md="3" className="table-header-alignment">
+                <Col md="3" className="table-header-alignment ml-4 header-option-export">
                     {/* 🔹 Export Dropdown */}
                     <UncontrolledButtonDropdown>
                     <DropdownToggle
                         color="secondary"
                         outline
                         caret
-                        className="d-flex align-items-center"
+                        className="header-option-export"
                     >
                         <Share size={14} className="me-50" />
                         Export
@@ -142,10 +218,33 @@ const UserList = () => {
                     </UncontrolledButtonDropdown>
 
                     {/* 🔹 Add Button */}
-                    <Button color="primary" className="d-flex align-items-center">
+                    {/* <Button color="primary" className="d-flex align-items-center">
                     <Plus size={14} className="me-50" />
                     Add New Record
-                    </Button>
+                    </Button> */}
+                    <UncontrolledButtonDropdown>
+                        <DropdownToggle
+                            color="primary"
+                            className="d-flex align-items-center ml-2"
+                            caret
+                        >
+                            <Plus size={14} className="me-50" />
+                            Add New Record
+                        </DropdownToggle>
+
+                        <DropdownMenu end className="add-record-dropdown">
+                            {addRecordOptions.map(item => (
+                            <DropdownItem
+                                key={item.id}
+                                onClick={() => history.push(item.navLink)}
+                                className="d-flex align-items-center"
+                            >
+                                <PlusSquare size={14} className="me-1 text-primary" />
+                                {item.title}
+                            </DropdownItem>
+                            ))}
+                        </DropdownMenu>
+                    </UncontrolledButtonDropdown>
                 </Col>
                 </Row>
             </CardBody>
@@ -166,7 +265,7 @@ const UserList = () => {
                 }
             />
         </Card>
-        </Fragment>
+    </Fragment>
   )
 }
 

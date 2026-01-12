@@ -5,14 +5,23 @@
 .dropdown-menu {
   min-width: 180px;
 }
-
+.dropdown-item {
+  font-size: 0.9rem;
+}
+.table-action-dropdown {
+  z-index: 9999 !important;
+  min-width: 180px !important;
+}
+.react-dataTable {
+  overflow: visible !important;
+}
 button.btn {
   white-space: nowrap;
 }
 .table-header-alignment{
-  display: flex;
-  justify-content: end;
-  gap: .8em;
+  display:contents;
+  justify-content:right !important;
+  gap: .2em;
 }
 .table-header-style{
   align-items: center;
@@ -53,7 +62,12 @@ button.btn {
 }
 .react-dataTable .rdt_Table {
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow: visible !important;
+}
+.rdt_Pagination {
+  position: relative;
+  z-index: 1;
 }
 /* USER CELL WRAPPER */
 .user-cell {
@@ -103,4 +117,42 @@ button.btn {
 /* HOVER EFFECT */
 .react-dataTable .rdt_TableRow:hover .user-name {
   color: #7367f0;
+}
+.add-record-dropdown {
+  min-width: 260px;
+  padding: 6px 0;
+}
+
+.add-record-dropdown .dropdown-item {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.add-record-dropdown .dropdown-item:hover {
+  background-color: #f4f3ff;
+  color: #7367f0;
+}
+.table-action-dropdown {
+  margin-left: -50px !important;
+  border-radius: 8px;
+  transform-origin: top right;
+  animation: dropdownFadeScale 0.18s ease-out;
+}
+
+@keyframes dropdownFadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+[dir] .dropdown-menu .dropdown-item {
+    width: 100%;
+}
+.header-option-export{
+  display: flex;
+  align-items: end;
 }

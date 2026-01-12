@@ -1,8 +1,26 @@
 import StatusBadge from '../../../component/StatusBadge'
 import RoleIcon from '../../../component/RoleIcon'
-import TableActions from '../../../component/TableActions'
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap'
 
-export const columns = [
+import {
+  MoreVertical,
+  Eye,
+  Edit,
+  ToggleLeft,
+  Trash
+} from 'react-feather'
+
+export const getColumns = ({
+  openView,
+  openEdit,
+  handleDelete,
+  handleStatusChange
+}) => [
   {
     name: 'USER',
     sortable: true,
@@ -51,6 +69,85 @@ export const columns = [
   },
   {
     name: 'ACTIONS',
-    cell: () => <TableActions />
+    minWidth: '90px',
+    maxWidth: '90px',
+    allowOverflow: true,
+    cell: row => (
+      // <UncontrolledDropdown>
+      //   <DropdownToggle
+      //     tag="span"
+      //     className="cursor-pointer d-flex justify-content-center"
+      //   >
+      //     <MoreVertical size={18} />
+      //   </DropdownToggle>
+
+      //   <DropdownMenu end flip
+      //     container="body"
+      //     // className="shadow-sm"
+      //     className="table-action-dropdown shadow-sm"
+      //     >
+      //     <DropdownItem onClick={() => openView(row)}>
+      //       <Eye size={14} className="me-50" /> View
+      //     </DropdownItem>
+
+      //     <DropdownItem onClick={() => openEdit(row)}>
+      //       <Edit size={14} className="me-50" /> Edit
+      //     </DropdownItem>
+
+      //     <DropdownItem onClick={() => handleStatusChange(row)}>
+      //       <ToggleLeft size={14} className="me-50" /> Change Status
+      //     </DropdownItem>
+
+      //     <DropdownItem
+      //       className="text-danger"
+      //       onClick={() => handleDelete(row)}
+      //     >
+      //       <Trash size={14} className="me-50" /> Delete
+      //     </DropdownItem>
+      //   </DropdownMenu>
+      // </UncontrolledDropdown>
+      <UncontrolledDropdown>
+  <DropdownToggle
+    tag="span"
+    className="cursor-pointer d-flex justify-content-center"
+  >
+    <MoreVertical size={18} />
+  </DropdownToggle>
+
+  <DropdownMenu
+    end
+    flip
+    container="body"
+    className="table-action-dropdown shadow-sm"
+  >
+    <DropdownItem onClick={() => openView(row)}>
+      <Eye size={14} className="me-50" />
+      View
+    </DropdownItem>
+
+    <DropdownItem onClick={() => openEdit(row)}>
+      <Edit size={14} className="me-50" />
+      Edit
+    </DropdownItem>
+
+    <DropdownItem onClick={() => handleStatusChange(row)}>
+      <ToggleLeft size={14} className="me-50" />
+      Change Status
+    </DropdownItem>
+
+    <DropdownItem divider />
+
+    <DropdownItem
+      className="text-danger"
+      onClick={() => handleDelete(row)}
+    >
+      <Trash size={14} className="me-50" />
+      Delete
+    </DropdownItem>
+  </DropdownMenu>
+</UncontrolledDropdown>
+
+
+    )
   }
 ]

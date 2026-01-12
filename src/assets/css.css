@@ -423,3 +423,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .custom-gap {
   gap: 1.5rem;
 }
+.custom-gap1 {
+  gap: 1rem;
+}

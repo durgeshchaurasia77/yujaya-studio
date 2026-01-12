@@ -93,13 +93,15 @@ const handleSubmit = e => {
 }
 
   const openView = row => {
-    setSelectedRow(row)
-    setViewModal(true)
+    // setSelectedRow(row)
+    // setViewModal(true)
+    console.log('VIEW', row)
   }
 
   const openEdit = row => {
-    setSelectedRow(row)
-    setEditModal(true)
+    // setSelectedRow(row)
+    // setEditModal(true)
+    console.log('EDIT', row)
   }
    const handleDelete = row => {
     MySwal.fire({
