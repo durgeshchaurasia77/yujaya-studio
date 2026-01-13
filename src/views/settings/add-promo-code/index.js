@@ -67,7 +67,7 @@ const CreateGiftCard = () => {
             <Label>
                Enter Promo Code<span className="text-danger">*</span>
             </Label>
-            <Input placeholder="RY-0203432" />
+            <Input type="text" required placeholder="RY-0203432" />
           </FormGroup>
         </Col>
 
@@ -77,7 +77,7 @@ const CreateGiftCard = () => {
             <Label>
               Name<span className="text-danger">*</span>
             </Label>
-            <Input placeholder="Promo Name" />
+            <Input type="text" required placeholder="Promo Name" />
           </FormGroup>
         </Col>
 
