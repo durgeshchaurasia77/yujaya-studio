@@ -241,8 +241,8 @@ const AddLocation = () => {
         )}
       </CardBody>      
       <CardFooter className="text-end">
-        <div className="d-flex justify-content-between align-end button-alignment-accouncement">
-            <Button color="primary">Create Account</Button>
+          <div className="d-flex justify-content-between align-end button-alignment-accouncement">
+            <Button color="primary">Create Location</Button>
           </div>
       </CardFooter>
     </Card>

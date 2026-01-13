@@ -35,14 +35,19 @@ export default [
         title: 'Gift Card List',
         icon: <PlusSquare />,
         navLink: '/settings/list-gift-card'
+      },
+      {
+        id: 'analyticsDash',
+        title: 'Integration',
+        icon: <PlusSquare />,
+        navLink: '/settings/integration'
+      },
+      {
+        id: 'analyticsDash',
+        title: 'Promo Code',
+        icon: <PlusSquare />,
+        navLink: '/settings/list-promo-code'
       }
-      // ,
-      // {
-      //   id: 'analyticsDash',
-      //   title: 'Yujaya Pay',
-      //   icon: <Circle />,
-      //   navLink: '#'
-      // },
       // {
       //   id: 'analyticsDash',
       //   title: 'Integration',

@@ -277,10 +277,6 @@ const CreateGiftCard = () => {
 
           {deliveryType === "schedule" && (
             <Col md="6">
-              {/* <FormGroup>
-                <Label>Pick Delivery Date & Time</Label>
-                <Input type="datetime-local" />
-              </FormGroup> */}
               <FormGroup>
                 <Fragment>
                 <Label>

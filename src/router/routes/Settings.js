@@ -17,6 +17,18 @@ const SettingsRoutes = [
   {
     path: '/settings/list-gift-card',
     component: lazy(() => import('../../views/settings/list-gift-card'))
+  },
+  {
+    path: '/settings/integration',
+    component: lazy(() => import('../../views/settings/integration'))
+  },
+  {
+    path: '/settings/list-promo-code',
+    component: lazy(() => import('../../views/settings/list-promo-code'))
+  },
+  {
+    path: '/settings/add-promo-code',
+    component: lazy(() => import('../../views/settings/add-promo-code'))
   }
 
 ]

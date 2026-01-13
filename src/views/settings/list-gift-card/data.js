@@ -8,7 +8,7 @@ export const giftData = [
     semail: 'vkoschek17@abc.net.au',
     startDate: '01-01-2025',
     endDate: '01-01-2026',
-    status: 'active'
+    status: 'Active'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const giftData = [
     semail: 'vkoschek17@abc.net.au',
     startDate: '01-01-2025',
     endDate: '01-01-2026',
-    status: 'inactive'
+    status: 'Inactive'
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const giftData = [
     semail: 'vkoschek17@abc.net.au',
     startDate: '01-01-2025',
     endDate: '01-01-2026',
-    status: 'inactive'
+    status: 'Pending'
   },
   {
     id: 4,
@@ -41,6 +41,6 @@ export const giftData = [
     semail: 'vkoschek17@abc.net.au',
     startDate: '01-01-2025',
     endDate: '01-01-2026',
-    status: 'active'
+    status: 'Active'
   }
 ]
