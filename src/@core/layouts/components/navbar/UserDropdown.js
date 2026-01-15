@@ -65,16 +65,16 @@ const UserDropdown = () => {
         <DropdownItem divider />
         <DropdownItem tag={Link} to='/pages/account-settings'>
           <Settings size={14} className='mr-75' />
-          <span className='align-middle'>Settings</span>
+          <span className='align-middle'>My Profile</span>
         </DropdownItem>
         {/* <DropdownItem tag={Link} to='/pages/pricing'>
           <CreditCard size={14} className='mr-75' />
           <span className='align-middle'>Pricing</span>
         </DropdownItem> */}
-        {/* <DropdownItem tag={Link} to='/pages/faq'>
+        <DropdownItem tag={Link} to='/pages/faq'>
           <HelpCircle size={14} className='mr-75' />
           <span className='align-middle'>FAQ</span>
-        </DropdownItem> */}
+        </DropdownItem>
         <DropdownItem tag={Link} to='/login' onClick={() => dispatch(handleLogout())}>
           <Power size={14} className='mr-75' />
           <span className='align-middle'>Logout</span>

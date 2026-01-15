@@ -10,7 +10,7 @@ export default [
         id: 'analyticsDash',
         title: 'Add Schedule',
         icon: <PlusSquare />,
-        navLink: '#'
+        navLink: '/schedule/calendar'
       },
       {
         id: 'analyticsDash',

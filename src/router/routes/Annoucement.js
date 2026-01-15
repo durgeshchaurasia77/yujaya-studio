@@ -5,6 +5,10 @@ const AnnoucementRoutes = [
   {
     path: '/annoucement/add',
     component: lazy(() => import('../../views/annoucement/add'))
+  },
+  {
+    path: '/schedule/calendar',
+    component: lazy(() => import('../../views/schedule/calendar'))
   }
 
 ]

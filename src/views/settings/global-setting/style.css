@@ -1,0 +1,116 @@
+.account-settings-layout {
+  min-height: calc(100vh - 160px);
+}
+
+.account-tabs {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.account-content {
+  height: calc(100vh - 160px);
+}
+
+.account-content-body {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.account-content-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.account-content-body::-webkit-scrollbar-thumb {
+  background-color: #d8d6de;
+  border-radius: 4px;
+}
+.attention-align{
+    display: flex;
+    align-items: center;
+}
+.warning-style{
+    padding: 15px !important;
+}
+.attention-align {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icon container */
+.alert-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #FFE8CC; /* soft warning bg */
+  border-radius: 8px;
+}
+
+/* Icon itself */
+.alert-icon i {
+  font-size: 22px;
+  color: #FF9F43; /* warning orange */
+}
+/* Page background contrast */
+.billing-section {
+  margin-bottom: 1.5rem;
+}
+
+/* Main card separation */
+.billing-card {
+  background-color: #ffffff;
+  border-radius: 0.428rem;
+  box-shadow: 0 2px 8px rgba(34, 41, 47, 0.08);
+}
+
+/* Inner left-right separation */
+.billing-card .row > [class*="col-"] {
+  padding-top: 0.5rem;
+}
+
+/* Payment section divider */
+.payment-divider {
+  border-top: 1px solid #ebe9f1;
+  margin: 1.5rem 3px;
+}
+
+/* My Cards block */
+.my-card-item {
+  background-color: #f8f8f8;
+  border-radius: 0.357rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Improve alert spacing */
+.warning-style {
+  background-color: #fff4e5;
+  border: none;
+}
+
+/* Button spacing fix */
+.billing-card .btn {
+  margin-right: 0.5rem;
+}
+.account-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: #f4f4f4;
+  padding: 6px;
+}

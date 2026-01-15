@@ -1,0 +1,31 @@
+/* ✅ react-select dropdown (portal safe) */
+.select__menu {
+  background-color: #fff !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15) !important;
+}
+
+.select__menu-list {
+  background-color: #fff !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+.select__option {
+  background-color: #fff !important;
+}
+
+/* ✅ ensure above modal */
+.select__menu-portal {
+  z-index: 99999 !important;
+}
+
+.modal-body {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 150px);
+}
+
+.modal,
+.modal-dialog,
+.modal-content {
+  overflow: visible !important;
+}

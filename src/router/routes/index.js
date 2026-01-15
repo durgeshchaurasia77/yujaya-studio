@@ -5,8 +5,9 @@ import ClassRoutes from './Classes'
 import AnnoucementRoutes from './Annoucement'
 import MembershipRoutes from './Membership'
 import UserRoutes from './User'
-import SettingsRoutes from './Settings'
+import StudiosRoutes from './Studios'
 import PackageRoutes from './Package'
+import SettingsRoutes from './Settings'
 import FormRoutes from './Forms'
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
@@ -32,6 +33,7 @@ const Routes = [
   ...PackageRoutes,
   ...MembershipRoutes,
   ...UserRoutes,
+  ...StudiosRoutes,
   ...SettingsRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,
