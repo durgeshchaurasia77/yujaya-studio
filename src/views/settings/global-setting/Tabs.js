@@ -25,13 +25,37 @@ const Tabs = ({ activeTab, toggleTab }) => {
       <NavItem>
         <NavLink active={activeTab === '4'} onClick={() => toggleTab('4')}>
           <Lock size={18} className='mr-1' />
-          <span className='font-weight-bold'>Class</span>
+          <span className='font-weight-bold'>Currency and Tax</span>
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink active={activeTab === '5'} onClick={() => toggleTab('5')}>
           <Info size={18} className='mr-1' />
-          <span className='font-weight-bold'>Packages</span>
+          <span className='font-weight-bold'>Payment Gateway</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '6'} onClick={() => toggleTab('6')}>
+          <Info size={18} className='mr-1' />
+          <span className='font-weight-bold'>Roles & Permissions</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '7'} onClick={() => toggleTab('7')}>
+          <Info size={18} className='mr-1' />
+          <span className='font-weight-bold'>Video Platforms</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '8'} onClick={() => toggleTab('8')}>
+          <Info size={18} className='mr-1' />
+          <span className='font-weight-bold'>Policy & Rules</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '9'} onClick={() => toggleTab('9')}>
+          <Info size={18} className='mr-1' />
+          <span className='font-weight-bold'>Import Members</span>
         </NavLink>
       </NavItem>
     </Nav>

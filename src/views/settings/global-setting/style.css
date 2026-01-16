@@ -106,11 +106,132 @@
   justify-content: center;
   font-weight: 600;
 }
-.brand-icon {
+/* .brand-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: contain;
   background-color: #f4f4f4;
   padding: 6px;
+} */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Grey link button */
+.icon-btn.secondary {
+  background-color: #f2f2f3;
+  color: #6e6b7b;
+}
+
+/* Red delete button */
+.icon-btn.danger {
+  background-color: #ffe5e5;
+  color: #ea5455;
+}
+
+/* Hover effect like Vuexy */
+.icon-btn.secondary:hover {
+  background-color: #e3e3e6;
+}
+
+.icon-btn.danger:hover {
+  background-color: #ffd1d1;
+}
+.social-account-style{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5px;
+}
+.student-notification-tab{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.nav-bar-notification{
+  background-color: #dad8e2;
+}
+.nav-bar-payment{
+  background-color: #dad8e2;
+  display: flex;
+  justify-content: center; 
+}
+/* ROLE CARD LOOK */
+.role-card-ui {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+}
+
+/* AVATAR GROUP */
+.avatar-group-ui {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-group-ui .avatar {
+  margin-left: -8px;
+  border: 2px solid #fff;
+}
+
+.avatar-more-ui {
+  width: 32px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f1f1f1;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8px;
+}
+.role-add-card {
+  min-height: 120px;
+  max-height: 139px;
+}
+
+.role-add-card .card-body {
+  padding: 1.5rem;
+}
+
+.role-add-image img {
+  max-width: 100%;
+}
+
+.role-add-content {
+  text-align: right;
+}
+
+.role-add-content .btn {
+  font-size: 0.85rem;
+}
+
+.modal-header small {
+  font-size: 0.8rem;
+}
+
+.modal-body label {
+  font-weight: 500;
+}
+
+.custom-control {
+  margin-left: 12px;
 }

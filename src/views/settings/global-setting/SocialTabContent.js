@@ -20,17 +20,17 @@ import {
   Instagram,
   GitHub,
   Slack,
-  Mailchimp,
   Link2,
-  Trash2,
-  BrandIcon
+  Trash2
 } from 'react-feather'
+import Select from 'react-select'
 import './style.css'
 import google from '../../../assets/images/google.png'
 import slack from '../../../assets/images/slack.png'
 import github from '../../../assets/images/github.png'
 import mailchimp from '../../../assets/images/mailchimp.png'
 import asana from '../../../assets/images/asana.png'
+import whatsapp from '../../../assets/images/whatsapp.webp'
 
 import facebook from '../../../assets/images/facebook.png'
 import twitter from '../../../assets/images/twitter-light.png'
@@ -60,15 +60,25 @@ const SocialTabContent = ({ data }) => {
     { name: 'Slack', desc: 'Communication', icon: slack, active: false },
     { name: 'Github', desc: 'Manage your Git repositories', icon: github, active: true },
     { name: 'Mailchimp', desc: 'Email marketing service', icon: mailchimp, active: true },
-    { name: 'Asana', desc: 'Communication', icon: asana, active: false }
+    { name: 'Asana', desc: 'Communication', icon: asana, active: false },
+    { name: 'Whatsapp', desc: 'Communication', icon: whatsapp, active: false }
   ]
 
-  const socialAccounts = [
+  const socialAccounts1 = [
   { name: 'Facebook', status: 'Not Connected', icon: facebook, action: 'link' },
   { name: 'Twitter', status: '@Pixinvent', icon: twitter, action: 'delete' },
   { name: 'Instagram', status: '@Pixinvent', icon: instagram, action: 'delete' },
   { name: 'Dribbble', status: 'Not Connected', icon: dribbble, action: 'link' },
   { name: 'Behance', status: 'Not Connected', icon: behance, action: 'link' }
+]
+
+const socialAccounts = [
+  { name: 'Facebook', status: 'Not Connected', icon: Facebook, action: 'link' },
+  { name: 'Twitter', status: '@Pixinvent', icon: Twitter, action: 'delete' },
+  { name: 'Instagram', status: '@Pixinvent', icon: Instagram, action: 'delete' },
+  { name: 'GitHub', status: 'Not Connected', icon: GitHub, action: 'link' },
+  { name: 'Slack', status: 'Not Connected', icon: Slack, action: 'link' },
+  { name: 'Whatsapp', status: 'Not Connected', icon: whatsapp, action: 'link' }
 ]
   const renderTwitterConnection = () => {
     if (!isObjEmpty(data.connections.twitter)) {
@@ -184,7 +194,7 @@ return (
       {/* SOCIAL ACCOUNTS */}
       <Col md="6">
         <Card>
-          <CardBody>
+          {/* <CardBody>
             <h4>Social Accounts</h4>
             <>
               <p className="text-muted mb-2">
@@ -209,6 +219,51 @@ return (
                   </Button>
                 </div>
               ))}
+          </CardBody> */}
+          <CardBody>
+            <h4>Social Accounts</h4>
+            <p className="text-muted mb-2">
+              Display content from social accounts on your <br /> site.
+            </p>
+            {socialAccounts.map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div
+                  key={i}
+                  className="social-account-style"
+                >
+                  <div className="d-flex align-items-center">
+                    <div className="social-icon">
+                      {/* <Icon size={18} />
+                      <BrandIcon src={item.icon} alt={item.name} /> */}
+                        {item.name === 'Whatsapp' ? (
+                          <BrandIcon src={item.icon} alt={item.name} />
+                        ) : (
+                          <Icon size={18} />
+                        )}
+                    </div>
+                    <div className="ml-1">
+                      <h6 className="mb-0">{item.name}</h6>
+                      <small className="text-muted">{item.status}</small>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    color={item.action === 'delete' ? 'light-danger' : 'light-secondary'}
+                  >
+                    {item.action === 'delete' ? (
+                      <button className="icon-btn danger">
+                        <Trash2 size={16} />
+                      </button>
+                    ) : (
+                      <button className="icon-btn secondary">
+                        <Link2 size={16} />
+                      </button>
+                    )}
+                  </Button>
+                </div>
+              )
+            })}
           </CardBody>
         </Card>
       </Col>

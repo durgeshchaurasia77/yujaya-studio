@@ -5,8 +5,13 @@ import InfoTabContent from './InfoTabContent'
 import Breadcrumbs from '@components/breadcrumbs'
 import SocialTabContent from './SocialTabContent'
 import BillingPlans from './BillingPlans'
-import PasswordTabContent from './PasswordTabContent'
+import CurrencyAndTaxTabContent from './CurrencyAndTaxTabContent'
+import PaymentGatewayTabContent from './PaymentGatewayTabContent'
 import NotificationsTabContent from './NotificationsTabContent'
+import RolesPermissionTabContent from './RolesPermissionTabContent'
+import VideoPlateformTabContent from './VideoPlateformTabContent'
+import PolicyRulesTabContent from './PolicyRulesTabContent'
+import ImportMembersTabContent from './ImportMembersTabContent'
 import { Row, Col, TabContent, TabPane, Card, CardBody } from 'reactstrap'
 
 import '@styles/react/libs/flatpickr/flatpickr.scss'
@@ -29,7 +34,7 @@ const GeneralSettings = () => {
       <Breadcrumbs breadCrumbTitle='General Settings' breadCrumbParent='Pages' breadCrumbActive='General Settings' />
       {data !== null ? (
         <Row className="account-settings-layout">
-          <Col className='mb-2 mb-md-0' md='3'>
+          <Col className='mb-2 mb-md-0 text-align-center' md='3'>
             <Tabs activeTab={activeTab} toggleTab={toggleTab} />
           </Col>
           <Col md='9' className="account-content">
@@ -46,10 +51,22 @@ const GeneralSettings = () => {
                     <NotificationsTabContent data={data.notification} />
                   </TabPane>
                   <TabPane tabId='4'>
-                    <PasswordTabContent />
+                    <CurrencyAndTaxTabContent />
                   </TabPane>
                   <TabPane tabId='5'>
-                    <InfoTabContent data={data.info} />
+                    <PaymentGatewayTabContent data={data.info} />
+                  </TabPane>
+                  <TabPane tabId='6'>
+                    <RolesPermissionTabContent data={data.info} />
+                  </TabPane>
+                  <TabPane tabId='7'>
+                    <VideoPlateformTabContent data={data.info} />
+                  </TabPane>
+                  <TabPane tabId='8'>
+                    <PolicyRulesTabContent data={data.info} />
+                  </TabPane>
+                  <TabPane tabId='9'>
+                    <ImportMembersTabContent data={data.info} />
                   </TabPane>
                 </TabContent>
               </CardBody>
