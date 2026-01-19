@@ -142,7 +142,6 @@ const AddAnnoucement = () => {
           <InputGroup style={{ cursor: 'pointer' }}>
             <Flatpickr
               value={startDate}
-              // onChange={date => setStartDate(date[0])}
               onChange={date => setPicker(date)}
               className="form-control"
               data-enable-time
