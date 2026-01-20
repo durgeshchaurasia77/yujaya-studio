@@ -178,6 +178,10 @@
 // Dropdown ::before position
 .dropdown-menu {
   // Dropdown margin according to dropdown position
+  max-width: calc(100vw - 20px);
+  overflow-wrap: break-word;
+  white-space: normal;
+
 
   &[x-placement='bottom-start'],
   &[x-placement='bottom-end'] {
@@ -197,6 +201,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+  }
+}
+
 // Dropdown icon
 .dropdown,
 .dropup {
@@ -207,7 +219,10 @@
       }
     }
     .dropdown-menu {
-      min-width: auto;
+      // min-width: auto;
+      min-width: 180px;
+      max-width: 200px;
+
       .dropdown-item {
         padding: 0.5rem 1.1rem;
         cursor: pointer;

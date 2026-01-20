@@ -1,0 +1,96 @@
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  margin-top: 0;
+}
+
+input[type='radio'] {
+  margin-top: 0;
+}
+.commission-payment-section{
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+}
+.border-danger {
+  border-width: 1px !important;
+}
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.form-row1 {
+  margin-bottom: 1.5rem;
+}
+.form-label-col {
+  width: 145px;
+  font-weight: 600;
+}
+.select__container {
+  width: 100% !important;
+}
+
+.form-field-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.commission-payment-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.border-danger {
+  padding: 12px !important;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  margin-top: 0;
+}
+
+
+.select__control {
+  width: 100%;
+  min-height: 44px !important;
+  align-items: flex-start !important;
+}
+
+.select__value-container {
+  display: flex !important;
+  flex-wrap: wrap !important;         
+  max-height: 80px;                   
+  overflow-y: auto !important;     
+  overflow-x: hidden !important;
+  padding: 4px 8px;
+}
+
+.select__multi-value {
+  margin: 2px 4px 2px 0;
+}
+
+.select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.select__container {
+  max-width: 100% !important;
+}
+
+.is-invalid .select__control {
+  border-color: #dc3545 !important;
+}

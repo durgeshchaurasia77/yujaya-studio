@@ -11,6 +11,12 @@ export default [
         title: 'Global Setting',
         icon: <Cpu />,
         navLink: '/settings/global-setting'
+      },
+      {
+        id: 'analyticsDash',
+        title: 'Add Commision',
+        icon: <PlusSquare />,
+        navLink: '/settings/add-commision'
       }
     ]
   }
