@@ -49,7 +49,7 @@
   // Navbar Header //
   //---------------//
   .horizontal-menu-wrapper {
-    position: relative !important;
+    position: relative;
     top: 62px;
     z-index: 990;
     width: 100%;
@@ -94,7 +94,6 @@
           font-size: inherit;
           .brand-logo img {
             max-width: 150px;
-            
             width: 142px;
             height: 59px;
           }
@@ -132,8 +131,7 @@
         display: none;
       }
       .dropdown-menu {
-        min-width: fit-content;
-
+        min-width: 215px;
         border: none;
         margin-top: 0;
         min-height: 52px;

@@ -183,7 +183,7 @@ const AddCommision = () => {
               classNamePrefix="select"
               isSearchable={false}
               menuPlacement="auto"
-              menuPortalTarget={document.body}   // 🔥 escape parent
+              menuPortalTarget={document.body}
               styles={{
                 menuPortal: base => ({
                   ...base,

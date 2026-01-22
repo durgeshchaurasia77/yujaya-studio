@@ -16,6 +16,7 @@ import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
+import StudentRoutes from './StudentRoutes'
 
 // ** Document title
 const TemplateTitle = '%s - Yujaya Admin'
@@ -41,7 +42,8 @@ const Routes = [
   ...PageLayoutsRoutes,
   ...FormRoutes,
   ...TablesRoutes,
-  ...ChartMapsRoutes
+  ...ChartMapsRoutes,
+  ...StudentRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

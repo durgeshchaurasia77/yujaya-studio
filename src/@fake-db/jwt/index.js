@@ -42,6 +42,24 @@ const data = {
       extras: {
         eCommerceCartItemsCount: 5
       }
+    },
+    {
+      id: 3,
+      fullName: 'Student User',
+      username: 'student',
+      password: 'student',
+      avatar: require('@src/assets/images/avatars/3-small.png').default,
+      email: 'student@demo.com',
+      role: 'student',
+      ability: [
+        {
+          action: 'read',
+          subject: 'Student'
+        }
+      ],
+      extras: {
+        eCommerceCartItemsCount: 5
+      }
     }
   ]
 }

@@ -68,37 +68,47 @@ const Router = () => {
    */
   const FinalRoute = props => {
     const route = props.route
-    let action, resource
+    const { pathname } = props.location
+    const isStudentRoute = pathname.startsWith('/student')
 
-    // ** Assign vars based on route meta
+    let action = null
+    let resource = null
+
     if (route.meta) {
-      action = route.meta.action ? route.meta.action : null
-      resource = route.meta.resource ? route.meta.resource : null
+      action = route.meta.action
+      resource = route.meta.resource
     }
 
+    // 🚫 Not logged in → redirect to correct login
     if (
       (!isUserLoggedIn() && route.meta === undefined) ||
-      (!isUserLoggedIn() && route.meta && !route.meta.authRoute && !route.meta.publicRoute)
+      (!isUserLoggedIn() &&
+        route.meta &&
+        !route.meta.authRoute &&
+        !route.meta.publicRoute)
     ) {
-      /**
-       ** If user is not Logged in & route meta is undefined
-       ** OR
-       ** If user is not Logged in & route.meta.authRoute, !route.meta.publicRoute are undefined
-       ** Then redirect user to login
-       */
-
-      return <Redirect to='/login' />
-    } else if (route.meta && route.meta.authRoute && isUserLoggedIn()) {
-      // ** If route has meta and authRole and user is Logged in then redirect user to home page (DefaultRoute)
-      return <Redirect to='/' />
-    } else if (isUserLoggedIn() && !ability.can(action || 'read', resource)) {
-      // ** If user is Logged in and doesn't have ability to visit the page redirect the user to Not Authorized
-      return <Redirect to='/misc/not-authorized' />
-    } else {
-      // ** If none of the above render component
-      return <route.component {...props} />
+      return <Redirect to={isStudentRoute ? '/student-auth/login' : '/login'} />
     }
+
+    // 🚫 Logged in → trying to access login page
+    if (route.meta?.authRoute && isUserLoggedIn()) {
+      return <Redirect to='/' />
+    }
+
+    // 🚫 ACL check (skip auth routes)
+    if (
+      isUserLoggedIn() &&
+      route.meta &&
+      !route.meta.authRoute &&
+      !ability.can(action || 'read', resource)
+    ) {
+      return <Redirect to='/misc/not-authorized' />
+    }
+
+    // ✅ Render page
+    return <route.component {...props} />
   }
+
 
   // ** Return Route to Render
   const ResolveRoutes = () => {

@@ -1,8 +1,7 @@
 // ** React Imports
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 
-// ** Horizontal Menu Arrays
+// ** Horizontal Menu Array
 import navigation from '@src/navigation/horizontal'
 import navigationStudent from '@src/navigation/horizontal-student'
 
@@ -10,23 +9,12 @@ import navigationStudent from '@src/navigation/horizontal-student'
 import HorizontalNavMenuItems from './HorizontalNavMenuItems'
 
 const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
-  
+  // ** States
   const [activeItem, setActiveItem] = useState(null)
   const [groupActive, setGroupActive] = useState([])
   const [openDropdown, setOpenDropdown] = useState([])
 
-  // const role = useSelector(state => state.auth.userData?.role)
-
-  const authUser = useSelector(state => state.auth.userData)
-
-  const role =
-    authUser?.role ||
-    JSON.parse(localStorage.getItem('userData'))?.role
-  // const enableSubmenu = Boolean(role === 'student')
-  const enableSubmenu = role === 'student'
-  const selectedNavigation = role === 'student' ? navigationStudent : navigation
-  const menuClass = role === 'student' ? 'nav navbar-nav d-flex gap-2' : 'nav navbar-nav'
-
+  // ** On mouse enter push the ID to openDropdown array
   const onMouseEnter = id => {
     const arr = openDropdown
     arr.push(id)
@@ -42,11 +30,10 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
 
   return (
     <div className='navbar-container main-menu-content'>
-      <ul className={menuClass} id='main-menu-navigation'>
+      <ul className='nav navbar-nav' id='main-menu-navigation'>
         <HorizontalNavMenuItems
           submenu={false}
-          // submenu={enableSubmenu}
-          items={selectedNavigation}
+          items={navigation}
           activeItem={activeItem}
           groupActive={groupActive}
           routerProps={routerProps}
