@@ -1,70 +1,75 @@
 import { useContext } from 'react'
 import { Row, Col } from 'reactstrap'
-import CompanyTable from './CompanyTable'
 import { ThemeColors } from '@src/utility/context/ThemeColors'
-import Earnings from '@src/views/ui-elements/cards/analytics/Earnings'
-import CardMedal from '@src/views/ui-elements/cards/advance/CardMedal'
-import CardMeetup from '@src/views/ui-elements/cards/advance/CardMeetup'
 import StatsCard from '@src/views/ui-elements/cards/statistics/StatsCard'
-import GoalOverview from '@src/views/ui-elements/cards/analytics/GoalOverview'
-import RevenueReport from '@src/views/ui-elements/cards/analytics/RevenueReport'
-import OrdersBarChart from '@src/views/ui-elements/cards/statistics/OrdersBarChart'
-import ProfitLineChart from '@src/views/ui-elements/cards/statistics/ProfitLineChart'
-import CardTransactions from '@src/views/ui-elements/cards/advance/CardTransactions'
-import CardBrowserStates from '@src/views/ui-elements/cards/advance/CardBrowserState'
 
-import '@styles/react/libs/charts/apex-charts.scss'
+import { dashboardStats } from '../card/statsData'
+import UpcomingClassesTable from '../card/UpcomingClassesTable'
+import TodayScheduleTable from '../card/TodayScheduleTable'
+import AnnouncementsTable from '../card/AnnouncementsTable'
+
+import ActionBookingCalendar from '../card/ActionBookingCalendar'
+import ActionJoinOnlineClass from '../card/ActionJoinOnlineClass'
+import ActionBuyGiftCard from '../card/ActionBuyGiftCard'
+
 import '@styles/base/pages/dashboard-ecommerce.scss'
 
 const EcommerceDashboard = () => {
-  const { colors } = useContext(ThemeColors),
-    trackBgColor = '#e9ecef'
+  const { colors } = useContext(ThemeColors)
 
   return (
     <div id='dashboard-ecommerce'>
+
+      {/* 🔝 TOP: OVERVIEW + UPCOMING */}
       <Row className='match-height'>
-        <Col xl='4' md='6' xs='12'>
-          <CardMedal />
+        <Col xl='6'>
+          <div className='mb-1'>
+            <h4 className='mb-0'>Overview</h4>
+            <small className='text-muted'>Your learning at a glance</small>
+          </div>
+          <StatsCard cols={{ xl: '4', sm: '6' }} data={dashboardStats} />
         </Col>
-        <Col xl='8' md='6' xs='12'>
-          <StatsCard cols={{ xl: '3', sm: '6' }} />
+
+        <Col xl='6'>
+          <h4 className='mb-1'>Upcoming Classes</h4>
+          <UpcomingClassesTable />
         </Col>
       </Row>
-      <Row className='match-height'>
-        <Col lg='4' md='12'>
-          <Row className='match-height'>
-            <Col lg='6' md='3' xs='6'>
-              <OrdersBarChart warning={colors.warning.main} />
-            </Col>
-            <Col lg='6' md='3' xs='6'>
-              <ProfitLineChart info={colors.info.main} />
-            </Col>
-            <Col lg='12' md='6' xs='12'>
-              <Earnings success={colors.success.main} />
-            </Col>
-          </Row>
+
+      {/* 📊 MIDDLE: TABLES */}
+      <Row className='match-height mt-2'>
+        <Col lg='6'>
+          <h4 className='mb-1'>Today’s Classes</h4>
+          <TodayScheduleTable />
         </Col>
-        <Col lg='8' md='12'>
-          <RevenueReport primary={colors.primary.main} warning={colors.warning.main} />
+        <Col lg='6'>
+          <h4 className='mb-1'>Latest Announcements</h4>
+          <AnnouncementsTable />
         </Col>
       </Row>
-      <Row className='match-height'>
-        <Col lg='8' xs='12'>
-          <CompanyTable />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardMeetup />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardBrowserStates colors={colors} trackBgColor={trackBgColor} />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <GoalOverview success={colors.success.main} />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardTransactions />
+
+      {/* ⚡ BOTTOM: QUICK ACTIONS */}
+      <Row className='mt-2'>
+        <Col xs='12' className='mb-1'>
+          <h4 className='mb-0'>Quick Actions</h4>
+          <small className='text-muted'>
+            Access your classes and tools quickly
+          </small>
         </Col>
       </Row>
+
+      <Row className='match-height'>
+        <Col lg='4' md='6'>
+          <ActionJoinOnlineClass />
+        </Col>
+        <Col lg='4' md='6'>
+          <ActionBookingCalendar />
+        </Col>
+        <Col lg='4' md='6'>
+          <ActionBuyGiftCard />
+        </Col>
+      </Row>
+
     </div>
   )
 }

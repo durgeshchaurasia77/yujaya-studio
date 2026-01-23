@@ -22,7 +22,6 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
   const role =
     authUser?.role ||
     JSON.parse(localStorage.getItem('userData'))?.role
-  // const enableSubmenu = Boolean(role === 'student')
   const enableSubmenu = role === 'student'
   const selectedNavigation = role === 'student' ? navigationStudent : navigation
   const menuClass = role === 'student' ? 'nav navbar-nav d-flex gap-2' : 'nav navbar-nav'
@@ -45,7 +44,6 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
       <ul className={menuClass} id='main-menu-navigation'>
         <HorizontalNavMenuItems
           submenu={false}
-          // submenu={enableSubmenu}
           items={selectedNavigation}
           activeItem={activeItem}
           groupActive={groupActive}

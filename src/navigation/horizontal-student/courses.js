@@ -3,16 +3,16 @@ import { Book } from 'react-feather'
 export default [
   {
     id: 'student-courses',
-    title: 'Courses',
+    title: 'Book a Class',
     icon: <Book />,
-    navLink: '/student-auth/dashboard/ecommerce', // ✅ ADD THIS
+    navLink: '/student-auth/book-class',
     action: 'read',
     resource: 'Student',
     children: [
       {
         id: 'my-courses',
-        title: 'My Courses',
-        navLink: '/student-auth/dashboard/ecommerce',
+        title: 'Book a Class',
+        navLink: '/student-auth/book-class',
         action: 'read',
         resource: 'Student'
       }
