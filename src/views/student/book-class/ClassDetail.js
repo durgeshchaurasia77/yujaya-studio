@@ -20,19 +20,19 @@ const ClassDetail = () => {
         Instructor: Demo Instructor
       </small> */}
         <div className='d-flex align-items-center mb-2'>
-            <button
-                className='btn btn-primary mr-1'
-                onClick={() => history.push('/student-auth/book-class')}
-            >
-                ← Back
-            </button>
+          <div>
+            <h3 className='mb-0'>{course.title}</h3>
+            <small className='text-muted'>
+              Instructor: Demo Instructor
+            </small>
+          </div>
 
-            <div>
-                <h3 className='mb-0'>{course.title}</h3>
-                <small className='text-muted'>
-                Instructor: Demo Instructor
-                </small>
-            </div>
+          <button
+            className='btn btn-primary ml-auto header-back-button'
+            onClick={() => history.push('/student-auth/book-class')}
+          >
+            ← Back
+          </button>
         </div>
       <Row className='mt-2'>
         {/* LEFT: VIDEO + INFO */}

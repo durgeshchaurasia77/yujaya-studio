@@ -36,6 +36,62 @@ const StudentRoutes = [
             action: 'read',
             resource: 'Student'
         }
+    },
+    {
+        path: '/student-auth/courses-programs',
+        component: lazy(() => import('../../views/student/courses-programs')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/courses-programs-details/:id',
+        component: lazy(() => import('../../views/student/courses-programs/detail')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/booking-history/list',
+        component: lazy(() => import('../../views/student/booking-history/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/upcomming-class/list',
+        component: lazy(() => import('../../views/student/upcomming-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/cancel-class/list',
+        component: lazy(() => import('../../views/student/cancel-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/attendent-class/list',
+        component: lazy(() => import('../../views/student/attendent-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/attendent-class/rating-review/add/:id',
+        component: lazy(() => import('../../views/student/attendent-class/rating-review/add')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
     }
 
 ]
