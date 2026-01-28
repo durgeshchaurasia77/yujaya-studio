@@ -1,3 +1,4 @@
+
 import { lazy } from 'react'
 import { Redirect } from 'react-router-dom'
 
@@ -88,6 +89,30 @@ const StudentRoutes = [
     {
         path: '/student-auth/attendent-class/rating-review/add/:id',
         component: lazy(() => import('../../views/student/attendent-class/rating-review/add')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/resources/list',
+        component: lazy(() => import('../../views/student/resources/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/resources/upload-notes/list',
+        component: lazy(() => import('../../views/student/resources/upload-notes/list')),
+            meta: {
+            action: 'read',
+            resource: 'Student'
+        }
+    },
+    {
+        path: '/student-auth/payment-history/list',
+        component: lazy(() => import('../../views/student/payment-history/list')),
             meta: {
             action: 'read',
             resource: 'Student'
