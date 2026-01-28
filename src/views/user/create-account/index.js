@@ -101,7 +101,6 @@ const AddAccount = () => {
   const [isEarlyBird, setIsEarlyBird] = useState(false)
   const [offlineEarlyBirdFee, setOfflineEarlyBirdFee] = useState('')
   const [offlineEarlyExpireDays, setOfflineEarlyExpireDays] = useState('')
-
   const [onlineEarlyBirdFee, setOnlineEarlyBirdFee] = useState('')
   const [onlineEarlyExpireDays, setOnlineEarlyExpireDays] = useState('')
   const [status, setStatus] = useState(true)

@@ -17,6 +17,7 @@ import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 import StudentRoutes from './StudentRoutes'
+import PostureRoutes from './Posture'
 
 // ** Document title
 const TemplateTitle = '%s - Yujaya Admin'
@@ -36,6 +37,7 @@ const Routes = [
   ...UserRoutes,
   ...StudiosRoutes,
   ...SettingsRoutes,
+  ...PostureRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,
   ...ExtensionsRoutes,

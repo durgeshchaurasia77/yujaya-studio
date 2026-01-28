@@ -11,10 +11,11 @@ import membership from './membership'
 import user from './user'
 import studios from './studios'
 import settings from './settings'
+import posture from './posture'
 import uiElements from './ui-elements'
 import formsAndTables from './forms-tables'
 import chartsAndMaps from './charts-maps'
 
 // ** Merge & Export
-export default [...dashboards, ...classes, ...schedule, ...packages, ...membership, ...user, ...studios, ...settings]
+export default [...dashboards, ...classes, ...schedule, ...packages, ...membership, ...user, ...studios, ...settings, ...posture]
 // export default [...dashboards, ...studio, ...apps, ...uiElements, ...formsAndTables, ...pages, ...chartsAndMaps, ...others]
