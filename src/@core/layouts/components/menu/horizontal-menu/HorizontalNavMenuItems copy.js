@@ -7,7 +7,6 @@ import { AbilityContext } from '@src/utility/context/Can'
 // ** Menu Components Imports
 import HorizontalNavMenuLink from './HorizontalNavMenuLink'
 import HorizontalNavMenuGroup from './HorizontalNavMenuGroup'
-import PortalDropdown from './PortalDropdown'
 import {
   resolveHorizontalNavMenuItemComponent as resolveNavItemComponent,
   canViewMenuGroup,

@@ -95,7 +95,7 @@ const HorizontalNavMenuGroup = props => {
           <FormattedMessage id={item.title} />
         </span>
       </DropdownToggle>
-      <DropdownMenu tag='ul' modifiers={menuModifiers} container="body">
+      <DropdownMenu tag='ul' modifiers={menuModifiers}>
         <HorizontalNavMenuItems
           submenu={true}
           parentItem={item}
