@@ -1,0 +1,158 @@
+import SummaryCards from './SummaryCards'
+import DataTable from 'react-data-table-component'
+// import { columns } from './columns'
+import { getColumns } from './columns'
+import { documentData } from './data'
+import { addRecordOptions } from './dropdownAdd'
+import { roleOptions, planOptions, statusOptions } from './filters'
+import './styles.css'
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardTitle,
+  Row,
+  Button,
+  Col,
+  Label,
+  Input,
+  UncontrolledButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap'
+
+import {
+  Share,
+  Printer,
+  FileText,
+  Grid,
+  File,
+  Copy,
+  Plus,
+  PlusSquare
+} from 'react-feather'
+import { useHistory } from 'react-router-dom'
+
+import { useState, Fragment } from 'react'
+import Select from 'react-select'
+// import { ChevronDown } from 'react-feather'
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import '@styles/react/libs/tables/react-dataTable-component.scss'
+const MySwal = withReactContent(Swal)
+
+const UserList = () => {
+    const [searchValue, setSearchValue] = useState('')
+    const history = useHistory()
+
+const openView = row => {
+    // setSelectedRow(row)
+    // setViewModal(true)
+    console.log('VIEW', row)
+  }
+
+  const openEdit = row => {
+    // setSelectedRow(row)
+    // setEditModal(true)
+    console.log('Edit', row)
+  }
+   const handleDelete = row => {
+    MySwal.fire({
+      title: 'Delete User?',
+      text: `Delete "${row.fullName}"?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete',
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-outline-secondary ml-1'
+      },
+      buttonsStyling: false
+    }).then(res => {
+      if (res.isConfirmed) {
+        MySwal.fire('Deleted!', '', 'success')
+      }
+    })
+  }
+
+const handleStatusChange = row => {
+  const nextStatus = row.status === 'active' ? 'inactive' : 'active'
+
+  MySwal.fire({
+    title: 'Change Status?',
+    text: `User will be marked as ${nextStatus.toUpperCase()}`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: `Yes, set ${nextStatus}`,
+    cancelButtonText: 'Cancel',
+    customClass: {
+      confirmButton: 'btn btn-primary',
+      cancelButton: 'btn btn-outline-secondary ml-1'
+    },
+    buttonsStyling: false
+  }).then(result => {
+    if (result.isConfirmed) {
+      // 🔥 API call here
+      MySwal.fire({
+        icon: 'success',
+        title: 'Updated!',
+        text: `Status changed to ${nextStatus}`,
+        customClass: {
+          confirmButton: 'btn btn-success'
+        },
+        buttonsStyling: false
+      })
+    }
+  })
+}
+
+const columns = getColumns({
+    openView,
+    openEdit,
+    handleDelete,
+    handleStatusChange
+  })
+    const filteredData = documentData.filter(item => {
+    return item.course.toLowerCase().includes(searchValue.toLowerCase())
+    })
+
+  return (
+    <Fragment>
+        <Card>
+            <CardHeader>
+            <CardTitle tag="h4">Upload Documents</CardTitle>    
+                <Button
+                  color="primary"
+                  className="d-flex align-items-center"
+                  onClick={() => history.push('/class/document-upload/add')}
+                >
+                  <Plus size={14} className="me-50" />
+                  Add New Upload Documents
+                </Button>
+            </CardHeader>
+            <CardBody>
+            </CardBody>
+            {/* 🔹 Data Table */}
+            <DataTable
+                columns={columns}
+                data={searchValue ? filteredData : documentData}
+                pagination
+                selectableRows
+                highlightOnHover
+                persistTableHead
+                className="react-dataTable"
+                noDataComponent={
+                    <div className="py-4 text-center text-muted">
+                    <h6 className="mb-0">No matching records found</h6>
+                    <small>Try adjusting your search or filters</small>
+                    </div>
+                }
+            />
+        </Card>
+    </Fragment>
+  )
+}
+
+export default UserList

@@ -65,6 +65,9 @@ export const getHomeRouteForLoggedInUser = userRole => {
   if (userRole === 'student') {
     return '/student-auth/dashboard/ecommerce'
   }
+  if (userRole === 'instructor') {
+    return '/instructor-auth/dashboard/ecommerce'
+  }
   if (userRole === 'client') return '/access-control'
   return '/login'
 }

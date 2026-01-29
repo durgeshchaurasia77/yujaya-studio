@@ -70,6 +70,7 @@ const Router = () => {
     const route = props.route
     const { pathname } = props.location
     const isStudentRoute = pathname.startsWith('/student')
+    const isInstructorRoute = pathname.startsWith('/instructor')
 
     let action = null
     let resource = null
@@ -87,7 +88,9 @@ const Router = () => {
         !route.meta.authRoute &&
         !route.meta.publicRoute)
     ) {
-      return <Redirect to={isStudentRoute ? '/student-auth/login' : '/login'} />
+      // return <Redirect to={isStudentRoute ? '/student-auth/login' : '/login'} />
+      return (<Redirect to={ isStudentRoute ? '/student-auth/login' : isInstructorRoute ? '/instructor-auth/login' : '/login' }/>
+      )
     }
 
     // 🚫 Logged in → trying to access login page

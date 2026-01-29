@@ -3,7 +3,7 @@ import { Badge } from 'reactstrap'
 const StatusBadge = ({ status }) => {
   const map = {
     Active: 'success',
-    Inactive: 'secondary',
+    Inactive: 'danger',
     Pending: 'warning'
   }
 

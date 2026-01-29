@@ -1,0 +1,71 @@
+/* ===============================
+   BOOK CLASS – CARD IMAGE STYLES
+   =============================== */
+
+.class-img-wrapper {
+  width: 100%;
+  height: 180px;           /* image height control */
+  overflow: hidden;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.class-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* no stretch */
+  object-position: center;
+}
+
+/* Optional hover effect */
+.class-img-wrapper:hover .class-img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* ===============================
+   HEADER / FILTERS
+   =============================== */
+
+.book-class-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* ===============================
+   PAGINATION
+   =============================== */
+
+.book-class-pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+.ml-2, .mx-2
+ {
+    margin-left: 10.5rem !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.ratio iframe {
+  border-radius: 8px;
+}.course-video-wrapper {
+  width: 100%;
+  height: 380px;              /* adjust height */
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+}
+
+.course-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* cinematic crop */
+}
+.gap-2{
+    gap: 10px;
+}
