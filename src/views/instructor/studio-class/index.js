@@ -7,18 +7,16 @@ import { classesData } from './classesData'
 
 const ITEMS_PER_PAGE = 6
 
-const coursesPrograms = () => {
-  const [activeTab, setActiveTab] = useState('workshops')
+const CoursesPrograms = () => {
   const [mode, setMode] = useState('online')
   const [currentPage, setCurrentPage] = useState(1)
 
-  // 🔹 FILTER DATA
+  // 🔹 FILTER ONLY BY MODE (online / offline)
   const filteredData = classesData.filter(
-    item => item.category === activeTab &&
-      item.mode === mode
+    item => item.mode === mode
   )
 
-  // 🔹 PAGINATION LOGIC
+  // 🔹 PAGINATION
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const paginatedData = filteredData.slice(
@@ -30,7 +28,7 @@ const coursesPrograms = () => {
     <div>
 
       {/* PAGE TITLE */}
-      <h3 className='mb-1'>Courses & Programs</h3>
+      <h3 className='mb-1'>My Courses</h3>
       <p className='text-muted mb-0'>
         Education, talents, and career opportunities.
         <span className='text-primary font-weight-bolder'>
@@ -38,15 +36,13 @@ const coursesPrograms = () => {
         </span>
       </p>
 
-      {/* HEADER (TABS + TOGGLE) */}
-        <ClassesHeader
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            mode={mode}
-            setMode={setMode}
-            className='justify-content-center'
-        />
-      {/* GRID */}
+      {/* HEADER: ONLINE / OFFLINE ONLY */}
+      <ClassesHeader
+        mode={mode}
+        setMode={setMode}
+      />
+
+      {/* COURSE LIST */}
       <Row>
         {paginatedData.map(item => (
           <Col lg='4' md='6' sm='12' key={item.id} className='mb-2'>
@@ -71,4 +67,4 @@ const coursesPrograms = () => {
   )
 }
 
-export default coursesPrograms
+export default CoursesPrograms

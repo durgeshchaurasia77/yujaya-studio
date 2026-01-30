@@ -7,7 +7,7 @@ const ClassCard = ({ item }) => {
   return (
     <Card
         className='h-100 cursor-pointer'
-        onClick={() => history.push(`/student-auth/courses-programs-details/${item.id}`)}
+        onClick={() => history.push(`/instructor-auth/studio-class-details/${item.id}`)}
         >
       {/* <img
         src={item.image}

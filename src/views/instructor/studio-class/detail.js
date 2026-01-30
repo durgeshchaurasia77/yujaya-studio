@@ -29,7 +29,7 @@ const ClassDetail = () => {
 
           <button
             className='btn btn-primary ml-auto header-back-button'
-            onClick={() => history.push('/student-auth/courses-programs')}
+            onClick={() => history.push('/instructor-auth/studio-class')}
           >
             ← Back
           </button>

@@ -4,7 +4,7 @@ import DataTable from 'react-data-table-component'
 import { getColumns } from './columns'
 import { userData } from './data'
 import { addRecordOptions } from './dropdownAdd'
-import { modeOptions, bookingStatusOptions, paymentStatusOptions } from './filters'
+import { userTypeOptions, typeOptions, statusOptions } from './filters'
 import './styles.css'
 import {
   Card,
@@ -115,7 +115,7 @@ const columns = getColumns({
     handleStatusChange
   })
     const filteredData = userData.filter(item => {
-    return item.class_name.toLowerCase().includes(searchValue.toLowerCase())
+    return item.appointment_id.toLowerCase().includes(searchValue.toLowerCase())
     })
 
   return (
@@ -123,23 +123,23 @@ const columns = getColumns({
         {/* <SummaryCards /> */}
         <Card>
             <CardHeader>
-            <CardTitle tag="h4">Class Booking History</CardTitle>    
-                {/* <Button
+            <CardTitle tag="h4">Appointment Booking History</CardTitle>    
+                <Button
                   color="primary"
                   className="d-flex align-items-center"
-                  onClick={() => history.push('/class/rating-review/add')}
+                  onClick={() => history.push('/instructor-auth/book-appointment/add')}
                 >
                   <Plus size={14} className="me-50" />
-                  Add Class Review
-                </Button> */}
+                  Book New Appointment
+                </Button>
             </CardHeader>
             
             <CardBody>
             <Row className="gy-2 mb-3">
                 <Col md="4">
                 <Select
-                    options={modeOptions}
-                    placeholder="Select Mode"
+                    options={userTypeOptions}
+                    placeholder="Select User Type"
                     classNamePrefix="select"
                     menuPlacement="auto"
                     menuPosition="fixed"
@@ -150,8 +150,8 @@ const columns = getColumns({
 
                 <Col md="4">
                 <Select
-                    options={bookingStatusOptions}
-                    placeholder="Select Booking Status"
+                    options={typeOptions}
+                    placeholder="Select Type"
                     classNamePrefix="select"
                     menuPlacement="auto"
                     menuPosition="fixed"
@@ -162,8 +162,8 @@ const columns = getColumns({
 
                 <Col md="4">
                 <Select
-                    options={paymentStatusOptions}
-                    placeholder="Select Payment Status"
+                    options={statusOptions}
+                    placeholder="Select Status"
                     classNamePrefix="select"
                     menuPlacement="auto"
                     menuPosition="fixed"

@@ -5,10 +5,10 @@ import StatsCard from '@src/views/ui-elements/cards/statistics/StatsCard'
 
 import { dashboardStats } from '../card/statsData'
 import UpcomingClassesTable from '../card/UpcomingClassesTable'
-import TodayScheduleTable from '../card/TodayScheduleTable'
+import StudentCountCard from '../card/StudentCountCard'
 import AnnouncementsTable from '../card/AnnouncementsTable'
 
-import ActionBookingCalendar from '../card/ActionBookingCalendar'
+import EarningSummaryCard from '../card/EarningSummaryCard'
 import ActionJoinOnlineClass from '../card/ActionJoinOnlineClass'
 import ActionBuyGiftCard from '../card/ActionBuyGiftCard'
 
@@ -20,57 +20,43 @@ const EcommerceDashboard = () => {
   return (
     <div id='dashboard-ecommerce'>
 
-      {/* 🔝 TOP: OVERVIEW + UPCOMING */}
+      {/* 🔝 TOP ROW */}
       <Row className='match-height'>
-        <Col xl='6'>
-          <div className='mb-1'>
-            <h4 className='mb-0'>Overview</h4>
-            <small className='text-muted'>Your learning at a glance</small>
-          </div>
-          <StatsCard cols={{ xl: '4', sm: '6' }} data={dashboardStats} />
+        
+        {/* Today’s Upcoming Classes */}
+        
+
+        <Col lg='4' md='6'>
+          <h4 className='mb-1'>Join Online Class</h4>
+          <ActionJoinOnlineClass />
+        </Col>
+        {/* Student Count */}
+        <Col lg='4'>
+          <h4 className='mb-1'>Student Count</h4>
+          <StudentCountCard total={128} active={96} />
+        </Col>
+        <Col lg='4'>
+          <h4 className='mb-1'>Earning Summary</h4>
+          <EarningSummaryCard totalEarning={124500} monthlyEarning={18200} growth={12}/>
+        </Col>
+      </Row>
+
+      {/* 📊 MIDDLE ROW */}
+      <Row className='match-height mt-2'>
+        {/* Announcements */}
+        <Col lg='6'>
+          <h4 className='mb-1'>Announcements</h4>
+          <AnnouncementsTable />
         </Col>
 
-        <Col xl='6'>
-          <h4 className='mb-1'>Upcoming Classes</h4>
+        <Col lg='6'>
+          <h4 className='mb-1'>Today’s Upcoming Classes</h4>
           <UpcomingClassesTable />
         </Col>
       </Row>
 
-      {/* 📊 MIDDLE: TABLES */}
-      <Row className='match-height mt-2'>
-        <Col lg='6'>
-          <h4 className='mb-1'>Today’s Classes</h4>
-          <TodayScheduleTable />
-        </Col>
-        <Col lg='6'>
-          <h4 className='mb-1'>Latest Announcements</h4>
-          <AnnouncementsTable />
-        </Col>
-      </Row>
-
-      {/* ⚡ BOTTOM: QUICK ACTIONS */}
-      <Row className='mt-2'>
-        <Col xs='12' className='mb-1'>
-          <h4 className='mb-0'>Quick Actions</h4>
-          <small className='text-muted'>
-            Access your classes and tools quickly
-          </small>
-        </Col>
-      </Row>
-
-      <Row className='match-height'>
-        <Col lg='4' md='6'>
-          <ActionJoinOnlineClass />
-        </Col>
-        <Col lg='4' md='6'>
-          <ActionBookingCalendar />
-        </Col>
-        <Col lg='4' md='6'>
-          <ActionBuyGiftCard />
-        </Col>
-      </Row>
-
     </div>
+
   )
 }
 

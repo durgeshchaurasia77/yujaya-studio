@@ -22,55 +22,54 @@ export const getColumns = ({
   handleStatusChange
 }) => [
   {
-    name: 'Booking ID',
+    name: 'Appointment ID',
     sortable: true,
     minWidth: '100px',
     cell: row => (
       <div className="user-cell">
         <div className="user-info">
-          <div className="user-name">{row.booking_id}</div>
+          <div className="user-name">{row.appointment_id}</div>
         </div>
       </div>
     )
   },
   {
-    name: 'Class Name',
+    name: 'User Type',
     sortable: true,
     cell: row => (
       <div className="d-flex align-items-center gap-1">
-        <span>{row.class_name}</span>
+        <span>{row.user_type}</span>
       </div>
     )
   },
   {
-    name: 'Mode',
+    name: 'User Name',
     sortable: true,
-    selector: row => row.mode
+    cell: row => (
+      <div className="d-flex align-items-center gap-1">
+        <span>{row.user_name}</span>
+      </div>
+    )
   },
   {
-    name: 'Date',
+    name: 'Type',
     sortable: true,
-    selector: row => row.date
+    selector: row => row.type
   },
   {
-    name: 'Instructor',
+    name: 'Date & Time',
     sortable: true,
-    selector: row => row.instructor
+    selector: row => row.date_time
   },
   {
-    name: 'Timing',
+    name: 'Location',
     sortable: true,
-    selector: row => row.timing
+    selector: row => row.location
   },
   {
-    name: 'Booking Status',
+    name: 'Status',
     sortable: true,
-    cell: row => <StatusBadge status={row.booking_status} />
-  },
-  {
-    name: 'Payment Status',
-    sortable: true,
-    cell: row => <StatusBadge status={row.payment_status} />
+    cell: row => <StatusBadge status={row.status} />
   }
   // {
   //   name: 'ACTIONS',

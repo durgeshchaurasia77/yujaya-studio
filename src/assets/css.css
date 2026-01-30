@@ -426,3 +426,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .custom-gap1 {
   gap: 1rem;
 }
+.book-appointment-location{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-left: 20px;
+}

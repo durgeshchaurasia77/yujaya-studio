@@ -1,10 +1,12 @@
 import StatusBadge from '../../../../component/StatusBadge'
 import RoleIcon from '../../../../component/RoleIcon'
+import './styles.css'
 import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Progress
 } from 'reactstrap'
 
 import {
@@ -22,55 +24,91 @@ export const getColumns = ({
   handleStatusChange
 }) => [
   {
-    name: 'Booking ID',
+    name: 'Course Name',
     sortable: true,
     minWidth: '280px',
     cell: row => (
       <div className="user-cell">
         <div className="user-info">
-          <div className="user-name">{row.booking_id}</div>
+          <div className="user-name">{row.course_name}</div>
         </div>
       </div>
     )
   },
   {
-    name: 'Class Name',
+    name: 'Time',
     sortable: true,
     cell: row => (
       <div className="d-flex align-items-center gap-1">
-        <span>{row.class_name}</span>
+        {/* <span>{row.timing}</span> */}
+        <div className="user-name">{row.timing}</div>
       </div>
     )
   },
+  // {
+  //   name: 'Progress',
+  //   sortable: true,
+  //   minWidth: '420px',
+  //   cell: row => (
+  //     <div className="w-100">
+  //       <div className="d-flex justify-content-between mb-25">
+  //         <small className="fw-bold">{row.progress}%</small>
+  //         <small className="text-muted">{row.progress}/100</small>
+  //       </div>
+
+  //       <Progress
+  //         value={row.progress}
+  //         className="my-1"
+  //         style={{ height: '8px', borderRadius: '20px' }}
+  //       />
+  //     </div>
+  //   )
+  // },
   {
-    name: 'Mode',
-    sortable: true,
-    selector: row => row.mode
-  },
+  name: 'Progress',
+  minWidth: '380px',
+  cell: row => (
+    <div className="w-100">
+      <div className="d-flex justify-content-between">
+        <small className="fw-bold">{row.progress}%</small>
+        <small className="text-muted">{row.progress}/100</small>
+      </div>
+
+      <Progress
+        value={row.progress}
+        className="mt-50"
+        style={{ height: '6px' }}
+      />
+    </div>
+  )
+},
   {
-    name: 'Date',
-    sortable: true,
-    selector: row => row.date
-  },
-  {
-    name: 'Instructor',
-    sortable: true,
-    selector: row => row.instructor
-  },
-  {
-    name: 'Timing',
-    sortable: true,
-    selector: row => row.timing
-  },
-  {
-    name: 'Booking Status',
-    sortable: true,
-    cell: row => <StatusBadge status={row.booking_status} />
-  },
-  {
-    name: 'Payment Status',
-    sortable: true,
-    cell: row => <StatusBadge status={row.payment_status} />
+    name: 'Status',
+    sortable: false,
+    minWidth: '220px',
+    cell: row => (
+      <div className="online-class-status-style">
+        
+        {/* Students */}
+        <div className="online-class-status-style-item text-primary">
+          <RoleIcon type="users" />
+          <span>{row.status.students}</span>
+        </div>
+
+        {/* Lessons */}
+        <div className="online-class-status-style-item text-info">
+          <RoleIcon type="book" />
+          <span>{row.status.lessons}</span>
+        </div>
+
+        {/* Videos */}
+        <div className="online-class-status-style-item text-danger">
+          <RoleIcon type="video" />
+          <span>{row.status.videos}</span>
+        </div>
+
+      </div>
+    )
   }
   // {
   //   name: 'ACTIONS',
