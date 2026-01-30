@@ -79,6 +79,8 @@ export const getColumns = ({
           container="body"
           className="table-action-dropdown icon-menu-dropdown-gap shadow-sm"
         >
+
+          
           {/* <DropdownItem onClick={() => openViewCategory(row)}>
             <Eye size={14} className="me-50 icon-menu-dropdown-gap" />
             View
