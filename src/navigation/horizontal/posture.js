@@ -29,6 +29,12 @@ export default [
         title: 'Posture Sequence',
         icon: <PlusSquare />,
         navLink: '/posture/posture-sequence/list'
+      },
+      {
+        id: 'analyticsDash',
+        title: 'Client Parameters',
+        icon: <PlusSquare />,
+        navLink: '/posture/client-parameters/list'
       }
     ]
   }

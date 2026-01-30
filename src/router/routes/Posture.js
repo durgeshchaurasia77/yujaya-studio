@@ -37,6 +37,18 @@ const PostureRoutes = [
   {
     path: '/posture/posture-sequence/list',
     component: lazy(() => import('../../views/posture/posture-sequence/list'))
+  },
+  {
+    path: '/posture/client-parameters/list',
+    component: lazy(() => import('../../views/posture/client-parameters/list'))
+  },
+  {
+    path: '/posture/client-parameters/add',
+    component: lazy(() => import('../../views/posture/client-parameters/add'))
+  },
+  {
+    path: '/posture/client-parameters/edit',
+    component: lazy(() => import('../../views/posture/client-parameters/edit'))
   }
 
 ]
