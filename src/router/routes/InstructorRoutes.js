@@ -61,6 +61,62 @@ const InstructorRoutes = [
             action: 'read',
             resource: 'Instructor'
         }
+    },
+    {
+        path: '/instructor-auth/student/enrolled-student/list',
+        component: lazy(() => import('../../views/instructor/student/enrolled-student/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/student/attandance-tracking/list',
+        component: lazy(() => import('../../views/instructor/student/attandance-tracking/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/student/student-notes/list',
+        component: lazy(() => import('../../views/instructor/student/student-notes/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/booking-history/upcomming-class/list',
+        component: lazy(() => import('../../views/instructor/booking-history/upcomming-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/booking-history/cancel-class/list',
+        component: lazy(() => import('../../views/instructor/booking-history/cancel-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/booking-history/attendent-class/list',
+        component: lazy(() => import('../../views/instructor/booking-history/attendent-class/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/booking-history/attendent-class/rating-review/add/:id',
+        component: lazy(() => import('../../views/instructor/booking-history/attendent-class/rating-review/add')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
     }
     // {
     //     path: '/instructor-auth/book-class-details/:id',

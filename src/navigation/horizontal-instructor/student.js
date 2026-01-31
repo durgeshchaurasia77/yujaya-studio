@@ -2,31 +2,31 @@ import { Book } from 'react-feather'
 
 export default [
   {
-    id: 'booking-history',
-    title: 'Booking History',
+    id: 'instructor',
+    title: 'Student',
     icon: <Book />,
-    navLink: '/instructor-auth/booking-history/upcomming-class/list',
+    navLink: '/instructor-auth/student/enrolled-student/list',
     action: 'read',
     resource: 'Instructor',
     children: [
       {
         id: 'my-courses',
-        title: 'Upcomming Class',
-        navLink: '/instructor-auth/booking-history/upcomming-class/list',
+        title: 'Enrolled Student',
+        navLink: '/instructor-auth/student/enrolled-student/list',
         action: 'read',
         resource: 'Instructor'
       },
       {
         id: 'my-courses',
-        title: 'Cancel Class',
-        navLink: '/instructor-auth/booking-history/cancel-class/list',
+        title: 'Attandance Tracking',
+        navLink: '/instructor-auth/student/attandance-tracking/list',
         action: 'read',
         resource: 'Instructor'
       },
       {
         id: 'my-courses',
-        title: 'Attendent Class',
-        navLink: '/instructor-auth/booking-history/attendent-class/list',
+        title: 'Student Notes',
+        navLink: '/instructor-auth/student/student-notes/list',
         action: 'read',
         resource: 'Instructor'
       }
