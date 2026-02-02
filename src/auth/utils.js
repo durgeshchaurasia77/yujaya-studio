@@ -28,6 +28,9 @@ export const getHomeRouteForLoggedInUser = userRole => {
     if (userRole === 'instructor') {
     return '/instructor-auth/dashboard'
   }
+    if (userRole === 'therapist') {
+    return '/therapist-auth/dashboard'
+  }
   if (userRole === 'client') return { name: 'access-control' }
   return { name: 'auth-login' }
 }

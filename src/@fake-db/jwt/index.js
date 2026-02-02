@@ -78,6 +78,24 @@ const data = {
       extras: {
         eCommerceCartItemsCount: 5
       }
+    },
+    {
+      id: 5,
+      fullName: 'Therapist User',
+      username: 'therapist',
+      password: 'therapist',
+      avatar: require('@src/assets/images/avatars/3-small.png').default,
+      email: 'therapist@demo.com',
+      role: 'therapist',
+      ability: [
+        {
+          action: 'read',
+          subject: 'Therapist'
+        }
+      ],
+      extras: {
+        eCommerceCartItemsCount: 5
+      }
     }
   ]
 }

@@ -68,6 +68,9 @@ export const getHomeRouteForLoggedInUser = userRole => {
   if (userRole === 'instructor') {
     return '/instructor-auth/dashboard/ecommerce'
   }
+    if (userRole === 'therapist') {
+    return '/therapist-auth/dashboard/ecommerce'
+  }
   if (userRole === 'client') return '/access-control'
   return '/login'
 }
