@@ -5,10 +5,17 @@ export default [
     id: 'booking-history',
     title: 'Booking History',
     icon: <Book />,
-    navLink: '/instructor-auth/booking-history/upcomming-class/list',
+    navLink: '/instructor-auth/booking-history/list',
     action: 'read',
     resource: 'Instructor',
     children: [
+      {
+        id: 'my-courses',
+        title: 'Class Booking History',
+        navLink: '/instructor-auth/booking-history/list',
+        action: 'read',
+        resource: 'Instructor'
+      },
       {
         id: 'my-courses',
         title: 'Upcomming Class',

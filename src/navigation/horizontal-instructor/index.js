@@ -3,8 +3,8 @@ import dashboards from './dashboards'
 import classes from './classes'
 import student from './student'
 import bookingHistory from './booking-history'
-import resources from './resources'
-import payment from './payment'
+import library from './library'
+import earningPayment from './earning-payment'
 
 export default [
   {
@@ -13,7 +13,7 @@ export default [
   ...dashboards,
   ...classes,
   ...student,
-  ...bookingHistory
-  // ...resources,
-  // ...payment
+  ...bookingHistory,
+  ...library,
+  ...earningPayment
 ]

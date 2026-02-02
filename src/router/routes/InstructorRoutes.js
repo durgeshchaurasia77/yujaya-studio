@@ -87,6 +87,14 @@ const InstructorRoutes = [
         }
     },
     {
+        path: '/instructor-auth/booking-history/list',
+        component: lazy(() => import('../../views/instructor/booking-history/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
         path: '/instructor-auth/booking-history/upcomming-class/list',
         component: lazy(() => import('../../views/instructor/booking-history/upcomming-class/list')),
             meta: {
@@ -117,79 +125,47 @@ const InstructorRoutes = [
             action: 'read',
             resource: 'Instructor'
         }
+    },
+    {
+        path: '/instructor-auth/library/resources/list',
+        component: lazy(() => import('../../views/instructor/library/resources/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/library/upload-notes/list',
+        component: lazy(() => import('../../views/instructor/library/upload-notes/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/library/upload-notes/add',
+        component: lazy(() => import('../../views/instructor/library/upload-notes/add')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/earning-payment/earning-history/list',
+        component: lazy(() => import('../../views/instructor/earning-payment/earning-history/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
+    },
+    {
+        path: '/instructor-auth/earning-payment/payment-history/list',
+        component: lazy(() => import('../../views/instructor/earning-payment/payment-history/list')),
+            meta: {
+            action: 'read',
+            resource: 'Instructor'
+        }
     }
-    // {
-    //     path: '/instructor-auth/book-class-details/:id',
-    //     component: lazy(() => import('../../views/instructor/book-class/ClassDetail')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/courses-programs',
-    //     component: lazy(() => import('../../views/instructor/courses-programs')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/upcomming-class/list',
-    //     component: lazy(() => import('../../views/instructor/upcomming-class/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/cancel-class/list',
-    //     component: lazy(() => import('../../views/instructor/cancel-class/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/attendent-class/list',
-    //     component: lazy(() => import('../../views/instructor/attendent-class/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/attendent-class/rating-review/add/:id',
-    //     component: lazy(() => import('../../views/instructor/attendent-class/rating-review/add')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/resources/list',
-    //     component: lazy(() => import('../../views/instructor/resources/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/resources/upload-notes/list',
-    //     component: lazy(() => import('../../views/instructor/resources/upload-notes/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // },
-    // {
-    //     path: '/instructor-auth/payment-history/list',
-    //     component: lazy(() => import('../../views/instructor/payment-history/list')),
-    //         meta: {
-    //         action: 'read',
-    //         resource: 'Instructor'
-    //     }
-    // }
 
 ]
 
