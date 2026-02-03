@@ -71,8 +71,11 @@ export const getHomeRouteForLoggedInUser = userRole => {
     if (userRole === 'therapist') {
     return '/therapist-auth/dashboard/ecommerce'
   }
-  if (userRole === 'client') return '/access-control'
-  return '/login'
+      if (userRole === 'client') {
+    return '/client-auth/dashboard/ecommerce'
+  }
+  // if (userRole === 'client') return '/access-control'
+  // return '/login'
 }
 
 // ** React Select Theme Colors

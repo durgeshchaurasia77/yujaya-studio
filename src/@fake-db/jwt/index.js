@@ -32,13 +32,19 @@ const data = {
       ability: [
         {
           action: 'read',
-          subject: 'ACL'
-        },
-        {
-          action: 'read',
-          subject: 'Auth'
+          subject: 'Client'
         }
       ],
+      // ability: [
+      //   {
+      //     action: 'read',
+      //     subject: 'ACL'
+      //   },
+      //   {
+      //     action: 'read',
+      //     subject: 'Auth'
+      //   }
+      // ],
       extras: {
         eCommerceCartItemsCount: 5
       }
