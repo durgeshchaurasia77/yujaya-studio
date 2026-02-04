@@ -102,6 +102,24 @@ const data = {
       extras: {
         eCommerceCartItemsCount: 5
       }
+    },
+    {
+      id: 6,
+      fullName: 'Staff User',
+      username: 'staff',
+      password: 'staff',
+      avatar: require('@src/assets/images/avatars/3-small.png').default,
+      email: 'staff@demo.com',
+      role: 'staff',
+      ability: [
+        {
+          action: 'read',
+          subject: 'Staff'
+        }
+      ],
+      extras: {
+        eCommerceCartItemsCount: 5
+      }
     }
   ]
 }

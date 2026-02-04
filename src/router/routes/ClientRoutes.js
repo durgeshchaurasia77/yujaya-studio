@@ -39,6 +39,22 @@ const ClientRoutes = [
         }
     },
     {
+        path: '/client-auth/therapy-session/list',
+        component: lazy(() => import('../../views/client/therapy-session/list')),
+            meta: {
+            action: 'read',
+            resource: 'Client'
+        }
+    },
+    {
+        path: '/client-auth/assigned-practice/list',
+        component: lazy(() => import('../../views/client/assigned-practice/list')),
+            meta: {
+            action: 'read',
+            resource: 'Client'
+        }
+    },
+    {
         path: '/client-auth/session-notes/resources/list',
         component: lazy(() => import('../../views/client/session-notes/resources/list')),
             meta: {

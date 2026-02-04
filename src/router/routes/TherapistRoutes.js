@@ -31,6 +31,14 @@ const TherapistRoutes = [
         }
     },
     {
+        path: '/therapist-auth/therapy-session/list',
+        component: lazy(() => import('../../views/therapist/therapy-session/list')),
+            meta: {
+            action: 'read',
+            resource: 'Therapist'
+        }
+    },
+    {
         path: '/therapist-auth/book-appointment/add',
         component: lazy(() => import('../../views/therapist/book-appointment/add')),
             meta: {
@@ -65,6 +73,14 @@ const TherapistRoutes = [
     {
         path: '/therapist-auth/client/therapy-plan/list',
         component: lazy(() => import('../../views/therapist/client/therapy-plan/list')),
+            meta: {
+            action: 'read',
+            resource: 'Therapist'
+        }
+    },
+    {
+        path: '/therapist-auth/client/therapy-plan/add',
+        component: lazy(() => import('../../views/therapist/client/therapy-plan/add')),
             meta: {
             action: 'read',
             resource: 'Therapist'

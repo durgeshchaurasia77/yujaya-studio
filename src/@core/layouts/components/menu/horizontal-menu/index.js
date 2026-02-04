@@ -8,6 +8,7 @@ import navigationStudent from '@src/navigation/horizontal-student'
 import navigationInstructor from '@src/navigation/horizontal-instructor'
 import navigationTherapist from '@src/navigation/horizontal-therapist'
 import navigationClient from '@src/navigation/horizontal-client'
+import navigationStaff from '@src/navigation/horizontal-staff'
 
 // ** Horizontal Menu Components
 import HorizontalNavMenuItems from './HorizontalNavMenuItems'
@@ -27,6 +28,7 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
     instructor: navigationInstructor,
     therapist: navigationTherapist,
     client: navigationClient,
+    staff: navigationStaff,
     default: navigation
   }
 
@@ -37,7 +39,7 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
   // const selectedNavigation = role === 'student' ? navigationStudent : navigation
   const selectedNavigation = navigationByRole[role] || navigationByRole.default
   const menuClass1 = role === 'student' ? 'nav navbar-nav d-flex gap-2' : 'nav navbar-nav'
-  const menuClass = role === 'student' || role === 'instructor' || role === 'therapist'  || role === 'client' ? 'nav navbar-nav d-flex gap-2' : 'nav navbar-nav'
+  const menuClass = role === 'student' || role === 'instructor' || role === 'therapist'  || role === 'client' || role === 'staff' ? 'nav navbar-nav d-flex gap-2' : 'nav navbar-nav'
 
   const onMouseEnter = id => {
     const arr = openDropdown

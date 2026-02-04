@@ -15,14 +15,14 @@ export default [
         navLink: '/therapist-auth/book-appointment/list',
         action: 'read',
         resource: 'Therapist'
+      },
+      {
+        id: 'therapy-session',
+        title: 'Therapy Session',
+        navLink: '/therapist-auth/therapy-session/list',
+        action: 'read',
+        resource: 'Therapist'
       }
-      // {
-      //   id: 'studio-class',
-      //   title: 'Studio Class',
-      //   navLink: '/therapist-auth/studio-class/list',
-      //   action: 'read',
-      //   resource: 'Therapist'
-      // },
       // {
       //   id: 'book-appointment',
       //   title: 'Book Appointment',

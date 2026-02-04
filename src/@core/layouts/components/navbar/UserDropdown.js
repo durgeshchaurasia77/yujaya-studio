@@ -1,6 +1,6 @@
 // ** React Imports
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory, useLocation, Link } from 'react-router-dom'
 
 // ** Custom Components
 import Avatar from '@components/avatar'
@@ -22,7 +22,8 @@ import defaultAvatar from '@src/assets/images/portrait/small/avatar-s-11.jpg'
 const UserDropdown = () => {
   // ** Store Vars
   const dispatch = useDispatch()
-
+  const history = useHistory()
+  const location = useLocation()
   // ** State
   const [userData, setUserData] = useState(null)
 
@@ -33,6 +34,26 @@ const UserDropdown = () => {
     }
   }, [])
 
+    const handleDynamicLogout = () => {
+    const currentPath = location.pathname
+
+    dispatch(handleLogout())
+    
+    if (currentPath.startsWith('/student-auth')) {
+      history.push('/student-auth/login')
+    } else if (currentPath.startsWith('/instructor-auth')) {
+      history.push('/instructor-auth/login')
+    } else if (currentPath.startsWith('/therapist-auth')) {
+      history.push('/therapist-auth/login')
+    } else if (currentPath.startsWith('/staff-auth')) {
+      history.push('/staff-auth/login')
+    } else if (currentPath.startsWith('/client-auth')) {
+      history.push('/client-auth/login')
+    } else {
+      // default → admin 
+      history.push('/login')
+    }
+  }
   //** Vars
   const userAvatar = (userData && userData.avatar) || defaultAvatar
 
@@ -75,7 +96,8 @@ const UserDropdown = () => {
           <HelpCircle size={14} className='mr-75' />
           <span className='align-middle'>FAQ</span>
         </DropdownItem>
-        <DropdownItem tag={Link} to='/login' onClick={() => dispatch(handleLogout())}>
+        {/* <DropdownItem tag={Link} to='/login' onClick={() => dispatch(handleLogout())}> */}
+        <DropdownItem onClick={handleDynamicLogout}>
           <Power size={14} className='mr-75' />
           <span className='align-middle'>Logout</span>
         </DropdownItem>

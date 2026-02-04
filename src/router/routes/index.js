@@ -21,7 +21,7 @@ import PostureRoutes from './Posture'
 import InstructorRoutes from './InstructorRoutes'
 import TherapistRoutes from './TherapistRoutes'
 import ClientRoutes from './ClientRoutes'
-
+import StaffRoutes from './StaffRoutes'
 // ** Document title
 const TemplateTitle = '%s - Yujaya Admin'
 
@@ -51,7 +51,8 @@ const Routes = [
   ...StudentRoutes,
   ...InstructorRoutes,
   ...TherapistRoutes,
-  ...ClientRoutes
+  ...ClientRoutes,
+  ...StaffRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

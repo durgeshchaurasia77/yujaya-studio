@@ -258,8 +258,7 @@ const columns = getColumns({
                 <Button
                   color="primary"
                   className="d-flex align-items-center"
-                      onClick={() => setAddCategoryModal(true)}
-                >
+                      onClick={() => history.push('/therapist-auth/client/therapy-plan/add')}>
                   <Plus size={14} className="me-50" />
                   Add Plan
                 </Button>

@@ -74,6 +74,9 @@ export const getHomeRouteForLoggedInUser = userRole => {
       if (userRole === 'client') {
     return '/client-auth/dashboard/ecommerce'
   }
+  if (userRole === 'staff') {
+    return '/staff-auth/dashboard/ecommerce'
+  }
   // if (userRole === 'client') return '/access-control'
   // return '/login'
 }
