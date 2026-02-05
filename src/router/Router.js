@@ -74,6 +74,7 @@ const Router = () => {
     const isTherapistRoute = pathname.startsWith('/therapist')
     const isClientRoute = pathname.startsWith('/client')
     const isStaffRoute = pathname.startsWith('/staff')
+    const isLandingRoute = pathname.startsWith('/landing')
 
     let action = null
     let resource = null
@@ -92,7 +93,7 @@ const Router = () => {
         !route.meta.publicRoute)
     ) {
       // return <Redirect to={isStudentRoute ? '/student-auth/login' : '/login'} />
-      return (<Redirect to={ isStudentRoute ? '/student-auth/login' : isInstructorRoute ? '/instructor-auth/login' : isTherapistRoute ? '/therapist-auth/login'  : isClientRoute ? '/client-auth/login' : isStaffRoute ? '/staff-auth/login' : '/login' }/>
+      return (<Redirect to={ isStudentRoute ? '/student-auth/login' : isInstructorRoute ? '/instructor-auth/login' : isTherapistRoute ? '/therapist-auth/login'  : isClientRoute ? '/client-auth/login' : isStaffRoute ? '/staff-auth/login' : isLandingRoute ? '/landing-page' : '/login' }/>
       )
     }
 

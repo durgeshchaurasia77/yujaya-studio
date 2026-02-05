@@ -1,0 +1,40 @@
+.modal-body {
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+
+.select__menu-portal {
+  z-index: 99999;
+}
+
+/* modal body scroll safe */
+.modal-body {
+  overflow-y: auto;
+  position: relative;
+}
+.css-1rhbuit-multiValue {
+  background-color: #7367f0;
+}
+.css-1hwfws3 {gap: 3px;
+}
+.gap-form{
+  gap: 14px;
+  flex-wrap: wrap;
+  display: flex;
+}
+.count-down-section{
+display: flex;
+align-items: center;
+gap: 5px;
+}
+@media (max-width: 767px) {
+    [dir] .header-navbar .navbar-nav {
+        margin: 0;
+        justify-content: space-between;
+    }
+}
+@media (max-width: 767px) {
+  [dir] .landing-footer {
+    margin-bottom: 97px;
+  }
+}

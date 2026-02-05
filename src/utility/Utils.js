@@ -77,6 +77,10 @@ export const getHomeRouteForLoggedInUser = userRole => {
   if (userRole === 'staff') {
     return '/staff-auth/dashboard/ecommerce'
   }
+  if (userRole === 'landing') {
+    console.log('wertyu')
+    return '/landing-page/calendar'
+  }
   // if (userRole === 'client') return '/access-control'
   // return '/login'
 }

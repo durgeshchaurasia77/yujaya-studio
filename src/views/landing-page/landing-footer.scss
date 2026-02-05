@@ -1,0 +1,37 @@
+.landing-footer {
+  background: linear-gradient(90deg, #1f2235 0%, #2a2e45 100%);
+  color: #cfcfe6;
+  margin-bottom: 0px;
+  font-size: 0.85rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+
+  .heart {
+    margin: 0 4px;
+  }
+}
+
+.footer-right {
+  display: flex;
+  gap: 16px;
+
+  a {
+    color: #ffffff;
+    opacity: 0.85;
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+  }
+}

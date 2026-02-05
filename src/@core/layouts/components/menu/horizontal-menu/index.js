@@ -9,6 +9,7 @@ import navigationInstructor from '@src/navigation/horizontal-instructor'
 import navigationTherapist from '@src/navigation/horizontal-therapist'
 import navigationClient from '@src/navigation/horizontal-client'
 import navigationStaff from '@src/navigation/horizontal-staff'
+import navigationLanding from '@src/navigation/horizontal-landing'
 
 // ** Horizontal Menu Components
 import HorizontalNavMenuItems from './HorizontalNavMenuItems'

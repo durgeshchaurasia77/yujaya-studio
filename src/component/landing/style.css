@@ -1,0 +1,16 @@
+header .landing-section{
+
+    position: fixed !important;
+    z-index: 999;
+    margin-bottom: 100px !important;
+}
+@media (max-width: 767px) {
+ .landing-section{
+    position: fixed !important;
+}
+}
+[dir=ltr] .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 89px;
+}

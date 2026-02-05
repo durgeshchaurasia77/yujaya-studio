@@ -1,0 +1,93 @@
+.upcoming-event {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  padding: 15px 25px 7px 33px;
+  margin: 3rem 22px;
+}
+
+/* LEFT INFO */
+.event-info {
+  max-width: 40%;
+
+  .tag {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  h2 {
+    margin: 0.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .subtitle {
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+}
+
+/* COUNTDOWN */
+.countdown {
+  display: flex;
+  gap: 1rem;
+}
+
+.count-box {
+  min-width: 90px;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  text-align: center;
+  backdrop-filter: blur(6px);
+
+  h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #fff;
+  }
+
+  span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+}
+
+/* CTA */
+.cta button {
+  background: #fff;
+  color: #4f46e5;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .upcoming-event {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .event-info {
+    max-width: 100%;
+  }
+
+  .countdown {
+    justify-content: center;
+  }
+}
