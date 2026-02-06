@@ -32,7 +32,7 @@ const SidebarLeft = props => {
       <div className='sidebar-wrapper'>
         <CardBody className='card-body d-flex justify-content-center my-sm-0 mb-3'>
           <Button.Ripple color='primary' block onClick={handleAddEventClick}>
-            <span className='align-middle'>Add Event</span>
+            <span className='align-middle'>Add Class</span>
           </Button.Ripple>
         </CardBody>
         <CardBody>

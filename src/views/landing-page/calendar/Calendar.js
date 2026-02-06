@@ -164,11 +164,59 @@ const Calendar = props => {
     // Get direction from app state (store)
     direction: isRtl ? 'rtl' : 'ltr'
   }
+const renderEventContent = (eventInfo) => {
+  const viewType = eventInfo.view.type
+
+  // ✅ ONLY Day & List view → Rich layout
+  if (viewType === 'timeGridDay' || viewType.startsWith('list')) {
+    const { event } = eventInfo
+    const data = event.extendedProps
+
+    return (
+      <div className="day-event">
+        <span className="event-dot" />
+
+        <div className="event-body">
+          <div className="event-title">{event.title}</div>
+
+          <div className="event-instructor">
+            <img src={data.instructor?.avatar} alt="" />
+            <div>
+              <strong>{data.instructor?.name}</strong>
+              <small>{data.instructor?.skill}</small>
+            </div>
+          </div>
+
+          <div className="event-location">
+            {data.location?.type === 'online' ? '📹' : '📍'}
+            {data.location?.name}
+          </div>
+
+          <div className="event-level">
+            🧘 {data.level}
+          </div>
+        </div>
+
+        <div className="event-actions">
+          <button className="btn-details">Details</button>
+          <button className="btn-book">+ Book Class</button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="fc-event-title">
+      {eventInfo.event.title}
+    </div>
+  )
+}
 
   return (
     <Card className='shadow-none border-0 mb-0 rounded-0'>
       <CardBody className='pb-0'>
-        <FullCalendar {...calendarOptions} />{' '}
+        {/* <FullCalendar eventContent={renderDayEvent} /> */}
+        <FullCalendar {...calendarOptions} eventContent={renderEventContent}/>{' '}
       </CardBody>
     </Card>
   )

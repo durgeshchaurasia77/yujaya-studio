@@ -1,74 +1,99 @@
 import axios from 'axios'
+import { events } from '../../../../../@fake-db/events'
 
-// ** Fetch Events
-export const fetchEvents = calendars => {
+// 🔥 MAIN FETCH (Header + Sidebar)
+export const fetchEvents = ({ calendars = [], type = 'ALL' }) => {
   return dispatch => {
-    axios.get('/apps/calendar/events', { calendars }).then(response => {
-      dispatch({
-        type: 'FETCH_EVENTS',
-        events: response.data
-      })
+    let data = [...events]
+
+    // Header menu filter
+    if (type !== 'ALL') {
+      data = data.filter(e => e.category === type)
+    }
+
+    // Sidebar filter
+    if (calendars.length) {
+      data = data.filter(e => calendars.includes(e.calendar))
+    }
+
+    dispatch({
+      type: 'FETCH_EVENTS',
+      events: data
     })
   }
 }
 
-// ** Add Event
+// ADD EVENT
+// export const addEvent = event => {
+//   return (dispatch, getState) => {
+//     axios.post('/apps/calendar/add-event', { event }).then(() => {
+//       dispatch({ type: 'ADD_EVENT' })
+//       dispatch(fetchEvents({
+//         calendars: getState().calendar.selectedCalendars,
+//         type: 'ALL'
+//       }))
+//     })
+//   }
+// }
 export const addEvent = event => {
-  return (dispatch, getState) => {
-    axios.post('/apps/calendar/add-event', { event }).then(() => {
-      dispatch({
-        type: 'ADD_EVENT'
-      })
-      dispatch(fetchEvents(getState().calendar.selectedCalendars))
+  return dispatch => {
+    // await axios.post('/api/events', event)
+
+    dispatch({
+      type: 'ADD_EVENT_SUCCESS'
     })
+
+    // dispatch(fetchEvents({
+    //   calendars: getState().calendar.selectedCalendars,
+    //   type: 'ALL'
+    // }))
   }
 }
 
-// ** Update Event
+// UPDATE EVENT
 export const updateEvent = event => {
   return dispatch => {
-    axios.post('/apps/calendar/update-event', { event }).then(() => {
-      dispatch({
-        type: 'UPDATE_EVENT'
-      })
+    // await axios.put(`/api/events/${event.id}`, event)
+    dispatch({
+      type: 'UPDATE_EVENT_SUCCESS'
     })
   }
 }
 
-// ** Filter Events
 export const updateFilter = filter => {
   return (dispatch, getState) => {
-    dispatch({
-      type: 'UPDATE_FILTERS',
-      filter
-    })
-    dispatch(fetchEvents(getState().calendar.selectedCalendars))
+    dispatch({ type: 'UPDATE_FILTERS', filter })
+
+    dispatch(fetchEvents({
+      calendars: getState().calendar.selectedCalendars,
+      type: 'ALL'
+    }))
   }
 }
 
-// ** Add/Remove All Filters
 export const updateAllFilters = value => {
   return (dispatch, getState) => {
-    dispatch({
-      type: 'UPDATE_ALL_FILTERS',
-      value
-    })
-    dispatch(fetchEvents(getState().calendar.selectedCalendars))
+    dispatch({ type: 'UPDATE_ALL_FILTERS', value })
+
+    dispatch(fetchEvents({
+      calendars: getState().calendar.selectedCalendars,
+      type: 'ALL'
+    }))
   }
 }
 
-// ** remove Event
+// REMOVE
 export const removeEvent = id => {
   return dispatch => {
-    axios.delete('/apps/calendar/remove-event', { id }).then(() => {
-      dispatch({
-        type: 'REMOVE_EVENT'
-      })
+    console.log('REMOVE EVENT (mock):', id)
+
+    dispatch({
+      type: 'REMOVE_EVENT_SUCCESS'
     })
   }
 }
 
-// ** Select Event (get event data on click)
+// SELECT
 export const selectEvent = event => {
   return dispatch => {
     dispatch({

@@ -38,3 +38,80 @@ gap: 5px;
     margin-bottom: 97px;
   }
 }
+.fc-daygrid-event-harness{
+    width: auto;
+    right: 0px !important;
+}
+.day-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.event-dot {
+  width: 10px;
+  height: 10px;
+  background: #7367f0;
+  border-radius: 50%;
+  margin-top: 6px;
+  display: none;
+}
+
+.event-body {
+  /* flex: 1; */
+      display: flex;
+}
+
+.event-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.event-instructor {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+}
+.event-instructor img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important;
+    border-color: #6b6be6;
+    border-style: solid;
+}
+.event-instructor small{
+    display: block;
+    color: #999;
+}
+.event-location,
+.event-level {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.event-actions {
+  display: contents;
+  flex-direction: column;
+  gap: 6px;
+
+}
+.event-actions .btn-details {
+    background: transparent;
+    border: none;
+    color: #fff;
+    background: #131128;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.event-actions .btn-book{
+    background: #7367f0;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    padding: 4px 8px;
+}

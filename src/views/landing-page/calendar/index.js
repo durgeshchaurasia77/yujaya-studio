@@ -1,6 +1,6 @@
 // ** React Imports
 import { Fragment, useState, useEffect } from 'react'
-
+import { useLocation } from 'react-router-dom'
 // ** Third Party Components
 import classnames from 'classnames'
 import { Row, Col } from 'reactstrap'
@@ -30,6 +30,7 @@ import '@styles/react/apps/app-calendar.scss'
 import AnnouncementContactSection from '../AnnouncementContactSection'
 import UpcomingEventSection from '../UpcomingEventSection'
 
+
 // ** CalendarColors
 const calendarsColor = {
   Business: 'primary',
@@ -45,9 +46,10 @@ const CalendarComponent = () => {
   const store = useSelector(state => state.calendar)
 
   // ** states
-  const [addSidebarOpen, setAddSidebarOpen] = useState(false),
+    const [addSidebarOpen, setAddSidebarOpen] = useState(false),
     [leftSidebarOpen, setLeftSidebarOpen] = useState(false),
     [calendarApi, setCalendarApi] = useState(null)
+    const location = useLocation()
 
   // ** Hooks
   const [isRtl, setIsRtl] = useRTL()
@@ -81,10 +83,29 @@ const CalendarComponent = () => {
   }
 
   // ** Fetch Events On Mount
-  useEffect(() => {
-    dispatch(fetchEvents(store.selectedCalendars))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchEvents(store.selectedCalendars))
+  // }, [])
 
+const getCalendarType = () => {
+  if (location.pathname.includes('class')) return 'CLASS'
+  if (location.pathname.includes('workshop')) return 'WORKSHOP'
+  if (location.pathname.includes('courses')) return 'COURSE'
+  if (location.pathname.includes('teacher-training')) return 'TEACHER_TRAINING'
+  if (location.pathname.includes('packages')) return 'PACKAGE'
+  if (location.pathname.includes('membership')) return 'MEMBERSHIP'
+  if (location.pathname.includes('retreat')) return 'RETREAT'
+  return 'ALL'
+}
+
+useEffect(() => {
+  const type = getCalendarType()
+
+  dispatch(fetchEvents({
+    calendars: store.selectedCalendars,
+    type
+  }))
+}, [location.pathname, store.selectedCalendars])
   return (
     <Fragment>
       <Header />
