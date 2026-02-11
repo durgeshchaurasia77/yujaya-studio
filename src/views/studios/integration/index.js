@@ -172,7 +172,7 @@ const AddIntegration = () => {
         {/* SELECTED PROGRAM */}
         <h5 className="mb-3">Selected Program</h5>
         <Row className="gy-3">
-          <Col md="4">
+          <Col md="4" className='mb-2'>
             <Label>Classes</Label>
             <Select
               options={combineClassOptions}
@@ -181,7 +181,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="4">
+          <Col md="4" className='mb-1'>
             <Label>Workshops</Label>
             <Select
               options={combineClassOptions}
@@ -190,7 +190,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="4">
+          <Col md="4" className='mb-1'>
             <Label>Courses</Label>
             <Select
               options={combineClassOptions}
@@ -199,7 +199,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="6">
+          <Col md="6" className='mb-1'>
             <Label>Class Category</Label>
             <Select
               options={combineClassOptions}
@@ -208,7 +208,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="6">
+          <Col md="6" className='mb-1'>
             <Label>Class Sub Category</Label>
             <Select
               options={combineClassOptions}
@@ -217,7 +217,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="6">
+          <Col md="6" className='mb-1'>
             <Label>Package Category</Label>
             <Select
               options={combineClassOptions}
@@ -226,7 +226,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="6">
+          <Col md="6" className='mb-1'>
             <Label>Package Sub Category</Label>
             <Select
               options={combineClassOptions}
@@ -235,7 +235,7 @@ const AddIntegration = () => {
             />
           </Col>
 
-          <Col md="6">
+          <Col md="6" className='mb-1'>
             <Label>Membership</Label>
             <Select
               options={combineClassOptions}

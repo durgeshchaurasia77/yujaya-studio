@@ -193,19 +193,24 @@ useEffect(() => {
                 </FormGroup>
               </Col>
 
-              <Col md={6}>
+              <Col md={6} className='mt-2'>
                 <FormGroup>
-                  <Label>Level <span className="text-danger">*</span></Label>
-                  <div>
-                    <Label check className="mr-2 ml-2">
-                      <Input type="checkbox" /> Basic
-                    </Label>
-                    <Label check className="mr-2 ml-2">
-                      <Input type="checkbox" /> Intermediate
-                    </Label>
-                    <Label check className=' ml-2'>
-                      <Input type="checkbox" /> Advanced
-                    </Label>
+                <div className="custom-checkbox-wrapper">
+                    <Label className='custom-lebal-style mr-2'>Level <span className="text-danger">*</span></Label>
+                    <div>
+                        <Input type="checkbox" className="custom-checkbox"/>
+                        <Label check className="mr-2 custom-lebal-style"> 
+                          Basic
+                        </Label>
+                        <Input type="checkbox" className="custom-checkbox"/>
+                        <Label check className="mr-2 custom-lebal-style"> 
+                          Intermediate
+                        </Label>
+                        <Input type="checkbox" className="custom-checkbox"/>
+                        <Label check className="mr-2 custom-lebal-style"> 
+                          Advanced
+                        </Label>
+                    </div>
                   </div>
                 </FormGroup>
               </Col>

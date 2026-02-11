@@ -1,35 +1,34 @@
-import { Book } from 'react-feather'
+import {
+  Calendar,
+  CheckCircle,
+  Activity
+} from 'react-feather'
 
 export default [
   {
-    id: 'therapist-courses',
+    id: 'therapistAppointments',
     title: 'Appointment',
-    icon: <Book />,
+    icon: <Calendar size={20} />,
     navLink: '/therapist-auth/book-appointment/list',
     action: 'read',
     resource: 'Therapist',
     children: [
       {
-        id: 'book-appointment',
+        id: 'therapistAppointmentBooking',
         title: 'Appointment Booking',
+        icon: <CheckCircle size={16} />,
         navLink: '/therapist-auth/book-appointment/list',
         action: 'read',
         resource: 'Therapist'
       },
       {
-        id: 'therapy-session',
+        id: 'therapistTherapySession',
         title: 'Therapy Session',
+        icon: <Activity size={16} />,
         navLink: '/therapist-auth/therapy-session/list',
         action: 'read',
         resource: 'Therapist'
       }
-      // {
-      //   id: 'book-appointment',
-      //   title: 'Book Appointment',
-      //   navLink: '/therapist-auth/book-appointment/list',
-      //   action: 'read',
-      //   resource: 'Therapist'
-      // }
     ]
   }
 ]

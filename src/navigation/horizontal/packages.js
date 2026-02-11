@@ -1,15 +1,18 @@
-import { Home, Circle, PlusSquare } from 'react-feather'
+import {
+  Package,
+  PlusCircle
+} from 'react-feather'
 
 export default [
   {
     id: 'packages',
     title: 'Packages',
-    icon: <Home />,
+    icon: <Package size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'createPackage',
         title: 'Create Packages',
-        icon: <PlusSquare />,
+        icon: <PlusCircle size={16} />,
         navLink: '/package/add'
       }
     ]

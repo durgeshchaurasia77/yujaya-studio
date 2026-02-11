@@ -1,51 +1,59 @@
-import { Home, Circle, PlusSquare } from 'react-feather'
+import {
+  Users,
+  List,
+  UserPlus,
+  UserCheck,
+  User,
+  Briefcase,
+  Heart
+} from 'react-feather'
 
 export default [
   {
-    id: 'user',
+    id: 'userManagement',
     title: 'User Management',
-    icon: <Home />,
+    icon: <Users size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'userList',
         title: 'User List / Manage',
-        icon: <PlusSquare />,
+        icon: <List size={16} />,
         navLink: '/user/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'createAccount',
         title: 'Create Account',
-        icon: <PlusSquare />,
+        icon: <UserPlus size={16} />,
         navLink: '/user/create-account'
       },
       {
-        id: 'analyticsDash',
+        id: 'addStudent',
         title: 'Add Student',
-        icon: <PlusSquare />,
+        icon: <User size={16} />,
         navLink: '/user/create-student'
       },
       {
-        id: 'analyticsDash',
+        id: 'addStaff',
         title: 'Add Staff / Partner',
-        icon: <PlusSquare />,
+        icon: <Briefcase size={16} />,
         navLink: '/user/create-staff'
       },
       {
-        id: 'analyticsDash',
+        id: 'addInstructor',
         title: 'Add Instructor / Therapist',
-        icon: <PlusSquare />,
+        icon: <UserCheck size={16} />,
         navLink: '/user/create-instructor'
       },
       {
-        id: 'analyticsDash',
+        id: 'addMembershipUser',
         title: 'Add Membership',
-        icon: <PlusSquare />,
+        icon: <UserPlus size={16} />,
         navLink: '/user/create-members'
       },
       {
-        id: 'analyticsDash',
+        id: 'addClient',
         title: 'Add Client',
-        icon: <PlusSquare />,
+        icon: <Heart size={16} />,
         navLink: '/user/create-client'
       }
     ]

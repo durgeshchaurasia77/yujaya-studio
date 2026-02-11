@@ -1,17 +1,18 @@
-import { Book } from 'react-feather'
+import { Calendar, CheckCircle } from 'react-feather'
 
 export default [
   {
-    id: 'client-courses',
+    id: 'clientAppointment',
     title: 'Appointment',
-    icon: <Book />,
+    icon: <Calendar size={20} />,
     navLink: '/client-auth/book-appointment/list',
     action: 'read',
     resource: 'Client',
     children: [
       {
-        id: 'book-appointment',
+        id: 'appointmentBooking',
         title: 'Appointment Booking',
+        icon: <CheckCircle size={16} />,
         navLink: '/client-auth/book-appointment/list',
         action: 'read',
         resource: 'Client'

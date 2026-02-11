@@ -213,8 +213,10 @@ const AddAnnoucement = () => {
                 required
               />
             <FormGroup check className="mt-1">
-              <Input type="checkbox" />
-              <Label check className="ms-1">Exclude</Label>
+              <div className="custom-checkbox-wrapper">
+                <Input type="checkbox" className="custom-checkbox"/>
+                <Label check className="ms-1 custom-checkbox-label ml-1">Exclude</Label>
+              </div>
             </FormGroup>
           </FormGroup>
         </Col>
@@ -265,26 +267,25 @@ const AddAnnoucement = () => {
           </FormGroup>
         </Col>
 
-        {/* Poster Image */}
-        <Col md="6">
-          <FormGroup>
-            <Label>Poster Image</Label>
-            <Input type="file" />
-          </FormGroup>
-        </Col>
 
         {/* Publish in Calendar */}
-        <Col md="6">
+        <Col md="12">
           <FormGroup check className="d-flex align-items-center mt-2 gap-2">
-            <Input type="checkbox" id="publishCalendar" />
+            {/* <Input type="checkbox" id="publishCalendar" />
             <Label check for="publishCalendar" className="mb-0">
               Publish in Calendar?
-            </Label>
+            </Label> */}
+            <div className="custom-checkbox-wrapper">
+              <Input type="checkbox" id="publishCalendar" className="custom-checkbox" />
+              <Label for="publishCalendar" className="mb-0 custom-checkbox-label ml-1">
+                Publish in Calendar?
+              </Label>
+          </div>
           </FormGroup>
         </Col>
 
         {/* Description */}
-        <Col md="12">
+        <Col md="6" className='mt-2'>
           <FormGroup>
             <Label>
               Description <span className="text-danger">*</span>
@@ -294,6 +295,13 @@ const AddAnnoucement = () => {
               onChange={setEditorState}
               height={180}
             />
+          </FormGroup>
+        </Col>
+        {/* Poster Image */}
+        <Col md="6" className='mt-2'>
+          <FormGroup>
+            <Label>Poster Image</Label>
+            <Input type="file" />
           </FormGroup>
         </Col>
 

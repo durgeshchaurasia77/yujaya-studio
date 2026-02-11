@@ -80,11 +80,20 @@ const VerticalLayout = props => {
   }, [location])
 
   //** Sets Window Size & Layout Props
-  useEffect(() => {
-    if (window !== undefined) {
-      window.addEventListener('resize', handleWindowWidth)
-    }
-  }, [windowWidth])
+  // useEffect(() => {
+  //   if (window !== undefined) {
+  //     window.addEventListener('resize', handleWindowWidth)
+  //   }
+  // }, [windowWidth])
+useEffect(() => {
+  const handleResize = () => setWindowWidth(window.innerWidth)
+
+  window.addEventListener('resize', handleResize)
+
+  return () => {
+    window.removeEventListener('resize', handleResize)
+  }
+}, [])
 
   //** ComponentDidMount
   useEffect(() => {
@@ -161,7 +170,7 @@ const VerticalLayout = props => {
         )}
       >
         <div className='navbar-container d-flex content'>
-          {navbar ? navbar : <NavbarComponent setMenuVisibility={setMenuVisibility} skin={skin} setSkin={setSkin} />}
+          {navbar ? navbar : <NavbarComponent skin={skin} setSkin={setSkin} setIsHidden={setIsHidden}/>}
         </div>
       </Navbar>
       {children}

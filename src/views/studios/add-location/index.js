@@ -100,18 +100,20 @@ const AddLocation = () => {
               <Input
                 type="checkbox"
                 checked={isPhysical}
+                className="custom-checkbox"
                 onChange={e => setIsPhysical(e.target.checked)}
               />
-              <Label check>Physical</Label>
+              <Label check className='custom-lebal-style'>Physical</Label>
             </FormGroup>
 
             <FormGroup check>
               <Input
                 type="checkbox"
                 checked={isVirtual}
+                className="custom-checkbox"
                 onChange={e => setIsVirtual(e.target.checked)}
               />
-              <Label check>Virtual</Label>
+              <Label check className='custom-lebal-style'>Virtual</Label>
             </FormGroup>
           </div>
         </FormGroup>
@@ -229,8 +231,8 @@ const AddLocation = () => {
                 {amenitiesList.map(item => (
                   <Col md="4" sm="6" xs="12" key={item} className="gap-2">
                     <FormGroup check>
-                      <Input type="checkbox" checked/>
-                      <Label check>{item}</Label>
+                      <Input type="checkbox" className="custom-checkbox" checked/>
+                      <Label check className='custom-lebal-style'>{item}</Label>
                     </FormGroup>
                   </Col>
                 ))}

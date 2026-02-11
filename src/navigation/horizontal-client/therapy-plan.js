@@ -1,17 +1,21 @@
-import { Book } from 'react-feather'
+import {
+  Activity,
+  CheckSquare
+} from 'react-feather'
 
 export default [
   {
-    id: 'therapy-plan-courses',
+    id: 'therapyPlan',
     title: 'My Therapy Plan',
-    icon: <Book />,
+    icon: <Activity size={20} />,
     navLink: '/client-auth/assigned-practice/list',
     action: 'read',
     resource: 'Client',
     children: [
       {
-        id: 'assigned-practice',
-        title: 'Assigned practices',
+        id: 'assignedPractice',
+        title: 'Assigned Practices',
+        icon: <CheckSquare size={16} />,
         navLink: '/client-auth/assigned-practice/list',
         action: 'read',
         resource: 'Client'

@@ -80,10 +80,11 @@ const AddAccessCard = () => {
             <FormGroup check>
               <Input
                 type="checkbox"
+                className="custom-checkbox"
                 checked={showTitle}
                 onChange={e => setShowTitle(e.target.checked)}
               />
-              <Label check>Show Title on access card</Label>
+              <Label check className='custom-lebal-style'>Show Title on access card</Label>
             </FormGroup>
           </Col>
         </Row>

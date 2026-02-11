@@ -1,28 +1,22 @@
-import { Book } from 'react-feather'
+import { Calendar, Clock } from 'react-feather'
 
 export default [
   {
-    id: 'client-appointment',
+    id: 'clientAppointment',
     title: 'Appointment History',
-    icon: <Book />,
+    icon: <Calendar size={20} />,
     navLink: '/client-auth/therapy-session/list',
     action: 'read',
     resource: 'Client',
     children: [
       {
-        id: 'therapy-session',
+        id: 'therapySession',
         title: 'Therapy Session',
+        icon: <Clock size={16} />,
         navLink: '/client-auth/therapy-session/list',
         action: 'read',
         resource: 'Client'
       }
-      // {
-      //   id: 'book-appointment',
-      //   title: 'Book Appointment',
-      //   navLink: '/client-auth/book-appointment/list',
-      //   action: 'read',
-      //   resource: 'client'
-      // }
     ]
   }
 ]

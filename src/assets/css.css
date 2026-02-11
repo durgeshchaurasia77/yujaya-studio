@@ -432,3 +432,29 @@ input[type="file"]::-webkit-file-upload-button:hover {
   gap: 25px;
   margin-left: 20px;
 }
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #7367f0; 
+}
+
+.custom-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.custom-lebal-style{
+margin-left: 10px;
+margin-top: 5px;
+}
+.package-form-control{
+  max-width: 65px;
+    margin-right: 10px;
+}
+.select-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}

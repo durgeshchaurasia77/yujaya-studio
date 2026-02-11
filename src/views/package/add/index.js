@@ -125,15 +125,6 @@ const AddAnnoucement = () => {
             </FormGroup>
           </Col>
 
-          {/* Recurring */}
-          {/* <Col md="3">
-              <Label for="recurringSwitch">
-                Recurring
-              </Label>
-            <FormGroup >
-              <Input type="switch" id="recurringSwitch" />
-            </FormGroup>
-          </Col> */}
           <Col md="3">
             <label className="custom-switch mt-2">
               <input
@@ -187,10 +178,12 @@ const AddAnnoucement = () => {
           {/* Membership Checkbox */}
           <Col md="2" className="d-flex align-items-end">
             <FormGroup check className="mb-2">
-              <Input type="checkbox" id="isMembership" />
-              <Label for="isMembership" check className="fw-semibold">
-                Is this for Membership
-              </Label>
+              <div className="custom-checkbox-wrapper">
+                <Input type="checkbox" id="isMembership" className='custom-checkbox'/>
+                <Label for="isMembership" check className="fw-semibold ml-1">
+                  Is this for Membership
+                </Label>
+              </div>
             </FormGroup>
           </Col>
 
@@ -337,10 +330,12 @@ const AddAnnoucement = () => {
         
         <Col md="2" className="d-flex align-items-end">
             <FormGroup check className="mb-2">
-              <Input type="checkbox" id="isExpiry" />
-              <Label for="isExpiry" check className="fw-semibold">
+              <div className="custom-checkbox-wrapper">
+              <Input type="checkbox" id="isExpiry" className="custom-checkbox"/>
+              <Label for="isExpiry" check className="fw-semibold ml-1 custom-checkbox-label">
                  No Expiry Date
               </Label>
+              </div>
             </FormGroup>
           </Col>
         </Row>
@@ -432,20 +427,22 @@ const AddAnnoucement = () => {
             </Label>
 
             <div className="d-flex gap-5 mt-1 flex-wrap">
-              <FormGroup check>
-                <Input type="checkbox" id="loc1" defaultChecked />
-                <Label for="loc1" check className="mr-2">Vyasa Sin</Label>
-              </FormGroup>
+              <div className="custom-checkbox-wrapper">
+                <FormGroup check>
+                  <Input type="checkbox" id="loc1" className="custom-checkbox" defaultChecked />
+                  <Label for="loc1" check className="mr-2 custom-lebal-style">Vyasa Sin</Label>
+                </FormGroup>
 
-              <FormGroup check>
-                <Input type="checkbox" id="loc2" />
-                <Label for="loc2" check className="mr-2">Vya Ind</Label>
-              </FormGroup>
+                <FormGroup check>
+                  <Input type="checkbox" id="loc2" className="custom-checkbox" />
+                  <Label for="loc2" check className="mr-2 custom-lebal-style">Vya Ind</Label>
+                </FormGroup>
 
-              <FormGroup check>
-                <Input type="checkbox" id="loc3" />
-                <Label for="loc3" check className="mr-2">Vya sa Zoom</Label>
-              </FormGroup>
+                <FormGroup check>
+                  <Input type="checkbox" id="loc3" className="custom-checkbox" />
+                  <Label for="loc3" check className="mr-2 custom-lebal-style">Vya sa Zoom</Label>
+                </FormGroup>
+              </div>
             </div>
           </FormGroup>
         </Col>
@@ -503,10 +500,12 @@ const AddAnnoucement = () => {
           {/* Time Any Time */}
           <Col md="2">
             <FormGroup check className="mt-2">
-              <Input type="checkbox" id="anyTime" defaultChecked />
-              <Label for="anyTime" check className="fw-semibold">
+              <div className="custom-checkbox-wrapper">
+              <Input type="checkbox" id="anyTime" className="custom-checkbox" defaultChecked />
+              <Label for="anyTime" check className="fw-semibold custom-lebal-style">
                 Time: Any Time
               </Label>
+              </div>
             </FormGroup>
           </Col>
 
@@ -557,13 +556,6 @@ const AddAnnoucement = () => {
 
           {/* Set Booking Limit Restriction */}
           <Col md="12">
-            {/* <FormGroup className="d-flex align-items-center gap-2">
-              <Input type="switch" id="bookingLimitSwitch" />
-              <Label for="bookingLimitSwitch" className="mb-0 fw-semibold">
-                Set booking limit Restriction
-              </Label>
-            </FormGroup> */}
-            <Col md="12">
             <FormGroup >
                 {/* <Input type="switch" id="dayTimeRestriction" /> */}
                 <label className="custom-switch">
@@ -575,33 +567,26 @@ const AddAnnoucement = () => {
                   <span className="slider"></span>
                   <span className="switch-label">Set Booking limit Restriction</span>
                 </label>
-              </FormGroup>
-            </Col>
+            </FormGroup>
           </Col>
 
           {/* Number of Classes */}
           <Col md="2">
             <FormGroup>
               <Label className="fw-semibold">Number of Classes to limit</Label>
-              <Input type="number" defaultValue={60} />
+              <Input type="number" className='package-form-control' defaultValue={60} />
               <small className="text-muted">
                 User can book unlimited number of classes if left empty
               </small>
             </FormGroup>
           </Col>
 
-          {/* <Col md="8" className="d-flex align-items-end">
-            <small className="text-muted">
-              User can book unlimited number of classes if left empty
-            </small>
-          </Col> */}
-
           {/* Days / Week / Month limit */}
           <Col md="3">
             <FormGroup>
               <Label className="fw-semibold">Days / Week / Month limit</Label>
               <div className="d-flex gap-2">
-                <Input type="number" defaultValue={60} />
+                <Input type="number" className='package-form-control' defaultValue={60} />
                 <Select
                   options={optionshoursDayList}
                   placeholder="Please Type"
@@ -614,19 +599,12 @@ const AddAnnoucement = () => {
               </small>
             </FormGroup>
           </Col>
-        {/* 
-          <Col md="8" className="d-flex align-items-end">
-            <small className="text-muted">
-              User can book unlimited number of classes if left empty
-            </small>
-          </Col> */}
-
           {/* Total Allowed Hours */}
           <Col md="3">
             <FormGroup>
               <Label className="fw-semibold">Total Allowed Hours</Label>
               <div className="d-flex gap-2">
-                <Input type="number" defaultValue={60} />
+                <Input type="number" className='package-form-control' defaultValue={60} />
                 <Select
                   options={optionshoursList}
                   placeholder="Please Hours Type"
@@ -639,9 +617,6 @@ const AddAnnoucement = () => {
               </small>
             </FormGroup>
           </Col>
-
-          {/* <Col md="8" className="d-flex align-items-end">
-          </Col> */}
 
           {/* Package Image */}
           <Col md="4">

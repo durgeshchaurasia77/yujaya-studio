@@ -212,11 +212,6 @@ useEffect(() => {
             <Col md={6}>
               <FormGroup>
                 <Label>Select Posture <span className="text-danger">*</span></Label>
-                {/* <Select
-                  isMulti
-                  placeholder="Select Posture (Multiple Allowed)"
-                  options={postureOptions}
-                /> */}
                 <SelectAllMultiSelect
                   options={postureOptions}
                   placeholderText="Select Posture (Multiple Allowed)"
@@ -350,20 +345,22 @@ useEffect(() => {
           {/* Dosha Imbalance */}
           <Row className="mt-3">
             <Col md={12}>
-              <FormGroup>
-                <Label className="font-weight-bold">Dosha Imbalance</Label>
-                <div className='ml-2'>
-                  <Label check className="mr-3">
-                    <Input type="checkbox" /> Vata
-                  </Label>
-                  <Label check className="mr-3">
-                    <Input type="checkbox" /> Pitta
-                  </Label>
-                  <Label check>
-                    <Input type="checkbox" /> Kapha
-                  </Label>
-                </div>
-              </FormGroup>
+                <div className="custom-checkbox-wrapper">
+                  <FormGroup>
+                    <Label className="font-weight-bold">Dosha Imbalance</Label>
+                    <div className='ml-2'>
+                        <Input type="checkbox" className="custom-checkbox"/> 
+                        <Label check className="mr-3 custom-lebal-style">Vata
+                        </Label>
+                        <Input type="checkbox" className="custom-checkbox"/> 
+                        <Label check className="mr-3 custom-lebal-style">Pitta
+                        </Label>
+                        <Input type="checkbox" className="custom-checkbox"/> 
+                        <Label check className='custom-lebal-style'>Kapha
+                        </Label>
+                    </div>
+                  </FormGroup>
+              </div>
             </Col>
           </Row>
 

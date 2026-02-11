@@ -257,20 +257,22 @@ const AddAnnoucement = () => {
           <Col md="12">
             <FormGroup>
               <div className="d-flex flex-column gap-2">
-                <FormGroup check>
-                  <Input type="checkbox" />
-                  <Label check>Select All Existing Classes</Label>
-                </FormGroup>
+                <div className="custom-checkbox-wrapper">
+                  <FormGroup check>
+                    <Input type="checkbox" className="custom-checkbox"/>
+                    <Label check className='custom-lebal-style'>Select All Existing Classes</Label>
+                  </FormGroup>
 
-                <FormGroup check>
-                  <Input type="checkbox" />
-                  <Label check>All Existing and Future Classes</Label>
-                </FormGroup>
+                  <FormGroup check>
+                    <Input type="checkbox" className="custom-checkbox"/>
+                    <Label check className='custom-lebal-style'>All Existing and Future Classes</Label>
+                  </FormGroup>
 
-                <FormGroup check>
-                  <Input type="checkbox" />
-                  <Label check>HIIT Workout</Label>
-                </FormGroup>
+                  <FormGroup check>
+                    <Input type="checkbox" className="custom-checkbox" />
+                    <Label check className='custom-lebal-style'>HIIT Workout</Label>
+                  </FormGroup>
+                </div>
               </div>
             </FormGroup>
           </Col>
@@ -606,7 +608,7 @@ const AddAnnoucement = () => {
               Proceed to Payment
             </Button>
 
-            <span className="text-muted">
+            <span className="text-muted ml-1">
               Save and go to common
             </span>
                 <Link

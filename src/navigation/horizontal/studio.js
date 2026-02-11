@@ -1,25 +1,25 @@
-import { Home, Circle } from 'react-feather'
+import { Briefcase, Circle } from 'react-feather'
 
 export default [
   {
     id: 'studio',
     title: 'Studio Management',
-    icon: <Home />,
+    icon: <Briefcase />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'analyticsDash16',
         title: 'Add Studio',
         icon: <Circle />,
         navLink: '/studio/add'
       },
       {
-        id: 'analyticsDash',
+        id: 'analyticsDash17',
         title: 'Studio List',
         icon: <Circle />,
         navLink: '/studio/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'analyticsDash18',
         title: 'Add Staff',
         icon: <Circle />,
         navLink: '/staff/add'

@@ -232,11 +232,16 @@ const optionaUserList = [
               <FormGroup>
                 <Label className="font-weight-bold">Treatment</Label>
                 <div className="ml-2">
-                  <Label check className="mr-3"><Input type="checkbox" /> Physical</Label>
-                  <Label check className="mr-3"><Input type="checkbox" /> Vital</Label>
-                  <Label check className="mr-3"><Input type="checkbox" /> Mental</Label>
-                  <Label check className="mr-3"><Input type="checkbox" /> Intellectual</Label>
-                  <Label check><Input type="checkbox" /> Bliss</Label>
+                  <Input type="checkbox" className="custom-checkbox"/>
+                  <Label check className="mr-3 custom-lebal-style"> Physical</Label>
+                  <Input type="checkbox" className="custom-checkbox"/>
+                  <Label check className="mr-3 custom-lebal-style"> Vital</Label>
+                  <Input type="checkbox" className="custom-checkbox"/>
+                  <Label check className="mr-3 custom-lebal-style"> Mental</Label>
+                  <Input type="checkbox" className="custom-checkbox"/>
+                  <Label check className="mr-3 custom-lebal-style"> Intellectual</Label>
+                  <Input type="checkbox" className="custom-checkbox"/> 
+                  <Label check className="mr-3 custom-lebal-style">Bliss</Label>
                 </div>
               </FormGroup>
             </Col>

@@ -1,17 +1,21 @@
-import { Book } from 'react-feather'
+import {
+  Calendar,
+  List
+} from 'react-feather'
 
 export default [
   {
-    id: 'booking-history',
+    id: 'studentBookingHistory',
     title: 'Booking History',
-    icon: <Book />,
+    icon: <Calendar size={20} />,
     navLink: '/student-auth/booking-history/list',
     action: 'read',
     resource: 'Student',
     children: [
       {
-        id: 'my-courses',
+        id: 'studentCoursesPrograms',
         title: 'Courses & Programs',
+        icon: <List size={16} />,
         navLink: '/student-auth/booking-history/list',
         action: 'read',
         resource: 'Student'

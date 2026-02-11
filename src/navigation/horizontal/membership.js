@@ -1,27 +1,32 @@
-import { Home, MessageSquare, PlusSquare } from 'react-feather'
+import {
+  CreditCard,
+  PlusCircle,
+  FileText,
+  UserPlus
+} from 'react-feather'
 
 export default [
   {
     id: 'membership',
     title: 'Membership',
-    icon: <Home />,
+    icon: <CreditCard size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'createMembership',
         title: 'Create Membership',
-        icon: <PlusSquare />,
+        icon: <PlusCircle size={16} />,
         navLink: '/membership/add'
       },
       {
-        id: 'analyticsDash',
+        id: 'membershipPolicy',
         title: 'Membership Policy',
-        icon: <MessageSquare />,
+        icon: <FileText size={16} />,
         navLink: '/membership/policy/add'
       },
       {
-        id: 'analyticsDash',
+        id: 'addMember',
         title: 'Add Membership',
-        icon: <PlusSquare />,
+        icon: <UserPlus size={16} />,
         navLink: '/members/add'
       }
     ]

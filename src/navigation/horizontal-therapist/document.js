@@ -1,17 +1,21 @@
-import { Book } from 'react-feather'
+import {
+  FileText,
+  File
+} from 'react-feather'
 
 export default [
   {
-    id: 'document',
+    id: 'therapistDocuments',
     title: 'Document',
-    icon: <Book />,
+    icon: <FileText size={20} />,
     navLink: '/therapist-auth/document/list',
     action: 'read',
     resource: 'Therapist',
     children: [
       {
-        id: 'document',
+        id: 'therapistFormsDocuments',
         title: 'Forms & Documents',
+        icon: <File size={16} />,
         navLink: '/therapist-auth/document/list',
         action: 'read',
         resource: 'Therapist'

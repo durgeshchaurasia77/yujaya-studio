@@ -57,7 +57,7 @@ const HorizontalMenu = ({ currentActiveItem, routerProps }) => {
 
   return (
     <div className='navbar-container main-menu-content'>
-      <ul className={menuClass} id='main-menu-navigation'>
+      <ul className={`${menuClass} flex-column flex-xl-row`} id='main-menu-navigation'>
         <HorizontalNavMenuItems
           submenu={false}
           items={selectedNavigation}

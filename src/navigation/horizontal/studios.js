@@ -1,39 +1,46 @@
-import { Home, Circle, PlusSquare } from 'react-feather'
+import {
+  Briefcase,
+  MapPin,
+  CreditCard,
+  Gift,
+  Settings,
+  Tag
+} from 'react-feather'
 
 export default [
   {
-    id: 'studios',
+    id: 'studio',
     title: 'Studio',
-    icon: <Home />,
+    icon: <Briefcase size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'studioLocation',
         title: 'Location',
-        icon: <PlusSquare />,
+        icon: <MapPin size={16} />,
         navLink: '/studios/add-location'
       },
       {
-        id: 'analyticsDash',
+        id: 'accessCard',
         title: 'Access Card',
-        icon: <PlusSquare />,
+        icon: <CreditCard size={16} />,
         navLink: '/studios/add-access-card'
       },
       {
-        id: 'analyticsDash',
+        id: 'giftCardList',
         title: 'Gift Card List',
-        icon: <PlusSquare />,
+        icon: <Gift size={16} />,
         navLink: '/studios/list-gift-card'
       },
       {
-        id: 'analyticsDash',
+        id: 'studioIntegration',
         title: 'Integration',
-        icon: <PlusSquare />,
+        icon: <Settings size={16} />,
         navLink: '/studios/integration'
       },
       {
-        id: 'analyticsDash',
+        id: 'promoCode',
         title: 'Promo Code',
-        icon: <PlusSquare />,
+        icon: <Tag size={16} />,
         navLink: '/studios/list-promo-code'
       }
     ]

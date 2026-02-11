@@ -106,10 +106,20 @@ const HorizontalLayout = props => {
 
   return (
     <div
+      // className={classnames(
+      //   `wrapper horizontal-layout horizontal-menu ${navbarWrapperClasses[navbarType] || 'navbar-floating'} ${
+      //     footerClasses[footerType] || 'footer-static'
+      //   } menu-expanded`
+      // )}
+      
       className={classnames(
-        `wrapper horizontal-layout horizontal-menu ${navbarWrapperClasses[navbarType] || 'navbar-floating'} ${
-          footerClasses[footerType] || 'footer-static'
-        } menu-expanded`
+        `wrapper horizontal-layout horizontal-menu ${
+          navbarWrapperClasses[navbarType] || 'navbar-floating'
+        } ${footerClasses[footerType] || 'footer-static'}`,
+        {
+          'menu-expanded': !isHidden,
+          'menu-collapsed': isHidden
+        }
       )}
       {...(isHidden ? { 'data-col': '1-column' } : {})}
     >
@@ -135,7 +145,7 @@ const HorizontalLayout = props => {
         )}
 
         <div className='navbar-container d-flex content'>
-          {navbar ? navbar : <NavbarComponent skin={skin} setSkin={setSkin} />}
+          {navbar ? navbar : <NavbarComponent skin={skin} setSkin={setSkin} setIsHidden={setIsHidden}/>}
         </div>
       </Navbar>
       {!isHidden ? (

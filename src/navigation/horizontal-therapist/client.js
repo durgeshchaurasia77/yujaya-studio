@@ -1,24 +1,30 @@
-import { Book } from 'react-feather'
+import {
+  Users,
+  Clipboard,
+  Sliders
+} from 'react-feather'
 
 export default [
   {
-    id: 'client',
+    id: 'therapistClients',
     title: 'Client',
-    icon: <Book />,
+    icon: <Users size={20} />,
     navLink: '/therapist-auth/client/therapy-plan/list',
     action: 'read',
     resource: 'Therapist',
     children: [
       {
-        id: 'my-courses',
+        id: 'therapistTherapyPlan',
         title: 'Therapy Plan',
+        icon: <Clipboard size={16} />,
         navLink: '/therapist-auth/client/therapy-plan/list',
         action: 'read',
         resource: 'Therapist'
       },
       {
-        id: 'my-courses',
+        id: 'therapistClientParameter',
         title: 'Parameter',
+        icon: <Sliders size={16} />,
         navLink: '/therapist-auth/client/parameter/list',
         action: 'read',
         resource: 'Therapist'

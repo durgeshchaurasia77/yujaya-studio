@@ -169,8 +169,8 @@ const CreateGiftCard = () => {
         {/* END DATE */}
         <Col md="6" className="d-flex justify-content-start">
           <FormGroup check className="mt-0 mb-2">
-            <Input type="checkbox" />
-            <Label check>No Expiry</Label>
+            <Input type="checkbox" className="custom-checkbox"/>
+            <Label check className="custom-lebal-style">No Expiry</Label>
           </FormGroup>
         </Col>
 

@@ -59,9 +59,11 @@ const Calendar = props => {
     events: store.events.length ? store.events : [],
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
+    firstDay: 1,
     headerToolbar: {
       start: 'sidebarToggle, prev,next, title',
-      end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      end: 'dayGridMonth,timeGridWeek'
+      // end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
     /*
       Enable dragging and resizing event

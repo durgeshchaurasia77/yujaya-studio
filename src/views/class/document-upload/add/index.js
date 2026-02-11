@@ -23,6 +23,21 @@ const optionsCountry = [
   { value: 'usa', label: 'USA' },
   { value: 'china', label: 'China' }
 ]
+const optionsUserList = [
+  {
+    value: 'aron',
+    label: 'Aron'
+  },
+  {
+    value: 'kuldeep',
+    label: 'Kuldeep'
+  },
+  {
+    value: 'manoj',
+    label: 'Manoj'
+  }
+]
+
 const optionsClassLevel = [
   { value: '', label: 'Please select one', isDisabled: true},
   { value: 'beginer', label: 'Beginer' },
@@ -116,7 +131,7 @@ const AddClass = () => {
   const [onlineEarlyBirdFee, setOnlineEarlyBirdFee] = useState('')
   const [onlineEarlyExpireDays, setOnlineEarlyExpireDays] = useState('')
   const [status, setStatus] = useState(true)
-  const [startDate, setStartDate] = useState(null)
+  const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(null)
   const [picker, setPicker] = useState(new Date())
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -145,10 +160,6 @@ useEffect(() => {
               <Label>
                 Category <span className="text-danger">*</span>
               </Label>
-              {/* <Input type="select" required>
-                <option>Please Select</option>
-                <option>Yoga</option>
-              </Input> */}
               <Select
                 options={optionsCategory}
                 placeholder="Select Category"
@@ -204,6 +215,21 @@ useEffect(() => {
             </FormGroup>
           </Col>
 
+          <Col md="4">
+            <FormGroup>
+              <Label>
+                User Search <span className="text-danger">*</span>
+              </Label>
+              <Select
+                options={optionsUserList}
+                placeholder="Search User Here..."
+                className="react-select"
+                classNamePrefix="select"
+                isSearchable={true}
+                required 
+              />
+            </FormGroup>
+          </Col>
           {/* Document Title */}
           <Col md="4">
             <FormGroup>
@@ -214,6 +240,7 @@ useEffect(() => {
             </FormGroup>
           </Col>
 
+          
           {/* Document Type */}
           <Col md="4">
             <FormGroup>
@@ -230,67 +257,51 @@ useEffect(() => {
               />
             </FormGroup>
           </Col>
+              {/* Upload Document */}
+              <Col md="4">
+                <FormGroup>
+                  <Label>
+                    Upload Document <span className="text-danger">*</span>
+                  </Label>
+                  <Input type="file" required />
+                </FormGroup>
+              </Col>
         </Row>
+          <Row>
+              <Col md="6">
+              {/* Video Link */}
+                <FormGroup tag="fieldset" className="mt-3">
+                  <Label className="d-block">Youtube / Vimeo link</Label>
 
-        {/* Upload Document */}
-        <Col md="6">
-          <FormGroup>
-            <Label>
-              Upload Document <span className="text-danger">*</span>
-            </Label>
-            <Input type="file" required />
-          </FormGroup>
-        </Col>
-        <Col md="6">
-        {/* Video Link */}
-          <FormGroup tag="fieldset" className="mt-3">
-            <Label className="d-block">Youtube / Vimeo link</Label>
+                  <FormGroup check inline>
+                    <Input type="radio" name="videoType" defaultChecked />{' '}
+                    <Label check>Vimeo</Label>
+                  </FormGroup>
 
-            <FormGroup check inline>
-              <Input type="radio" name="videoType" defaultChecked />{' '}
-              <Label check>Vimeo</Label>
-            </FormGroup>
+                  <FormGroup check inline>
+                    <Input type="radio" name="videoType" />{' '}
+                    <Label check>Youtube</Label>
+                  </FormGroup>
 
-            <FormGroup check inline>
-              <Input type="radio" name="videoType" />{' '}
-              <Label check>Youtube</Label>
-            </FormGroup>
+                  <FormGroup check inline>
+                    <Input type="radio" name="videoType" />{' '}
+                    <Label check>Other</Label>
+                  </FormGroup>
 
-            <FormGroup check inline>
-              <Input type="radio" name="videoType" />{' '}
-              <Label check>Other</Label>
-            </FormGroup>
-
-            <Input
-              className="mt-2"
-              placeholder="Paste video link here"
-            />
-          </FormGroup>
-        </Col>
-        <Col md="6">
-        {/* Remarks */}
-        <FormGroup>
-          <Label>Remarks</Label>
-          <Input type="textarea" rows="3" />
-        </FormGroup>
-        </Col>
-
-        {/* Dates */}
-        <Row>
-          <Col md="6">
-            {/* <FormGroup>
-              <Label>
-                Available Date <span className="text-danger">*</span>
-              </Label>
-              <Input type="datetime-local" required />
-            </FormGroup> */}
+                  <Input
+                    className="mt-2"
+                    placeholder="Paste video link here"
+                  />
+                </FormGroup>
+              </Col>
+          <Col md="6" className='mt-4'>
             <FormGroup>
-                <Fragment>
-                <Label>
+                <Fragment >
+                <Label className='mt-2'>
                   Available Date <span className="text-danger">*</span>
                 </Label>
       
-                <InputGroup style={{ cursor: 'pointer' }}>
+                <InputGroup className='mt-1' style={{ cursor: 'pointer' }}>
                   <Flatpickr
                     value={startDate}
                     onChange={date => setPicker(date)}
@@ -314,18 +325,13 @@ useEffect(() => {
                 </Fragment>
             </FormGroup>
           </Col>
+          </Row>
+
+
+        {/* Dates */}
+        <Row>
 
           <Col md="6">
-            {/* <FormGroup>
-              <Label>
-                Expiry Date <span className="text-danger">*</span>
-              </Label>
-              <Input type="datetime-local" />
-              <FormGroup check className="mt-1">
-                <Input type="checkbox" />{' '}
-                <Label check>No Expiry</Label>
-              </FormGroup>
-            </FormGroup> */}
             <FormGroup>
               <Label>
                 Expiry Date <span className="text-danger">*</span>
@@ -351,6 +357,14 @@ useEffect(() => {
                 </InputGroupAddon>
                 </InputGroup>
               </FormGroup>
+          </Col>
+          
+          <Col md="6">
+            {/* Remarks */}
+            <FormGroup>
+              <Label>Remarks</Label>
+              <Input type="textarea" rows="3" />
+            </FormGroup>
           </Col>
         </Row>
 

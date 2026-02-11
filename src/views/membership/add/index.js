@@ -49,7 +49,12 @@ const includePackagesOptions = [
   { value: 'intermediate', label: 'Intermediate' },
   { value: 'advance', label: 'Advance' }
 ]
-
+const durationTypeOptions = [
+  { value: 'day', label: 'Day' },
+  { value: 'week', label: 'Week' },
+  { value: 'month', label: 'Month' },
+  { value: 'year', label: 'Year' }
+]
 
 const AddAnnoucement = () => {
   const [venue, setVenue] = useState('')
@@ -79,7 +84,7 @@ const AddAnnoucement = () => {
         <Row className="gy-3">
     
           {/* Package Type */}
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Label>
                 Membership Type <span className="text-danger">*</span>
@@ -92,7 +97,7 @@ const AddAnnoucement = () => {
               />
             </FormGroup>
           </Col>
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Label>
                 Membership Plan <span className="text-danger">*</span>
@@ -102,40 +107,19 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Duration Type */}
-          <Col md="1.5">
+          <Col md="3">
             <FormGroup>
               <Label>Duration Type</Label>
-              <Input type="select">
-                <option>Day(s)</option>
-                <option>Week(s)</option>
-                <option>Month(s)</option>
-                <option>Year(s)</option>
-              </Input>
+              <Select
+                options={durationTypeOptions}
+                placeholder="Please Duration Type"
+                classNamePrefix="select"
+                isSearchable={false}
+              />
             </FormGroup>
           </Col>
-          <Col md="12">
-          <FormGroup>
-            <div className="d-flex gap-5 flex-wrap">
-              <FormGroup check>
-                <Input type="checkbox" id="loc1" defaultChecked />
-                <Label for="loc1" check className="mr-2">In-Studio</Label>
-              </FormGroup>
-
-              <FormGroup check>
-                <Input type="checkbox" id="loc2" />
-                <Label for="loc2" check className="mr-2">Virtual</Label>
-              </FormGroup>
-
-              <FormGroup check>
-                <Input type="checkbox" id="loc3" />
-                <Label for="loc3" check className="mr-2">Hybrid</Label>
-              </FormGroup>
-            </div>
-          </FormGroup>
-        </Col>
-        
           {/* Package Name */}
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Label>
                 Membership Tier Name <span className="text-danger">*</span>
@@ -143,20 +127,29 @@ const AddAnnoucement = () => {
               <Input type="text" placeholder="Please Enter Membership Tier Name"/>
             </FormGroup>
           </Col>
+          <Col md="12">
+            <FormGroup>
+              <div className="d-flex gap-5 flex-wrap">
+                <FormGroup check>
+                  <Input type="checkbox" className="custom-checkbox"  id="loc1" defaultChecked />
+                  <Label for="loc1" check className="mr-2 custom-lebal-style">In-Studio</Label>
+                </FormGroup>
 
-          {/* <Col md="3">
-            <label className="custom-switch mt-2">
-              <input
-                type="checkbox"
-                checked={recurringStatus}
-                onChange={() => setRecurringStatus(!recurringStatus)}
-              />
-              <span className="slider"></span>
-              <span className="switch-label">Recurring</span>
-            </label>
-          </Col> */}
+                <FormGroup check>
+                  <Input type="checkbox" className="custom-checkbox"  id="loc2" />
+                  <Label for="loc2" check className="mr-2 custom-lebal-style">Virtual</Label>
+                </FormGroup>
+
+                <FormGroup check>
+                  <Input type="checkbox" className="custom-checkbox"  id="loc3" />
+                  <Label for="loc3" check className="mr-2 custom-lebal-style">Hybrid</Label>
+                </FormGroup>
+              </div>
+            </FormGroup>
+          </Col>
+        
           {/* Description */}
-          <Col md="7">
+          <Col md="12">
             <FormGroup>
               <Label>
                 Description <span className="text-danger">*</span>
@@ -199,8 +192,8 @@ const AddAnnoucement = () => {
           {/* Membership Checkbox */}
           <Col md="12" className="d-flex align-items-end">
             <FormGroup check className="mb-2">
-              <Input type="checkbox" id="isMembership" />
-              <Label for="isMembership" check className="fw-semibold">
+              <Input type="checkbox" className="custom-checkbox" id="isMembership" />
+              <Label for="isMembership" check className="fw-semibold custom-lebal-style">
                 For Unlimited
               </Label>
             </FormGroup>

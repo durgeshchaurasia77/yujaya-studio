@@ -1,21 +1,25 @@
-import { Home, MessageSquare, PlusSquare } from 'react-feather'
+import {
+  Calendar,
+  PlusCircle,
+  Bell
+} from 'react-feather'
 
 export default [
   {
     id: 'schedule',
     title: 'Schedule',
-    icon: <Home />,
+    icon: <Calendar size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'addSchedule',
         title: 'Add Schedule',
-        icon: <PlusSquare />,
+        icon: <PlusCircle size={16} />,
         navLink: '/schedule/calendar'
       },
       {
-        id: 'analyticsDash',
+        id: 'announcement',
         title: 'Announcement',
-        icon: <PlusSquare />,
+        icon: <Bell size={16} />,
         navLink: '/annoucement/add'
       }
     ]

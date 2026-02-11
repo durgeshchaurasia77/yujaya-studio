@@ -1,21 +1,25 @@
-import { Home, Cpu, PlusSquare, Settings } from 'react-feather'
+import {
+  Settings,
+  Globe,
+  Percent
+} from 'react-feather'
 
 export default [
   {
     id: 'settings',
-    title: 'Setting',
-    icon: <Settings />,
+    title: 'Settings',
+    icon: <Settings size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'globalSettings',
         title: 'Global Setting',
-        icon: <Cpu />,
+        icon: <Globe size={16} />,
         navLink: '/settings/global-setting'
       },
       {
-        id: 'analyticsDash',
-        title: 'Add Commision',
-        icon: <PlusSquare />,
+        id: 'addCommission',
+        title: 'Add Commission',
+        icon: <Percent size={16} />,
         navLink: '/settings/add-commision'
       }
     ]

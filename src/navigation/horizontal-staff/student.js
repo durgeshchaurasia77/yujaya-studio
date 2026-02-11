@@ -1,31 +1,39 @@
-import { Book } from 'react-feather'
+import {
+  Users,
+  UserCheck,
+  Clipboard,
+  FileText
+} from 'react-feather'
 
 export default [
   {
-    id: 'Staff',
+    id: 'staffStudents',
     title: 'Student',
-    icon: <Book />,
+    icon: <Users size={20} />,
     navLink: '/staff-auth/student/enrolled-student/list',
     action: 'read',
     resource: 'Staff',
     children: [
       {
-        id: 'my-courses',
+        id: 'staffEnrolledStudents',
         title: 'Enrolled Student',
+        icon: <UserCheck size={16} />,
         navLink: '/staff-auth/student/enrolled-student/list',
         action: 'read',
         resource: 'Staff'
       },
       {
-        id: 'my-courses',
-        title: 'Attandance Tracking',
+        id: 'staffAttendanceTracking',
+        title: 'Attendance Tracking',
+        icon: <Clipboard size={16} />,
         navLink: '/staff-auth/student/attandance-tracking/list',
         action: 'read',
         resource: 'Staff'
       },
       {
-        id: 'my-courses',
+        id: 'staffStudentNotes',
         title: 'Student Notes',
+        icon: <FileText size={16} />,
         navLink: '/staff-auth/student/student-notes/list',
         action: 'read',
         resource: 'Staff'

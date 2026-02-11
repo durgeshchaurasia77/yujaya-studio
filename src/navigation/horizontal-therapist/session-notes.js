@@ -1,24 +1,30 @@
-import { Book } from 'react-feather'
+import {
+  FileText,
+  Folder,
+  Upload
+} from 'react-feather'
 
 export default [
   {
-    id: 'therapist',
+    id: 'therapistSessionNotes',
     title: 'Session Notes',
-    icon: <Book />,
+    icon: <FileText size={20} />,
     navLink: '/therapist-auth/session-notes/resources/list',
     action: 'read',
     resource: 'Therapist',
     children: [
       {
-        id: 'my-courses',
+        id: 'therapistSessionResources',
         title: 'Resources',
+        icon: <Folder size={16} />,
         navLink: '/therapist-auth/session-notes/resources/list',
         action: 'read',
         resource: 'Therapist'
       },
       {
-        id: 'my-courses',
+        id: 'therapistUploadSessionNotes',
         title: 'Upload Notes',
+        icon: <Upload size={16} />,
         navLink: '/therapist-auth/session-notes/upload-notes/list',
         action: 'read',
         resource: 'Therapist'

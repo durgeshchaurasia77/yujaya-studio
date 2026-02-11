@@ -1,31 +1,39 @@
-import { Book } from 'react-feather'
+import {
+  Monitor,
+  Video,
+  Home,
+  Calendar
+} from 'react-feather'
 
 export default [
   {
-    id: 'staff-courses',
+    id: 'staffClasses',
     title: 'Class',
-    icon: <Book />,
+    icon: <Monitor size={20} />,
     navLink: '/staff-auth/online-class/list',
     action: 'read',
     resource: 'Staff',
     children: [
       {
-        id: 'my-courses',
+        id: 'staffOnlineClass',
         title: 'Online Class',
+        icon: <Video size={16} />,
         navLink: '/staff-auth/online-class/list',
         action: 'read',
         resource: 'Staff'
       },
       {
-        id: 'studio-class',
+        id: 'staffStudioClass',
         title: 'Studio Class',
+        icon: <Home size={16} />,
         navLink: '/staff-auth/studio-class/list',
         action: 'read',
         resource: 'Staff'
       },
       {
-        id: 'book-appointment',
+        id: 'staffBookAppointment',
         title: 'Book Appointment',
+        icon: <Calendar size={16} />,
         navLink: '/staff-auth/book-appointment/list',
         action: 'read',
         resource: 'Staff'

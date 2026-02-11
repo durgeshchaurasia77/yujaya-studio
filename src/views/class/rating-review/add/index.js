@@ -175,7 +175,7 @@ useEffect(() => {
             'Did it help improve your health issue?',
             'How would you rate the entire experience?'
           ].map((label, index) => (
-            <Col md="6" key={index}>
+            <Col md="4" key={index}>
               <FormGroup>
                 <Label>{label}</Label>
                 {/* <Input type="select">
@@ -207,7 +207,7 @@ useEffect(() => {
             'Personal attention & corrections',
             'Competency & professionalism'
           ].map((label, index) => (
-            <Col md="6" key={index}>
+            <Col md="4" key={index}>
               <FormGroup>
                 <Label>{label}</Label>
                   <Select
@@ -231,7 +231,7 @@ useEffect(() => {
             'Music / ambience / equipment',
             'Comfort and safety'
           ].map((label, index) => (
-            <Col md="6" key={index}>
+            <Col md="4" key={index}>
               <FormGroup>
                 <Label>{label}</Label>
                   <Select
@@ -299,19 +299,19 @@ useEffect(() => {
                 />
               </FormGroup>
             </Col>
-            <Col md="6">
+            <Col md="4">
               <FormGroup>
                 <Label>Upload Hand Written Image</Label>
                 <Input type="file" />
               </FormGroup>
             </Col>
-            <Col md="6">
+            <Col md="4">
               <FormGroup>
                 <Label>Upload Student Photo</Label>
                 <Input type="file" />
               </FormGroup>
             </Col>
-            <Col md="6">
+            <Col md="4">
               <FormGroup>
                 <Label>Video Review Link</Label>
                 <Input

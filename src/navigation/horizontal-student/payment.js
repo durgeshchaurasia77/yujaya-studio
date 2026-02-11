@@ -1,17 +1,21 @@
-import { Book } from 'react-feather'
+import {
+  CreditCard,
+  FileText
+} from 'react-feather'
 
 export default [
   {
-    id: 'payment',
+    id: 'studentPayment',
     title: 'Payment',
-    icon: <Book />,
+    icon: <CreditCard size={20} />,
     navLink: '/student-auth/payment-history/list',
     action: 'read',
     resource: 'Student',
     children: [
       {
-        id: 'payment',
+        id: 'studentPaymentHistory',
         title: 'Payment History',
+        icon: <FileText size={16} />,
         navLink: '/student-auth/payment-history/list',
         action: 'read',
         resource: 'Student'

@@ -1,24 +1,30 @@
-import { Book } from 'react-feather'
+import {
+  DollarSign,
+  TrendingUp,
+  CreditCard
+} from 'react-feather'
 
 export default [
   {
-    id: 'earning-payment',
+    id: 'instructorEarningPayment',
     title: 'Earnings & Payments',
-    icon: <Book />,
+    icon: <DollarSign size={20} />,
     navLink: '/instructor-auth/earning-payment/earning-history/list',
     action: 'read',
     resource: 'Instructor',
     children: [
       {
-        id: 'earning-history',
+        id: 'instructorEarningHistory',
         title: 'Earning History',
+        icon: <TrendingUp size={16} />,
         navLink: '/instructor-auth/earning-payment/earning-history/list',
         action: 'read',
         resource: 'Instructor'
       },
       {
-        id: 'payment-history',
+        id: 'instructorPaymentHistory',
         title: 'Payment History',
+        icon: <CreditCard size={16} />,
         navLink: '/instructor-auth/earning-payment/payment-history/list',
         action: 'read',
         resource: 'Instructor'

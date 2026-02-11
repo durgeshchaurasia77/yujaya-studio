@@ -1,5 +1,6 @@
 // import { useState, useRef } from 'react'
 import { useEffect, useRef, useState } from 'react'
+import Select, { components } from 'react-select'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Card,
@@ -9,22 +10,39 @@ import {
 } from 'reactstrap'
 import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
-import Select from 'react-select'
+// import Select from 'react-select'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
+import SelectAllMultiSelect2 from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect2.js"
 import '../../../assets/css.css'
 import { EditorState } from 'draft-js'
 import CommonEditor from '../../../component/common/CommonEditor'
+import AvatarOption from '../AvatarOption.js'
+
 const optionsCountry = [
   { value: '', label: 'Please select one', isDisabled: true},
   { value: 'india', label: 'India' },
   { value: 'usa', label: 'USA' },
   { value: 'china', label: 'China' }
 ]
+const optionsTeacherTraining = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'ytt-100', label: '100 Hour Teacher Training' },
+  { value: 'ytt-200', label: '200 Hour Teacher Training' },
+  { value: 'ytt-300', label: '300 Hour Teacher Training' },
+  { value: 'ytt-500', label: '500 Hour Teacher Training' },
+  { value: 'continuing-education', label: 'Continuing Education (CE)' }
+]
 const optionsClassLevel = [
   { value: '', label: 'Please select one', isDisabled: true},
   { value: 'beginer', label: 'Beginer' },
   { value: 'intermediate', label: ' Intermediate' },
   { value: 'advanced', label: 'Advanced' }
+]
+const optionsLanguage = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'english', label: 'English' },
+  { value: 'spanish', label: 'Spanish' },
+  { value: 'japanese', label: 'Japanese' }
 ]
 const optionsCategory = [
   // { value: '', label: 'Please select one', isDisabled: true},
@@ -54,11 +72,27 @@ const optionsSubCategory = [
 ]
 
 
+// const optionsInstructor = [
+//   { value: 'aron', label: 'Aron' },
+//   { value: 'kuldeep', label: 'Kuldeep' },
+//   { value: 'manoj', label: 'Manoj' }
+// ]
 const optionsInstructor = [
-  // { value: '', label: 'Please select one', isDisabled: true},
-  { value: 'aron', label: 'Aron' },
-  { value: 'kuldeep', label: 'Kuldeep' },
-  { value: 'manoj', label: 'Manoj' }
+  {
+    value: 'aron',
+    label: 'Aron',
+    image: 'https://i.pravatar.cc/100?img=1'
+  },
+  {
+    value: 'kuldeep',
+    label: 'Kuldeep',
+    image: 'https://i.pravatar.cc/100?img=2'
+  },
+  {
+    value: 'manoj',
+    label: 'Manoj',
+    image: null
+  }
 ]
 const optionsPhysicalLocation = [
   // { value: '', label: 'Please select one', isDisabled: true},
@@ -82,9 +116,57 @@ const AddClass = () => {
   const [onlineEarlyExpireDays, setOnlineEarlyExpireDays] = useState('')
   const [status, setStatus] = useState(true)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  const [selectedCountry, setSelectedCountry] = useState(
-    optionsCountry.find(o => o.value === 'india')
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    optionsLanguage.find(o => o.value === 'english')
   )
+  const [totalSeats, setTotalSeats] = useState(0)
+
+  const [seatDistribution, setSeatDistribution] = useState({
+    online: 0,
+    call: 0,
+    member: 0,
+    vip: 0,
+    guest: 0,
+    staff: 0,
+    walkin: 0,
+    waiting: 0
+  })
+
+  const handleTotalSeatsChange = (value) => {
+  const seats = Number(value)
+
+  setTotalSeats(seats)
+
+  setSeatDistribution({
+    online: seats,
+    call: 0,
+    member: 0,
+    vip: 0,
+    guest: 0,
+    staff: 0,
+    walkin: 0,
+    waiting: 0
+  })
+}
+
+const handleSeatChange = (type, value) => {
+  const updated = {
+    ...seatDistribution,
+    [type]: Number(value)
+  }
+
+  const totalAllocated = Object.values(updated).reduce(
+    (a, b) => a + b,
+    0
+  )
+
+  if (totalAllocated > totalSeats) {
+    alert("Total distributed seats cannot exceed total seats")
+    return
+  }
+
+  setSeatDistribution(updated)
+}
 useEffect(() => {
   if (!isEarlyBird) {
     setOfflineEarlyBirdFee('')
@@ -94,6 +176,23 @@ useEffect(() => {
   }
 }, [isEarlyBird])
 
+
+const CustomOption = (props) => (
+  <components.Option {...props}>
+    <AvatarOption data={props.data} />
+  </components.Option>
+)
+
+const CustomSingleValue = (props) => (
+  <components.SingleValue {...props}>
+    <AvatarOption data={props.data} />
+  </components.SingleValue>
+)
+const CustomMultiValueLabel = (props) => (
+  <components.MultiValueLabel {...props}>
+    <AvatarOption data={props.data} />
+  </components.MultiValueLabel>
+)
   return (
   <>
     <Card>
@@ -105,12 +204,12 @@ useEffect(() => {
             <FormGroup>
               <Label>Class Language</Label>
               <Select
-                options={optionsCountry}
-                placeholder="Select country"
+                options={optionsLanguage}
+                placeholder="Select Language"
                 className="react-select"
                 classNamePrefix="select"
                 isSearchable={false}
-                value={selectedCountry}
+                value={selectedLanguage}
                 required 
               />
             </FormGroup>
@@ -131,25 +230,9 @@ useEffect(() => {
             </FormGroup>
           </Col>
 
-          {/* Category */}
-          {/* <Col md="4">
-            <FormGroup>
-              <Label>Class Category</Label>
-              <Select
-                options={optionsCategory}
-                placeholder="Select Category"
-                className="react-select"
-                classNamePrefix="select"
-                isMulti
-                isSearchable
-                closeMenuOnSelect={false}
-                required
-              />
-            </FormGroup>
-          </Col> */}
           <Col md="4">
             <FormGroup>
-              <Label>Class Category</Label>
+              <Label>Class Category <span className="text-danger">*</span></Label>
               <SelectAllMultiSelect
                 options={optionsCategory}
                 placeholderText="Select Category"
@@ -160,23 +243,6 @@ useEffect(() => {
           </Col>
 
 
-          {/* Sub Category */}
-          {/* <Col md="4">
-            <FormGroup>
-              <Label>Class Sub Category</Label>
-              <Select
-                options={optionsSubCategory}
-                placeholder="Select Sub Category"
-                className="react-select"
-                classNamePrefix="select"
-                isMulti
-                isSearchable
-                isClearable
-                closeMenuOnSelect={false}
-                required
-              />
-            </FormGroup>
-          </Col> */}
           <Col md="4">
             <FormGroup>
               <Label>Class Sub Category</Label>
@@ -185,6 +251,19 @@ useEffect(() => {
                 placeholderText="Select Sub Category"
                 classNamePrefix="select"
                 required
+              />
+            </FormGroup>
+          </Col>
+          <Col md="4">
+            <FormGroup>
+              <Label>Teacher Training<span className="text-danger">*</span></Label>
+              <Select
+                options={optionsTeacherTraining}
+                placeholder="Select Teacher Training"
+                className="react-select"
+                classNamePrefix="select"
+                isSearchable={false}
+                required 
               />
             </FormGroup>
           </Col>
@@ -204,9 +283,9 @@ useEffect(() => {
               <Input type="number" placeholder="Please enter practical hours here..." required/>
             </FormGroup>
           </Col>
-
+          <Col md="8"></Col>
           {/* Title */}
-          <Col md="6">
+          <Col md="4">
             <FormGroup>
               <Label>Class Name <span className="text-danger">*</span></Label>
               <Input placeholder="Please enter class name here..." required />
@@ -214,45 +293,17 @@ useEffect(() => {
           </Col>
 
           {/* Class Code */}
-          <Col md="6">
+          <Col md="4">
             <FormGroup>
               <Label>Class Code</Label>
-              <Input placeholder="Please enter class code here..." />
-            </FormGroup>
-          </Col>
-
-          {/* Description */}
-          <Col md="6">
-            <FormGroup>
-              <Label>Description <span className="text-danger">*</span></Label>
-              {/* <Input
-                type="textarea"
-                rows="3"
-                placeholder="Special notes for guests (reservation deadline, etc.)"
-                required
-              /> */}
-                <CommonEditor
-                editorState={editorState}
-                onChange={setEditorState}
-                height={180}
-              />
+              <Input placeholder="Please enter class code here..." value='CL00001' required/>
             </FormGroup>
           </Col>
 
           {/* Instructor */}
-          <Col md="6">
+          {/* <Col md="4">
             <FormGroup>
               <Label>Select Instructor <span className="text-danger">*</span></Label>
-              {/* <Select
-                options={optionsInstructor}
-                placeholder="Select Category"
-                className="react-select"
-                classNamePrefix="select"
-                isMulti
-                isSearchable
-                closeMenuOnSelect={false}
-                required
-              /> */}
               <SelectAllMultiSelect
                 options={optionsInstructor}
                 placeholderText="Select Instructor"
@@ -260,7 +311,38 @@ useEffect(() => {
                 required
               />
             </FormGroup>
+          </Col> */}
+          <Col md="4">
+            <FormGroup>
+              <Label>
+                Select Instructor <span className="text-danger">*</span>
+              </Label>
+
+              <SelectAllMultiSelect2
+                options={optionsInstructor}
+                // placeholderText="Select Instructor"
+                classNamePrefix="select"
+                components={{
+                  Option: CustomOption,
+                  MultiValueLabel: CustomMultiValueLabel
+                }}
+                required
+              />
+            </FormGroup>
           </Col>
+          {/* Description */}
+          <Col md="12">
+            <FormGroup>
+              <Label>Description <span className="text-danger">*</span></Label>
+                <CommonEditor
+                editorState={editorState}
+                onChange={setEditorState}
+                height={180}
+                placeholder="Enter description here..."
+              />
+            </FormGroup>
+          </Col>
+
 
           {/* Venue */}
           
@@ -356,7 +438,7 @@ useEffect(() => {
           {(venue === "offline" || venue === 'hybrid') && (
             <>
               {/* Online */}
-              <Col md="6">
+              <Col md="4">
                 <Label className="fw-semibold">Online Platform</Label>
                 <div className="d-flex gap-4 mt-2">
                   {["Zoom", "Google Meet"].map((p) => (
@@ -370,47 +452,53 @@ useEffect(() => {
           </>
           )}
         </Row>
+        <Row>
         {/* ================= Fee Structure ================= */}
-        {feeType === "paid" && (
-          <>
-            <h5 className="mb-3 mt-2">Fee Structure</h5>
+        {/* <Col md="12"> */}
+          {feeType === "paid" && (
+            <>
+              <h5 className="mb-3 mt-2">Fee Structure</h5>
 
-            <div className="fee-table">
-              {/* Header */}
-              <div className="fee-header">
-                <div></div>
-                <div>Normal</div>
-                <div>Early Bird</div>
-                <div>Early Expire (Days)</div>
+              <div className="fee-table">
+                {/* Header */}
+                <div className="fee-header">
+                  <div></div>
+                  <div>Normal</div>
+                  <div>Early Bird</div>
+                  <div>Early Expire (Days)</div>
+                </div>
+
+                {/* Offline */}
+                <Col md="12">
+                  <div className={`fee-row ${venue === "online" ? "d-none" : ""}`}>
+                    <div className="fee-label">Offline</div>
+                    <Input type="number" className="fee-input" />
+                    <Input
+                      type="number"
+                      className="fee-input"
+                      disabled={!isEarlyBird}
+                    />
+                    <Input type="number" className="fee-input" />
+                  </div>
+                </Col>
+                {/* Online */}
+                <Col md="12">
+                  <div className={`fee-row ${venue === "offline" ? "d-none" : ""}`}>
+                    <div className="fee-label">Online</div>
+                    <Input type="number" className="fee-input" />
+                    <Input
+                      type="number"
+                      className="fee-input"
+                      disabled={!isEarlyBird}
+                    />
+                    <Input type="number" className="fee-input" />
+                  </div>
+                </Col>
               </div>
-
-              {/* Offline */}
-              <div className={`fee-row ${venue === "online" ? "d-none" : ""}`}>
-                <div className="fee-label">Offline</div>
-                <Input type="number" className="fee-input" />
-                <Input
-                  type="number"
-                  className="fee-input"
-                  disabled={!isEarlyBird}
-                />
-                <Input type="number" className="fee-input" />
-              </div>
-
-              {/* Online */}
-              <div className={`fee-row ${venue === "offline" ? "d-none" : ""}`}>
-                <div className="fee-label">Online</div>
-                <Input type="number" className="fee-input" />
-                <Input
-                  type="number"
-                  className="fee-input"
-                  disabled={!isEarlyBird}
-                />
-                <Input type="number" className="fee-input" />
-              </div>
-            </div>
-          </>
-        )}
-
+            </>
+          )}
+          {/* </Col> */}
+        </Row>
       </CardBody>
     </Card>
     <Card className="mb-3">
@@ -435,35 +523,39 @@ useEffect(() => {
             </div>
 
             <div className="option-stack mt-1">
-              <FormGroup check>
-                <Input type="checkbox" />
-                <Label check className="ms-2  mb-1">Member Allowed</Label>
-              </FormGroup>
-              <FormGroup check>
-                <Input type="checkbox" defaultChecked />
-                <Label check className="ms-2">Allowed Package</Label>
-              </FormGroup>
+              {/* <div className="custom-checkbox-wrapper"> */}
+                <FormGroup check>
+                  <Input type="checkbox" className="custom-checkbox" defaultChecked/>
+                  <Label check className="ms-2  mb-1 custom-lebal-style">Member Allowed</Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Input type="checkbox" defaultChecked className="custom-checkbox"/>
+                  <Label check className="ms-2 custom-lebal-style">Allowed Package</Label>
+                </FormGroup>
+              {/* </div> */}
             </div>
           </Col>
 
           {/* Booking rules */}
-          <Col md="6">
-            <Label className="fw-semibold">Booking Rules</Label>
-            <div className="option-stack">
-              {[
-                "Allow Bookings",
-                "Default Close Booking Time",
-                "Bookings Paid",
-                "Display online seats in calendar",
-                "Display bookings in calendar",
-                "Display fees in calendar",
-                "This is Featured Class"
-              ].map((t) => (
-                <FormGroup check key={t}>
-                  <Input type="checkbox" />
-                  <Label check className="ms-2">{t}</Label>
-                </FormGroup>
-              ))}
+         <Col md="6">
+                <Label className="fw-semibold">Booking Rules</Label>
+              <div className="custom-checkbox-wrapper">
+                <div className="option-stack">
+                  {[
+                    "Allow Bookings",
+                    "Default Close Booking Time",
+                    "Bookings Paid",
+                    "Display online seats in calendar",
+                    "Display bookings in calendar",
+                    "Display fees in calendar",
+                    "This is Featured Class"
+                  ].map((t) => (
+                    <FormGroup check key={t}>
+                      <Input type="checkbox" className="custom-checkbox" defaultChecked/>
+                      <Label check className="ms-2 custom-lebal-style">{t}</Label>
+                    </FormGroup>
+                  ))}
+                </div>
             </div>
           </Col>
         </Row>
@@ -477,10 +569,18 @@ useEffect(() => {
               <Label className="fw-semibold">
                 Total Seats <span className="text-danger">*</span>
               </Label>
+              {/* <Input
+                type="number"
+                className="seat-input"
+                placeholder="e.g. 50"
+                required
+              /> */}
               <Input
                 type="number"
                 className="seat-input"
                 placeholder="e.g. 50"
+                value={totalSeats}
+                onChange={(e) => handleTotalSeatsChange(e.target.value)}
                 required
               />
               <small className="text-muted">
@@ -493,46 +593,120 @@ useEffect(() => {
         {/* ================= Seat Grid ================= */}
         <div className="seat-grid">
 
-          <div className="seat-item">
-            <Label>For Online Booking</Label>
+          {/* <div className="seat-item">
+            <Label>For Online Booking<span className="text-danger">*</span></Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>
+              For Online Booking <span className="text-danger">*</span>
+            </Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.online}
+              onChange={(e) => handleSeatChange("online", e.target.value)}
+              required
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Call Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>Call Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.call}
+              onChange={(e) => handleSeatChange("call", e.target.value)}
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Member Booking</Label>
             <Input type="number" className="seat-input" />
+          </div> */}
+          
+          <div className="seat-item">
+            <Label>Member Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.member}
+              onChange={(e) => handleSeatChange("member", e.target.value)}
+            />
           </div>
 
-          <div className="seat-item">
+          {/* <div className="seat-item">
             <Label>VIP Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>VIP Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.vip}
+              onChange={(e) => handleSeatChange("vip", e.target.value)}
+              min="0"
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Guest Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>Guest Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.guest}
+              onChange={(e) => handleSeatChange("guest", e.target.value)}
+              min="0"
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Staff Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>Staff Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.staff}
+              onChange={(e) => handleSeatChange("staff", e.target.value)}
+              min="0"
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Walk-in Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
           <div className="seat-item">
+            <Label>Walk-in Booking</Label>
+            <Input
+              type="number"
+              className="seat-input"
+              value={seatDistribution.walkin}
+              onChange={(e) => handleSeatChange("walkin", e.target.value)}
+              min="0"
+            />
+          </div>
+          {/* <div className="seat-item">
             <Label>Waiting Booking</Label>
             <Input type="number" className="seat-input" />
-          </div>
-
+          </div> */}
+        <div className="seat-item">
+          <Label>Waiting Booking</Label>
+          <Input
+            type="number"
+            className="seat-input"
+            value={seatDistribution.waiting}
+            onChange={(e) => handleSeatChange("waiting", e.target.value)}
+            min="0"
+          />
+        </div>
         </div>
 
       </CardBody>

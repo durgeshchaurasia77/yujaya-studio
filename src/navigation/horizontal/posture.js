@@ -1,39 +1,46 @@
-import { Home, MessageSquare, PlusSquare } from 'react-feather'
+import {
+  Activity,
+  Layers,
+  Move,
+  Link,
+  Shuffle,
+  Sliders
+} from 'react-feather'
 
 export default [
   {
     id: 'posture',
     title: 'Posture',
-    icon: <Home />,
+    icon: <Activity size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'practiceCategory',
         title: 'Practice Category',
-        icon: <PlusSquare />,
+        icon: <Layers size={16} />,
         navLink: '/posture/practice-category/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'postureList',
         title: 'Posture',
-        icon: <PlusSquare />,
+        icon: <Move size={16} />,
         navLink: '/posture/posture/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'assignPosturePractice',
         title: 'Assign Posture Practice',
-        icon: <PlusSquare />,
+        icon: <Link size={16} />,
         navLink: '/posture/assign-posture-practice/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'postureSequence',
         title: 'Posture Sequence',
-        icon: <PlusSquare />,
+        icon: <Shuffle size={16} />,
         navLink: '/posture/posture-sequence/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'clientParameters',
         title: 'Client Parameters',
-        icon: <PlusSquare />,
+        icon: <Sliders size={16} />,
         navLink: '/posture/client-parameters/list'
       }
     ]

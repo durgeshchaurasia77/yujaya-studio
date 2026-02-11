@@ -1,27 +1,32 @@
-import { Home, PlusSquare } from 'react-feather'
+import {
+  BookOpen,
+  PlusCircle,
+  MessageSquare,
+  Upload
+} from 'react-feather'
 
 export default [
   {
     id: 'classes',
     title: 'Classes',
-    icon: <Home />,
+    icon: <BookOpen size={20} />,
     children: [
       {
-        id: 'analyticsDash',
+        id: 'addClass',
         title: 'Add Class',
-        icon: <PlusSquare />,
+        icon: <PlusCircle size={16} />,
         navLink: '/class/add'
       },
       {
-        id: 'analyticsDash',
+        id: 'reviewsFeedback',
         title: 'Reviews & Feedback',
-        icon: <PlusSquare />,
+        icon: <MessageSquare size={16} />,
         navLink: '/class/rating-review/list'
       },
       {
-        id: 'analyticsDash',
+        id: 'uploadDocuments',
         title: 'Upload Documents',
-        icon: <PlusSquare />,
+        icon: <Upload size={16} />,
         navLink: '/class/document-upload/list'
       }
     ]

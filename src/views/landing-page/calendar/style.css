@@ -115,3 +115,110 @@ gap: 5px;
     border: none;
     padding: 4px 8px;
 }
+/* DAY VIEW – COMPACT */
+.day-compact-event {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.day-compact-event .event-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7367f0;
+}
+
+.day-compact-event .event-title {
+  font-weight: 600;
+}
+
+.day-compact-event .event-instructor {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* STOP FullCalendar from stretching */
+/* .fc-timegrid-event {
+  padding: 0 !important;
+} */
+
+/* .fc-timegrid-event-harness {
+  margin-bottom: 2px;
+} */
+.event-time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7367f0;
+  margin-bottom: 4px;
+}
+.fc-more-week {
+  font-size: 12px;
+  color: #7367f0;
+  cursor: pointer;
+  margin-top: 4px;
+  padding-left: 4px;
+      /* padding-left: 49px;
+    display: flex; */
+}
+.fc-more-link {
+  color: #7367f0;
+  font-weight: 500;
+  cursor: pointer;
+}
+.day-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+  background: #fff;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.day-list-row .time {
+  min-width: 60px;
+  font-weight: 600;
+}
+
+.day-list-row .content {
+  flex: 1;
+}
+
+.day-list-row .actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* .fc-timegrid-col-events {
+  display: flex;
+  flex-direction: column
+} */
+
+/* .fc-timegrid-event-harness {
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+} */
+
+.event-title{
+  font-size: 11px;
+  margin-right: 5px;
+}
+.event-instructor{
+  font-size: 9px;
+  margin-right: 3px;
+
+}
+.event-instructor small{
+  font-size: 8px;
+
+}
+[dir] .fc .fc-list-table td, [dir] .fc .fc-list-day-cushion {
+    padding: 6px 9px;
+}
