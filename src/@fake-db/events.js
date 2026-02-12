@@ -180,12 +180,36 @@ export const events = [
     level: 'Intermediate / Advanced'  
   },
     {
-    id: 1,
+    id: 11,
     title: 'Morning Yoga1 Class',
     start: '2026-02-15T07:00:00',
     end: '2026-02-16T08:00:00',
     category: 'CLASS',
     calendar: 'Business',
+    instructor: {
+      name: 'Benedetto Rossiter',
+      avatar: 'https://i.pravatar.cc/100?img=1',
+      skill: 'UI/UX Design'
+    },
+    location: {
+      type: 'offline',
+      name: 'Civil Service Club, Tessensohn Road'
+    },
+    level: 'Intermediate / Advanced'  
+  },
+  {
+    id: 12,
+    title: 'Special Yoga Batch12',
+    start: '2026-02-01',
+    end: '2026-02-28',
+    category: 'CLASS',
+    calendar: 'Business',
+
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=1',

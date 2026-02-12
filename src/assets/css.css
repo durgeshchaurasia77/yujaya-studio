@@ -450,11 +450,17 @@ margin-top: 5px;
 }
 .package-form-control{
   max-width: 65px;
-    margin-right: 10px;
+  margin-right: 10px;
+}
+.package-form-control1{
+  max-width: 65px;
 }
 .select-avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
+}
+.border-end {
+  border-right: 1px solid #ddd !important;
 }

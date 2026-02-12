@@ -210,9 +210,9 @@ const renderEventContent = (eventInfo) => {
   const viewType = eventInfo.view.type
   const { event } = eventInfo
   const data = event.extendedProps
-
   const timeText = eventInfo.timeText // 🔥 FullCalendar provided time
 
+console.log(timeText)
   /* =======================
      MONTH & WEEK → COMPACT (NO TIME)
      ======================= */

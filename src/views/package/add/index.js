@@ -70,7 +70,15 @@ const optionsdayTypeList = [
   { value: 'weekends', label: 'Weekends' },
   { value: 'custom', label: 'Custom' }
 ]
-
+const customDayOptions = [
+  { value: 'monday', label: 'Monday' },
+  { value: 'tuesday', label: 'Tuesday' },
+  { value: 'wednesday', label: 'Wednesday' },
+  { value: 'thursday', label: 'Thursday' },
+  { value: 'friday', label: 'Friday' },
+  { value: 'saturday', label: 'Saturday' },
+  { value: 'sunday', label: 'Sunday' }
+]
 const optionshoursList = [
   { value: '', label: 'Please Select', isDisabled: true },
   { value: 'days', label: 'Days' },
@@ -102,6 +110,18 @@ const AddAnnoucement = () => {
   const [picker, setPicker] = useState(new Date())
   const [isCustomDate, setIsCustomDate] = useState(false)
   const [validityStart, setValidityStart] = useState("purchase")
+  const [selectedDayType, setSelectedDayType] = useState(null)
+  const [selectedCustomDays, setSelectedCustomDays] = useState([])
+  const [anyTime, setAnyTime] = useState(true)
+  const [startTime, setStartTime] = useState(null)
+  const [endTime, setEndTime] = useState(null)
+
+  useEffect(() => {
+  if (anyTime) {
+    setStartTime(null)
+    setEndTime(null)
+  }
+}, [anyTime])
   return (
   <>
     <Card>
@@ -125,20 +145,8 @@ const AddAnnoucement = () => {
             </FormGroup>
           </Col>
 
-          <Col md="3">
-            <label className="custom-switch mt-2">
-              <input
-                type="checkbox"
-                checked={recurringStatus}
-                onChange={() => setRecurringStatus(!recurringStatus)}
-              />
-              <span className="slider"></span>
-              <span className="switch-label">Recurring</span>
-            </label>
-          </Col>
-
           {/* Package Name */}
-          <Col md="5">
+          <Col md="4">
             <FormGroup>
               <Label>
                 Package Name <span className="text-danger">*</span>
@@ -147,23 +155,8 @@ const AddAnnoucement = () => {
             </FormGroup>
           </Col>
 
-          {/* Description */}
-          <Col md="12">
-            <FormGroup>
-              <Label>
-                Description <span className="text-danger">*</span>
-              </Label>
-              <CommonEditor
-                editorState={editorState}
-                onChange={setEditorState}
-                height={200}
-                placeholder="Please Enter Description"
-              />
-            </FormGroup>
-          </Col>
-
           {/* Package Price */}
-          <Col md="3">
+          <Col md="4">
             <FormGroup>
               <Label>
                 Package Price  <span className="fw-semibold">(SGD)</span><span className="text-danger">*</span>
@@ -175,8 +168,20 @@ const AddAnnoucement = () => {
             </FormGroup>
           </Col>
 
+          <Col md="12" className='mb-2'>
+            <label className="custom-switch">
+              <input
+                type="checkbox"
+                checked={recurringStatus}
+                onChange={() => setRecurringStatus(!recurringStatus)}
+              />
+              <span className="slider"></span>
+              <span className="switch-label">Recurring</span>
+            </label>
+          </Col>
+
           {/* Membership Checkbox */}
-          <Col md="2" className="d-flex align-items-end">
+          <Col md="2" className="mt-2">
             <FormGroup check className="mb-2">
               <div className="custom-checkbox-wrapper">
                 <Input type="checkbox" id="isMembership" className='custom-checkbox'/>
@@ -188,7 +193,7 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Membership Tier */}
-          <Col md="7">
+          <Col md="6">
             <FormGroup>
               <Label>Membership Tier</Label>
               <div className="d-flex align-items-center gap-2 flex-wrap">
@@ -198,9 +203,6 @@ const AddAnnoucement = () => {
                   classNamePrefix="select"
                   className="flex-grow-1 mr-2"
                 />
-                {/* <a href="#" className="text-primary fw-semibold mr-2">
-                  Click here
-                </a> */}
                   <Link
                     to="/membership/add"
                     className="text-primary fw-semibold mr-2"
@@ -215,7 +217,7 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Combine Class Types */}
-          <Col md="6">
+          <Col md="4">
             <FormGroup>
               <Label>
                 Combine Different class types
@@ -232,6 +234,20 @@ const AddAnnoucement = () => {
               </small>
             </FormGroup>
           </Col>
+          {/* Description */}
+          <Col md="12">
+            <FormGroup>
+              <Label>
+                Description <span className="text-danger">*</span>
+              </Label>
+              <CommonEditor
+                editorState={editorState}
+                onChange={setEditorState}
+                height={200}
+                placeholder="Please Enter Description"
+              />
+            </FormGroup>
+          </Col>
 
         </Row>
       </CardBody>
@@ -243,7 +259,7 @@ const AddAnnoucement = () => {
         <Row className="gy-3">
 
           {/* Package Validity */}
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Label>
                 Package Validity <span className="text-danger">*</span>
@@ -253,7 +269,7 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Duration Type */}
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Label>Duration Type</Label>
               <Select
@@ -266,9 +282,9 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Empty for alignment */}
-          <Col md="2" />
+          {/* <Col md="2" /> */}
 
-          <Col md="5">
+          <Col md="3">
             <FormGroup>
               <Fragment>
               <Label>
@@ -300,7 +316,7 @@ const AddAnnoucement = () => {
           </Col>
 
         {/* End Date */}
-        <Col md="5">
+        <Col md="3">
           <FormGroup>
             <Label>
               End Date & Time <span className="text-danger">*</span>
@@ -327,8 +343,8 @@ const AddAnnoucement = () => {
               </InputGroup>
             </FormGroup>
         </Col>
-        
-        <Col md="2" className="d-flex align-items-end">
+        <Col md="6" />
+        <Col md="6" className="d-flex align-items-end">
             <FormGroup check className="mb-2">
               <div className="custom-checkbox-wrapper">
               <Input type="checkbox" id="isExpiry" className="custom-checkbox"/>
@@ -341,17 +357,18 @@ const AddAnnoucement = () => {
         </Row>
       </CardBody>
     </Card>
-    <Card className="mt-4">
-    <CardBody>
-      <h5 className="mb-3 fw-bold">
-        Package Validity will start counting down...
-      </h5>
+<Card className="mt-4">
+  <CardBody>
+    <h5 className="mb-3 fw-bold">
+      Package Validity will start counting down...
+    </h5>
 
-      <Row className="gy-3">
-
+    <Row>
+      {/* LEFT COLUMN */}
+      <Col md="6" className="pe-4 border-end border-2">
+        
         {/* From Day of Purchase */}
-        <Col md="12">
-        <FormGroup check>
+        <FormGroup check className="mb-2">
           <Input
             type="radio"
             name="validityStart"
@@ -363,11 +380,9 @@ const AddAnnoucement = () => {
             From the Day of Purchase
           </Label>
         </FormGroup>
-      </Col>
 
-      {/* From Fixed Custom Date */}
-      <Col md="12">
-        <FormGroup check className="d-flex align-items-center gap-3">
+        {/* From Fixed Custom Date */}
+        <FormGroup check className="d-flex align-items-center gap-2 mb-2">
           <Input
             type="radio"
             name="validityStart"
@@ -380,7 +395,7 @@ const AddAnnoucement = () => {
           </Label>
 
           <Flatpickr
-            className="form-control w-auto ml-1"
+            className="form-control w-auto"
             placeholder="Select Custom Date"
             options={{
               dateFormat: "d-m-Y",
@@ -389,11 +404,9 @@ const AddAnnoucement = () => {
             disabled={validityStart !== "custom"}
           />
         </FormGroup>
-      </Col>
 
-      {/* From First Class Booked */}
-      <Col md="12">
-        <FormGroup check className="d-flex align-items-center flex-wrap gap-2">
+        {/* From First Class */}
+        <FormGroup check className=" flex-wrap gap-2">
           <Input
             type="radio"
             name="validityStart"
@@ -401,118 +414,146 @@ const AddAnnoucement = () => {
             checked={validityStart === "firstClass"}
             onChange={() => setValidityStart("firstClass")}
           />
-          <Label for="fromFirstClass" check className="mb-0 mr-1">
-            From the date of first class booked using the package
-            <strong className="mx-1">OR</strong>
-            it will expire after
+          <Label for="fromFirstClass" check className="mb-0">
+            From the date of first class booked using the package OR it will expire after
           </Label>
-
           <Input
             type="number"
             defaultValue={60}
-            className="w-auto mr-1"
+            className="package-form-control1"
             disabled={validityStart !== "firstClass"}
           />
-          <span className="fw-semibold mr-2">
+          <span className="fw-semibold">
             DAYS without being used
           </span>
         </FormGroup>
       </Col>
 
-        {/* Package Location */}
-        <Col md="12">
-          <FormGroup>
-            <Label className="fw-bold">
-              Package for which Location <span className="text-danger">*</span>
-            </Label>
+      {/* RIGHT COLUMN */}
+      <Col md="6">
+        <FormGroup>
+          <Label className="fw-bold">
+            Package for which Location <span className="text-danger">*</span>
+          </Label>
 
-            <div className="d-flex gap-5 mt-1 flex-wrap">
-              <div className="custom-checkbox-wrapper">
-                <FormGroup check>
+          <div className="mt-2">
+              {/* <div className="custom-checkbox-wrapper"> */}
+                <FormGroup check className="mb-1">
                   <Input type="checkbox" id="loc1" className="custom-checkbox" defaultChecked />
-                  <Label for="loc1" check className="mr-2 custom-lebal-style">Vyasa Sin</Label>
+                  <Label for="loc1" check className='custom-checkbox-label  ml-1'>Vyasa Sin</Label>
+                </FormGroup>
+
+                <FormGroup check className="mb-1">
+                  <Input type="checkbox" className="custom-checkbox" id="loc2" />
+                  <Label for="loc2" check className='custom-checkbox-label  ml-1'>Vya Ind</Label>
                 </FormGroup>
 
                 <FormGroup check>
-                  <Input type="checkbox" id="loc2" className="custom-checkbox" />
-                  <Label for="loc2" check className="mr-2 custom-lebal-style">Vya Ind</Label>
+                  <Input type="checkbox" className="custom-checkbox" id="loc3" />
+                  <Label for="loc3" check className='custom-checkbox-label ml-1'>Vya sa Zoom</Label>
                 </FormGroup>
+            {/* </div> */}
+          </div>
+        </FormGroup>
+      </Col>
+    </Row>
+  </CardBody>
+</Card>
 
-                <FormGroup check>
-                  <Input type="checkbox" id="loc3" className="custom-checkbox" />
-                  <Label for="loc3" check className="mr-2 custom-lebal-style">Vya sa Zoom</Label>
-                </FormGroup>
-              </div>
-            </div>
-          </FormGroup>
-        </Col>
+<Card className="mt-4">
+  <CardBody>
 
-      </Row>
-    </CardBody>
-    
-  </Card>
-    <Card className="mt-4">
-      <CardBody >
-        
-        {/* Header */}
-        <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="fw-bold mb-0">ADVANCED Options</h5>
-          <Button color="light" size="sm">
-            +
-          </Button>
-        </div>
+    {/* Header */}
+    <div className="d-flex justify-content-between align-items-center mb-2">
+      <h5 className="fw-bold mb-0">ADVANCED Options</h5>
+      <Button color="light" size="sm">+</Button>
+    </div>
 
-        <hr className="my-2" />
+    <hr className="my-2" />
 
-        <h6 className="fw-bold mb-3">Day / Time Restrictions</h6>
+    <h6 className="fw-bold mb-3">Day / Time Restrictions</h6>
 
-        <Row className="gy-3">
+    {/* Toggle */}
+    <FormGroup className="mb-3">
+      <label className="custom-switch">
+        <input
+          type="checkbox"
+          checked={dateTimeStatus}
+          onChange={() => setDateTimeStatus(!dateTimeStatus)}
+        />
+        <span className="slider"></span>
+        <span className="switch-label">Set Day / Time Restriction</span>
+      </label>
+    </FormGroup>
 
-          {/* Toggle */}
-          <Col md="12">
-            <FormGroup >
-              {/* <Input type="switch" id="dayTimeRestriction" /> */}
-              <label className="custom-switch">
-                <input
-                  type="checkbox"
-                  checked={dateTimeStatus}
-                  onChange={() => setDateTimeStatus(!dateTimeStatus)}
-                />
-                <span className="slider"></span>
-                <span className="switch-label">Set Day / Time Restriction</span>
-              </label>
-            </FormGroup>
-          </Col>
+    <Row>
 
-          {/* Days Dropdown */}
-          <Col md="4">
-            <FormGroup>
-              <Label className="fw-semibold">Days</Label>
-              <Select
-                  options={optionsdayTypeList}
-                  placeholder="Please Days Type"
-                  classNamePrefix="select"
-                  className="flex-grow-1 mr-2"
-                />
-            </FormGroup>
-          </Col>
+      {/* ================= LEFT COLUMN ================= */}
+      <Col md="6" className="border-end pe-4">
 
-          {/* Time Any Time */}
-          <Col md="2">
-            <FormGroup check className="mt-2">
-              <div className="custom-checkbox-wrapper">
-              <Input type="checkbox" id="anyTime" className="custom-checkbox" defaultChecked />
-              <Label for="anyTime" check className="fw-semibold custom-lebal-style">
-                Time: Any Time
-              </Label>
-              </div>
-            </FormGroup>
-          </Col>
+        {/* Days Dropdown */}
+        <FormGroup>
+          <Label className="fw-semibold">Days</Label>
+          <Select
+            options={optionsdayTypeList}
+            placeholder="Please Select Days"
+            classNamePrefix="select"
+            value={selectedDayType}
+            onChange={(e) => setSelectedDayType(e)}
+          />
+        </FormGroup>
 
-          {/* Start Time */}
-          <Col md="3">
-            <FormGroup>
-              <Label className="fw-semibold">Start Time</Label>
+        {/* Show selected type text */}
+        {selectedDayType && selectedDayType.value !== 'custom' && (
+          <div className="text-muted mb-2">
+            {selectedDayType.label}
+          </div>
+        )}
+
+        {/* Custom Days */}
+        {selectedDayType?.value === 'custom' && (
+          <div className="mt-2">
+            <Label className="fw-semibold">
+              Select Custom Days <span className="text-danger">*</span>
+            </Label>
+            <Select
+              options={customDayOptions}
+              isMulti
+              value={selectedCustomDays}
+              onChange={(e) => setSelectedCustomDays(e)}
+              classNamePrefix="select"
+            />
+          </div>
+        )}
+
+      </Col>
+
+      {/* ================= RIGHT COLUMN ================= */}
+      <Col md="6" className="ps-4">
+
+        {/* Time Any Time (Left side text style) */}
+        <FormGroup check className="mb-1">
+          <Input
+            type="checkbox"
+            id="anyTime"
+            className="custom-checkbox"
+            checked={anyTime}
+            onChange={() => setAnyTime(!anyTime)}
+          />
+          <Label for="anyTime" check className="fw-semibold custom-checkbox-label ml-1">
+            Time: Any Time
+          </Label>
+        </FormGroup>
+        {anyTime ? (
+          <div className="text-muted">
+            • Time: Any Time
+          </div>
+        ) : (
+          <Row>
+            <Col md="6">
+            <Label className="fw-semibold mb-0">
+              Start Time <span className="text-danger">*</span>
+            </Label>
               <Flatpickr
                 className="form-control"
                 placeholder="Select Start Time"
@@ -523,13 +564,13 @@ const AddAnnoucement = () => {
                   dateFormat: "h:i K"
                 }}
               />
-            </FormGroup>
-          </Col>
+            </Col>
 
-          {/* End Time */}
-          <Col md="3">
-            <FormGroup>
-              <Label className="fw-semibold">End Time</Label>
+            <Col md="6">
+            
+            <Label className="fw-semibold mb-0">
+              End Time <span className="text-danger">*</span>
+            </Label>
               <Flatpickr
                 className="form-control"
                 placeholder="Select End Time"
@@ -540,13 +581,17 @@ const AddAnnoucement = () => {
                   dateFormat: "h:i K"
                 }}
               />
-            </FormGroup>
-          </Col>
+            </Col>
+          </Row>
+        )}
 
-        </Row>
-      </CardBody>
-      
-    </Card>
+      </Col>
+
+    </Row>
+
+  </CardBody>
+</Card>
+
     <Card className="mt-4">
       <CardBody >
 {/* style={{ backgroundColor: "#ffffcc" }} */}
