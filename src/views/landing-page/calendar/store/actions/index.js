@@ -1,6 +1,48 @@
 import axios from 'axios'
 import { events } from '../../../../../@fake-db/events'
+
 const expandDailyTimedEvent = (event) => {
+  const results = []
+
+  const start = new Date(event.start)
+  const end = new Date(event.end)
+
+  const current = new Date(start)
+  current.setHours(0, 0, 0, 0)
+
+  const last = new Date(end)
+  last.setHours(0, 0, 0, 0)
+
+  while (current <= last) {
+    const weekday = current.getDay()
+    const slot = event.dailySlots?.[weekday]
+
+    if (slot) {
+      const [startHour, startMin] = slot.start.split(':').map(Number)
+      const [endHour, endMin] = slot.end.split(':').map(Number)
+
+      const dayStart = new Date(current)
+      dayStart.setHours(startHour, startMin, 0, 0)
+
+      const dayEnd = new Date(current)
+      dayEnd.setHours(endHour, endMin, 0, 0)
+
+      results.push({
+        ...event,
+        id: `${event.id}-${current.toISOString()}`,
+        start: dayStart,
+        end: dayEnd,
+        allDay: false
+      })
+    }
+
+    current.setDate(current.getDate() + 1)
+  }
+
+  return results
+}
+
+const expandDailyTimedEvent12 = (event) => {
   const results = []
 
   const start = new Date(event.start)
@@ -43,43 +85,6 @@ const expandDailyTimedEvent = (event) => {
   return results
 }
 
-const expandDailyTimedEvent1 = (event) => {
-  const results = []
-
-  const start = new Date(event.start)
-  const end = new Date(event.end)
-
-  const startHour = start.getHours()
-  const startMin = start.getMinutes()
-  const endHour = end.getHours()
-  const endMin = end.getMinutes()
-
-  const current = new Date(start)
-  current.setHours(0, 0, 0, 0)
-
-  const last = new Date(end)
-  last.setHours(0, 0, 0, 0)
-
-  while (current <= last) {
-    const dayStart = new Date(current)
-    dayStart.setHours(startHour, startMin, 0)
-
-    const dayEnd = new Date(current)
-    dayEnd.setHours(endHour, endMin, 0)
-
-    results.push({
-      ...event,
-      id: `${event.id}-${current.toISOString()}`,
-      start: dayStart.toISOString(),
-      end: dayEnd.toISOString(),
-      allDay: false
-    })
-
-    current.setDate(current.getDate() + 1)
-  }
-
-  return results
-}
 export const fetchEvents = ({ calendars = [], type = 'ALL' }) => {
   return dispatch => {
     let data = [...events]
@@ -126,10 +131,10 @@ export const fetchEvents = ({ calendars = [], type = 'ALL' }) => {
         return expandDailyTimedEvent(event)
       }
 
-      const hasTime = event.start.includes('T')
-      const isMultiDay =
-        new Date(event.start).toDateString() !==
-        new Date(event.end).toDateString()
+    const hasTime = event.start.includes('T')
+    const isMultiDay =
+      new Date(event.start).toDateString() !==
+      new Date(event.end).toDateString()
 
       // Single-day timed
       if (hasTime) {
@@ -143,7 +148,7 @@ export const fetchEvents = ({ calendars = [], type = 'ALL' }) => {
       if (isMultiDay) {
         return {
           ...event,
-          allDay: false
+          allDay: true
         }
       }
 

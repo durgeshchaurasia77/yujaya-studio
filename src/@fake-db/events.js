@@ -2,10 +2,15 @@ export const events = [
   {
     id: 1,
     title: 'Morning Yoga Class',
-    start: '2026-02-15T07:00:00',
-    end: '2026-02-15T08:00:00',
+    start: '2026-02-15',
+    end: '2026-02-15',
     category: 'CLASS',
     calendar: 'Business',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=1',
@@ -20,10 +25,15 @@ export const events = [
   {
     id: 2,
     title: 'Power Yoga Workshop',
-    start: '2026-02-15T07:00:00',
-    end: '2026-03-15T08:00:00',
+    start: '2026-02-15',
+    end: '2026-03-15',
     category: 'WORKSHOP',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=2',
@@ -42,6 +52,11 @@ export const events = [
     end: '2026-03-20',
     category: 'TEACHER_TRAINING',
     calendar: 'Business',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=3',
@@ -60,6 +75,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -78,6 +98,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -96,6 +121,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -114,6 +144,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -132,6 +167,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -150,6 +190,11 @@ export const events = [
     end: '2026-03-01',
     category: 'RETREAT',
     calendar: 'Personal',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=4',
@@ -165,9 +210,14 @@ export const events = [
     id: 10,
     title: 'Morning Yoga Class10',
     start: '2026-01-31T09:00:00',
-    end: '2026-02-15T08:00:00',
+    end: '2026-02-15',
     category: 'COURSE',
     calendar: 'Business',
+    dailySlots: {
+      1: { start: '10:00', end: '12:00' },
+      2: { start: '13:00', end: '14:00' },
+      4: { start: '18:00', end: '19:00' } 
+    },
     instructor: {
       name: 'Benedetto Rossiter',
       avatar: 'https://i.pravatar.cc/100?img=1',
@@ -182,8 +232,8 @@ export const events = [
     {
     id: 11,
     title: 'Morning Yoga1 Class',
-    start: '2026-02-15T07:00:00',
-    end: '2026-02-16T08:00:00',
+    start: '2026-02-15',
+    end: '2026-02-16',
     category: 'CLASS',
     calendar: 'Business',
     instructor: {

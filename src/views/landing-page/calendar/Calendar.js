@@ -93,7 +93,8 @@ const Calendar = props => {
     // moreLinkClick: 'day',
     eventDisplay: 'block',
     allDaySlot: true,
-    displayEventEnd: false,
+    displayEventTime: true,
+    displayEventEnd: true,
     eventMaxStack: 2,
 
     moreLinkContent: (args) => {
@@ -107,6 +108,10 @@ const Calendar = props => {
         displayEventTime: true,
         listDayFormat: { weekday: 'long' },
         listDaySideFormat: false
+      },
+      listMonth: {
+        displayEventTime: true,
+        displayEventEnd: true
       }
     },
     editable: true,
