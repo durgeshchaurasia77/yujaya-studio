@@ -5,7 +5,7 @@ import {
   Card,
   CardBody,
   Button,
-  Row, Col, FormGroup, Label, Input, CardFooter
+  Row, Col, FormGroup, Label, Input, CardFooter, Form
 } from 'reactstrap'
 import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
@@ -13,6 +13,7 @@ import Select from 'react-select'
 import SelectAllMultiSelect from "../../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 import '../../../../assets/css.css'
 import { EditorState } from 'draft-js'
+import { useHistory } from 'react-router-dom'
 import CommonEditor from '../../../../component/common/CommonEditor'
 const optionsCountry = [
   { value: '', label: 'Please select one', isDisabled: true},
@@ -119,32 +120,42 @@ const AddClass = () => {
   const [subCategory, setSubCategory] = useState(null)
   const [practice, setPractice] = useState(null)
   const [sequence, setSequence] = useState([])
+  const history = useHistory()
   // const [selectedCountry, setSelectedCountry] = useState(
   //   optionsCountry.find(o => o.value === 'india')
   // )
 
   const addPractice = () => {
-  if (!practice) return;
+  if (!practice) return
 
-  const exists = sequence.find(p => p.value === practice.value);
-  if (exists) return alert("Practice already added");
+  const exists = sequence.find(p => p.value === practice.value)
+  if (exists) return alert("Practice already added")
 
-  setSequence([...sequence, practice]);
-  setPractice(null);
+  setSequence([...sequence, practice])
+  setPractice(null)
 }
 
 const clearSequence = () => {
-  setSequence([]);
+  setSequence([])
 }
 
+
+const viewSequence = () => {
+  if (!sequence.length) {
+    alert("No practices added")
+    return
+  }
+
+  alert(sequence.map((s, i) => `${i + 1}. ${s.label}`).join("\n"))
+}
 const saveSequence = () => {
   const payload = {
     category: category?.value,
     subCategory: subCategory?.value,
     sequence: sequence.map(s => s.value)
-  };
-  console.log("SAVE PAYLOAD:", payload);
-  alert("Sequence Saved (dummy)");
+  }
+  console.log("SAVE PAYLOAD:", payload)
+  alert("Sequence Saved (dummy)")
 }
 
 
@@ -161,105 +172,114 @@ useEffect(() => {
   <>
     <Card>
       <CardBody>
-        <h4 className="mb-3">Class Review</h4>
-          <Row className="align-items-center mb-2">
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>Category <span className="text-danger">*</span></Label>
-                    <Select
-                      value={category}
-                      onChange={setCategory}
-                      options={categoryOptions}
-                      placeholder="Please Select"
-                    />
-                  </FormGroup>
-                </Col>
+        {/* <h4 className="mb-3">Class Review</h4> */}
+          <Form>
+          {/* Header */}
+          <Row className="mb-3">
+            <Col md={12}>
+              <h4 className="font-weight-bold">Create Posture Sequence</h4>
+            </Col>
+          </Row>
+          <Row>
+          {/* LEFT */}
+          <Col md={6}>
+            <FormGroup>
+              <Label>Category <span className="text-danger">*</span></Label>
+              <Select
+                value={category}
+                onChange={setCategory}
+                options={categoryOptions}
+                placeholder="Please Select"
+              />
+            </FormGroup>
 
-                <Col md={6} className="text-right">
-                  <strong className="mr-3">Preset Sequence</strong>
-                  <span className="mr-3">
-                    Practice Added: <b>{sequence.length}</b>
-                  </span>
-                  <Button
-                    color="link"
-                    onClick={() => alert(sequence.map(s => s.label).join(", "))}
-                  >
-                    View Sequence
-                  </Button>
-                  <Button
-                    color="link"
-                    className="text-danger"
-                    onClick={clearSequence}
-                  >
-                    Clear Sequence
-                  </Button>
-                  <Button
-                    color="secondary"
-                    size="sm"
-                    disabled={!sequence.length}
-                    onClick={saveSequence}
-                  >
-                    SAVE
-                  </Button>
-                </Col>
-              </Row>
+            <FormGroup>
+              <Label>Sub Category <span className="text-danger">*</span></Label>
+              <Select
+                value={subCategory}
+                onChange={setSubCategory}
+                options={subCategoryOptions}
+                placeholder="Please Select"
+              />
+            </FormGroup>
 
-              <Row>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>Sub Category <span className="text-danger">*</span></Label>
-                    <Select
-                      value={subCategory}
-                      onChange={setSubCategory}
-                      options={subCategoryOptions}
-                      placeholder="Please Select"
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+            <FormGroup>
+              <Label>Practice <span className="text-danger">*</span></Label>
+              <Select
+                value={practice}
+                onChange={setPractice}
+                options={practiceOptions}
+                placeholder="Select Practice"
+              />
+            </FormGroup>
 
-              <Row className="align-items-center">
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>Practice <span className="text-danger">*</span></Label>
-                    <Select
-                      value={practice}
-                      onChange={setPractice}
-                      options={practiceOptions}
-                      placeholder="Select Practice"
-                    />
-                  </FormGroup>
-                </Col>
+            <Button
+              color="secondary"
+              disabled={!practice}
+              onClick={addPractice}
+            >
+              ADD PRACTICE
+            </Button>
+          </Col>
 
-                <Col md={6} className="mt-3">
-                  <Button
-                    color="secondary"
-                    disabled={!practice}
-                    onClick={addPractice}
-                  >
-                    ADD PRACTICE
-                  </Button>
-                </Col>
-              </Row>
+          {/* RIGHT */}
+          <Col md={6} className="text-right">
+            <div className="mb-2">
+              <strong>Preset Sequence</strong>
+            </div>
 
-              {/* Preset List */}
-              <Row className="mt-3">
-                <Col md={12}>
-                  <Label className="font-weight-bold">Preset Sequence:</Label>
-                  {sequence.length === 0 && (
-                    <div className="text-muted">No practices added</div>
-                  )}
-                  {sequence.map((item, index) => (
-                    <div key={index} className="border p-2 mb-1 rounded">
-                      {index + 1}. {item.label}
-                    </div>
-                  ))}
-                </Col>
-              </Row>
+            <div className="mb-2">
+              Practice Added: <b>{sequence.length}</b>
+            </div>
+
+            <div className="mb-3">
+              <Button color="link" onClick={viewSequence}>
+                View Sequence
+              </Button>
+              <Button
+                color="link"
+                className="text-danger"
+                disabled={!sequence.length}
+                onClick={clearSequence}
+              >
+                Clear Sequence
+              </Button>
+            </div>
+
+            <Button
+              color="secondary"
+              disabled={!sequence.length}
+              onClick={saveSequence}
+            >
+              SAVE
+            </Button>
+          </Col>
+        </Row>
+
+        {/* Preset Sequence List */}
+        <Row className="mt-4">
+          <Col md={12}>
+            <Label className="font-weight-bold">Preset Sequence:</Label>
+
+            {sequence.length === 0 ? (
+              <div className="text-muted">No practices added</div>
+            ) : (
+              sequence.map((item, index) => (
+                <div
+                  key={item.value}
+                  className="border rounded p-2 mb-1"
+                >
+                  {index + 1}. {item.label}
+                </div>
+              ))
+            )}
+          </Col>
+        </Row>
+        </Form>
         </CardBody>
         <CardFooter className="text-end">
           <div className="d-flex justify-content-between align-end button-alignment-accouncement">
-              <Button color="primary">Submit</Button>
+              <Button color="primary"   onClick={() => history.push('/posture/posture-sequence/list')}>Submit</Button>
             </div>
         </CardFooter>
     </Card>

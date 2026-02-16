@@ -180,7 +180,13 @@ useEffect(() => {
             <Col md={6}>
               <FormGroup>
                 <Label>Select Ailment <span className="text-danger">*</span></Label>
-                <Input type="text" placeholder="Please Enter Ailment" />
+                {/* <Input type="text" placeholder="Please Enter Ailment" /> */}
+                <SelectAllMultiSelect
+                  options={postureOptions}
+                  placeholderText="Select Ailment"
+                  classNamePrefix="select"
+                  required
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -224,7 +230,13 @@ useEffect(() => {
             <Col md={6}>
               <FormGroup>
                 <Label>Preparatory Poses</Label>
-                <Input type="text" placeholder="Enter Preparatory Poses" />
+                {/* <Input type="text" placeholder="Enter Preparatory Poses" /> */}
+                <SelectAllMultiSelect
+                  options={postureOptions}
+                  placeholderText="Select Preparatory Poses"
+                  classNamePrefix="select"
+                  required
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -235,7 +247,13 @@ useEffect(() => {
             <Col md={6}>
               <FormGroup>
                 <Label>Complementary Posture</Label>
-                <Input type="text" placeholder="Enter Complementary Posture" />
+                {/* <Input type="text" placeholder="Enter Complementary Posture" /> */}
+                <SelectAllMultiSelect
+                  options={postureOptions}
+                  placeholderText="Select Complementary Posture"
+                  classNamePrefix="select"
+                  required
+                />
               </FormGroup>
             </Col>
           </Row>

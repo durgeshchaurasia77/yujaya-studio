@@ -20,13 +20,25 @@ import { Calendar } from 'react-feather'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 
 const optionMaritalStatusList = [
+  { value: 'single', label: 'Single' },
   { value: 'married', label: 'Married' },
-  { value: 'unmarried', label: 'Unmarried' },
   { value: 'other', label: 'Other' }
 ]
 const optionMobileType = [
   { value: '0', label: 'IND(+91)' },
   { value: '1', label: 'SING(+65)' }
+]
+
+const optionsCity = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'new_delhi', label: 'New Delhi' },
+  { value: 'dwarka', label: 'Dwarka' },
+  { value: 'rohini', label: 'Rohini' },
+  { value: 'saket', label: 'Saket' },
+  { value: 'visakhapatnam', label: 'Visakhapatnam' },
+  { value: 'vijayawada', label: 'Vijayawada' },
+  { value: 'guntur', label: 'Guntur' },
+  { value: 'tirupati', label: 'Tirupati' }
 ]
 
 const optionCountryList = [
@@ -68,7 +80,7 @@ const AddClient = () => {
     <>
       <Card>
         <CardBody>
-          <h4 className="fw-bold mb-2">Add Client (Patient)</h4>
+          <h4 className="fw-bold mb-2">Add Client</h4>
           {/* Personal Details */}
 
           <h5 className="fw-bold mb-3">Astro / Vedic Therapy Info</h5>
@@ -96,7 +108,15 @@ const AddClient = () => {
                   <Label>
                     Place of Birth <span className="text-danger">*</span>
                   </Label>
-                  <Input type="text" placeholder="Enter place of birth" />
+                  {/* <Input type="text" placeholder="Enter place of birth" /> */}
+                  <Select
+                    options={optionsCity}
+                    placeholder="Select City"
+                    className="react-select"
+                    classNamePrefix="select"
+                    isSearchable={true}
+                    required 
+                  />
                 </FormGroup>
               </Col>
             </Row>
@@ -388,216 +408,251 @@ const AddClient = () => {
           </Card>
         </Col>
       </Row>
-      <Row className="alignment-row">
-        <Col md="12">
-          <Card className="mt-2">
-            <CardBody>
+    <Row className="alignment-row">
+      <Col md="12">
+        <Card className="mt-2">
+          <CardBody>
 
-              <h5 className="fw-bold mb-2">Personal History</h5>
+            <h5 className="fw-bold mb-1">Personal History</h5>
 
-              {/* Addictions */}
-              <h6 className="fw-semibold mb-2">Addictions</h6>
+            {/* 🔹 Split Into Two Columns */}
+            <Row>
+              
+              {/* LEFT SIDE */}
+              <Col md="6">
+                
+                {/* Addictions */}
+                <Card className="h-100 mb-1">
+                  <CardBody>
+                    <h6 className="fw-semibold mb-2">Addictions</h6>
+                    <Row className="gy-3">
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Alcohol <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Yes / No"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Yes", value: "yes" },
+                              { label: "No", value: "no" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
 
-              <Row className="gy-3 mb-2">
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Alcohol <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Yes / No"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Yes", value: "yes" },
-                        { label: "No", value: "no" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Smoking <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Yes / No"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Yes", value: "yes" },
+                              { label: "No", value: "no" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
+                      {/* <Col md="6" className="fw-semibold mt-2">
+                        <h6 className="fw-semibold mb-2">Nutritional Pattern</h6>
+                        <FormGroup>
+                          <Label>Appetite <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Poor", value: "poor" },
+                              { label: "Average", value: "average" },
+                              { label: "Good", value: "good" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col> */}
+                    </Row>
+                    <h6 className="fw-semibold mt-3 mb-1">Nutritional Pattern</h6>
+                    <Row className="gy-3">
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Appetite <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Poor", value: "poor" },
+                              { label: "Average", value: "average" },
+                              { label: "Good", value: "good" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                  </CardBody>
+                </Card>
 
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Smoking <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Yes / No"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Yes", value: "yes" },
-                        { label: "No", value: "no" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+                {/* Nutritional Pattern */}
+                {/* <Card className="h-100 mb-3">
+                  <CardBody>
+                    <h6 className="fw-semibold mb-2">Nutritional Pattern</h6>
+                    <FormGroup>
+                      <Label>Appetite <span className="text-danger">*</span></Label>
+                      <Select
+                        placeholder="Please Select"
+                        className="react-select"
+                        classNamePrefix="select"
+                        options={[
+                          { label: "Poor", value: "poor" },
+                          { label: "Average", value: "average" },
+                          { label: "Good", value: "good" }
+                        ]}
+                      />
+                    </FormGroup>
+                  </CardBody>
+                </Card> */}
 
-              {/* Nutritional Pattern */}
-              <h6 className="fw-semibold mb-2">Nutritional Pattern</h6>
+              </Col>
 
-              <Row className="gy-3 mb-2">
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Appetite <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Poor", value: "poor" },
-                        { label: "Average", value: "average" },
-                        { label: "Good", value: "good" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+              {/* RIGHT SIDE */}
+              <Col md="6">
 
-              {/* Elimination Pattern */}
-              <h6 className="fw-semibold mb-3">Elimination Pattern</h6>
+                {/* Elimination Pattern */}
+                <Card className="h-100 mb-1">
+                  <CardBody>
+                    <h6 className="fw-semibold mb-3">Elimination Pattern</h6>
 
-              <Row className="gy-3 mb-2">
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Bowel <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Regular", value: "regular" },
-                        { label: "Constipations", value: "constipations" },
-                        { label: "Dieheria", value: "dieheria" },
-                        { label: "Irritaional Bowl Syndrome", value: "irritaional_bowl_syndrome" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
+                    <Row className="gy-3">
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Bowel <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Regular", value: "regular" },
+                              { label: "Constipations", value: "constipations" },
+                              { label: "Dieheria", value: "dieheria" },
+                              { label: "Irritaional Bowl Syndrome", value: "irritaional_bowl_syndrome" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
 
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Bladder <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Normal", value: "normal" },
-                        { label: "Burning", value: "burning" },
-                        { label: "Frequesnt Urination", value: "frequesnt_urination" },
-                        { label: "Scanty", value: "scanty" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Bladder <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Normal", value: "normal" },
+                              { label: "Burning", value: "burning" },
+                              { label: "Frequesnt Urination", value: "frequesnt_urination" },
+                              { label: "Scanty", value: "scanty" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
 
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Sweat <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Normal", value: "normal" },
-                        { label: "Profuse", value: "profuse" },
-                        { label: "Bad Order", value: "bad_order" },
-                        { label: "Scanty", value: "scanty" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Sweat <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Normal", value: "normal" },
+                              { label: "Profuse", value: "profuse" },
+                              { label: "Bad Order", value: "bad_order" },
+                              { label: "Scanty", value: "scanty" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
 
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Menses <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Regular", value: "Regular" },
-                        { label: "Irregular", value: "Irregular" },
-                        { label: "Bad Order", value: "bad_order" },
-                        { label: "Scanty - Bleeding", value: "scanty-bleeding" },
-                        { label: "Profuse - Access Bleeding", value: "profuse-bleeding" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Menses <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Regular", value: "regular" },
+                              { label: "Irregular", value: "irregular" },
+                              { label: "Scanty - Bleeding", value: "scanty_bleeding" },
+                              { label: "Profuse - Excess Bleeding", value: "profuse_bleeding" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
 
-                <Col md="4">
-                  <FormGroup>
-                    <Label>
-                      Sleep-Rest Pattern <span className="text-danger">*</span>
-                    </Label>
-                    <Select
-                      placeholder="Please Select"
-                      className="react-select"
-                      classNamePrefix="select"
-                      options={[
-                        { label: "Sound", value: "Sound" },
-                        { label: "Distrubed", value: "distrubed" }
-                      ]}
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+                      <Col md="6">
+                        <FormGroup>
+                          <Label>Sleep-Rest Pattern <span className="text-danger">*</span></Label>
+                          <Select
+                            placeholder="Please Select"
+                            className="react-select"
+                            classNamePrefix="select"
+                            options={[
+                              { label: "Sound", value: "sound" },
+                              { label: "Disturbed", value: "disturbed" }
+                            ]}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
 
-              {/* Other Information */}
-              <Row className="gy-3">
-                <Col md="6">
-                  <FormGroup>
-                    <Label>Stress History (if any)</Label>
-                    <Input
-                      type="text"
-                      placeholder="Enter stress history or NA"
-                    />
-                  </FormGroup>
-                </Col>
+                  </CardBody>
+                </Card>
 
-                <Col md="6">
-                  <FormGroup>
-                    <Label>Alternative Treatment Details (if any)</Label>
-                    <Input
-                      type="text"
-                      placeholder="Enter details or NA"
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md="12">
-                  <label className="custom-switch mt-2">
-                    <input
-                      type="checkbox"
-                      checked={status}
-                      onChange={() => setStatus(!status)}
-                    />
-                    <span className="slider"></span>
-                    <span className="switch-label">Status</span>
-                  </label>
-                </Col>
-              </Row>
-            </CardBody>  
-            <CardFooter className="text-end">
-              <div className="d-flex justify-content-between align-end button-alignment-accouncement">
-                  <Button color="primary">Submit</Button>
-                </div>
-            </CardFooter>
-          </Card>
-        </Col>
-      </Row>
+              </Col>
+            </Row>
+
+            {/* 🔹 Bottom Full Width Fields (unchanged) */}
+            <Row className="gy-3">
+              <Col md="6">
+                <FormGroup>
+                  <Label>Stress History (if any)</Label>
+                  <Input type="text" placeholder="Enter stress history or NA" />
+                </FormGroup>
+              </Col>
+
+              <Col md="6">
+                <FormGroup>
+                  <Label>Alternative Treatment Details (if any)</Label>
+                  <Input type="text" placeholder="Enter details or NA" />
+                </FormGroup>
+              </Col>
+
+              <Col md="12">
+                <label className="custom-switch mt-2">
+                  <input
+                    type="checkbox"
+                    checked={status}
+                    onChange={() => setStatus(!status)}
+                  />
+                  <span className="slider"></span>
+                  <span className="switch-label">Status</span>
+                </label>
+              </Col>
+            </Row>
+
+          </CardBody>
+
+          <CardFooter className="text-end">
+            <Button color="primary">Submit</Button>
+          </CardFooter>
+
+        </Card>
+      </Col>
+    </Row>
+
     </>
   )
 }

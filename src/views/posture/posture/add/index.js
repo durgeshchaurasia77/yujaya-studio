@@ -133,7 +133,7 @@ useEffect(() => {
   <>
     <Card>
       <CardHeader>
-        <h4 className="mb-3">Add Posture</h4>
+        <h4 className="mb-3">Create Posture</h4>
       </CardHeader>
       <CardBody>
         {/* <h4 className="mb-3">Class Review</h4> */}

@@ -501,7 +501,7 @@ return (
         {['packages', 'membership', 'therapy', 'technical', 'marketing', 'email'].map(tab => (
           <TabPane key={tab} tabId={tab}>
             <p className="text-muted mt-2">
-              Settings for <strong>{tab}</strong> notifications will appear here.
+              {/* Settings for <strong>{tab}</strong> notifications will appear here. */}
             </p>
           </TabPane>
         ))}

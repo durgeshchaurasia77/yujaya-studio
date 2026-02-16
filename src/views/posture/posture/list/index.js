@@ -246,7 +246,7 @@ const columns = getColumns({
                       onClick={() => history.push('/posture/posture/add')}
                 >
                   <Plus size={14} className="me-50" />
-                  Add Posture
+                  Create Posture
                 </Button>
             </CardHeader>
             
@@ -330,7 +330,7 @@ const columns = getColumns({
         centered
       >
         <ModalHeader toggle={() => setAddPostureModal(false)}>
-          Add Posture
+          Create Posture
         </ModalHeader>
 
         <ModalBody>

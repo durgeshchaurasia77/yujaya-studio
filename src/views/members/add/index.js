@@ -87,7 +87,7 @@ const AddAnnoucement = () => {
   <>
     <Card>
       <CardBody>
-        <h4 className="mb-2 fw-bold">Add Member</h4>
+        <h4 className="mb-2 fw-bold">Add Members</h4>
 
         {/* Agreement Info */}
         <Row className="gy-3 mb-2">

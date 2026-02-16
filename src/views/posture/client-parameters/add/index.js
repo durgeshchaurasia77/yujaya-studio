@@ -32,7 +32,7 @@ const AddClientParameter = () => {
   const [isEarlyBird, setIsEarlyBird] = useState(false)
   const [status, setStatus] = useState(true)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  const [admissionDate, setAdmissionDate] = useState(null)
+  const [admissionDate, setAdmissionDate] = useState(new Date())
   const [dischargeDate, setDischargeDate] = useState(null)
   // const [selectedCountry, setSelectedCountry] = useState(
   //   optionsCountry.find(o => o.value === 'india')

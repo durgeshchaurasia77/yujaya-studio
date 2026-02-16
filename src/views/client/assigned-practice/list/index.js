@@ -344,7 +344,7 @@ const columns = getColumns({
       centered
     >
       <ModalHeader toggle={() => setAddCategoryModal(false)}>
-        Add Posture Sequnce
+        Add Posture Sequence
       </ModalHeader>
 
       <ModalBody>

@@ -99,8 +99,8 @@ const CreateGiftCard = () => {
               <Input value="GC-RY-9087" disabled />
             </FormGroup>
           </Col>
-
-          <Col md="12">
+          <Col md="6"></Col>
+          <Col md="6">
             <FormGroup>
               <Label className="fw-bold">
                 Select a Card Design
@@ -133,6 +133,27 @@ const CreateGiftCard = () => {
                 ))}
               </div>
             </FormGroup>
+          </Col>
+          <Col md="6">
+            {/* CARD PREVIEW */}
+          <FormGroup>
+            <Label className="fw-bold">Card Preview</Label>
+            <p className="text-muted mb-2">
+              Here is a gift for you. Hope you love it!
+            </p>
+
+            <div className="preview-wrapper1">
+              <div
+                className="gift-card-preview"
+                style={{
+                  backgroundImage: `url(${previewBackground})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat"
+                }}
+              />
+            </div>
+          </FormGroup>
           </Col>
         </Row>
 
@@ -312,7 +333,7 @@ const CreateGiftCard = () => {
         <hr />
 
         {/* CARD PREVIEW */}
-        <FormGroup>
+        {/* <FormGroup>
           <Label className="fw-bold">Card Preview</Label>
           <p className="text-muted mb-2">
             Here is a gift for you. Hope you love it!
@@ -329,10 +350,10 @@ const CreateGiftCard = () => {
               }}
             />
           </div>
-        </FormGroup>
+        </FormGroup> */}
         <hr />
         {/* PLEASE NOTE */}
-        <div className="gift-note-box mt-4">
+        {/* <div className="gift-note-box mt-4">
           <strong>Please Note:</strong>
           <ol className="mt-2 mb-0">
             <li>
@@ -350,7 +371,7 @@ const CreateGiftCard = () => {
               points at any time on any offering.
             </li>
           </ol>
-        </div>
+        </div> */}
         <Col md="12">
           <label className="custom-switch mt-2">
             <input

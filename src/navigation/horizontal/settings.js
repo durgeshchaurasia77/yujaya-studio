@@ -12,7 +12,7 @@ export default [
     children: [
       {
         id: 'globalSettings',
-        title: 'Global Setting',
+        title: 'General Settings',
         icon: <Globe size={16} />,
         navLink: '/settings/global-setting'
       },

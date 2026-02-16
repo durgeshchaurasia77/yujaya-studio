@@ -14,6 +14,7 @@ import Select from 'react-select'
 import RoomRow from './RoomRow'
 import '../styles.css'
 import '../../../assets/css.css'
+import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 
 /* -------------------- OPTIONS -------------------- */
 
@@ -58,7 +59,7 @@ const amenitiesList = [
 ]
 
 const combineClassOptions = [
-  { value: '', label: 'Please Select', isDisabled: true },
+  // { value: '', label: 'Please Select', isDisabled: true },
   { value: 'all_event', label: 'All Event' },
   { value: 'morning_yoga', label: 'Morning Yoga' },
   { value: 'hatha_yoga', label: 'Hatha Yoga for kuldeep' },
@@ -78,11 +79,11 @@ const AddIntegration = () => {
       <CardBody>
         <h4 className="mb-3">Integration</h4>
 
-        <p className="text-muted">
+        {/* <p className="text-muted">
           We need to check how we can display integration code or link.
           Based on program type, code can be generated using single or
           combination selection.
-        </p>
+        </p> */}
 
         {/* SHARE STUDIO PAGE */}
         <FormGroup className="mb-3">
@@ -134,7 +135,7 @@ const AddIntegration = () => {
         {['List View', 'Calendar View'].map(view => (
           <div key={view} className="mb-4">
             <Label className="fw-bold">
-              Calendar ({view})
+              {/* Calendar ({view}) */}
             </Label>
 
             <Row className="gy-2 mt-1">
@@ -174,74 +175,94 @@ const AddIntegration = () => {
         <Row className="gy-3">
           <Col md="4" className='mb-2'>
             <Label>Classes</Label>
-            <Select
+            {/* <Select
               options={combineClassOptions}
               classNamePrefix="select"
               required
-            />
+            /> */}
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Classes"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="4" className='mb-1'>
             <Label>Workshops</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Workshops"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="4" className='mb-1'>
             <Label>Courses</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Courses"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className='mb-1'>
             <Label>Class Category</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Class Category"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className='mb-1'>
             <Label>Class Sub Category</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Class Sub Category"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className='mb-1'>
             <Label>Package Category</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Package Category"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className='mb-1'>
             <Label>Package Sub Category</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Package Sub Category"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className='mb-1'>
             <Label>Membership</Label>
-            <Select
-              options={combineClassOptions}
-              classNamePrefix="select"
-              required
-            />
+            
+            <SelectAllMultiSelect
+                options={combineClassOptions}
+                placeholderText="Select Membership"
+                classNamePrefix="select"
+                required
+              />
           </Col>
 
           <Col md="6" className="d-flex align-items-center mt-2">
@@ -255,7 +276,7 @@ const AddIntegration = () => {
 
       <CardFooter className="text-end">
         <Button color="primary" className="button-alignment-accouncement">
-          Submit
+          Create Generate Code
         </Button>
       </CardFooter>
     </Card>

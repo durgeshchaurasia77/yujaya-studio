@@ -191,7 +191,8 @@ const columns = getColumns({
                 <Button
                   color="primary"
                   className="d-flex align-items-center"
-                      onClick={() => setAddCategoryModal(true)}
+                      // onClick={() => setAddCategoryModal(true)}
+                      onClick={() => history.push('/posture/practice-category/add')}
                 >
                   <Plus size={14} className="me-50" />
                   Add Practice Category

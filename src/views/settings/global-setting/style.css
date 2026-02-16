@@ -235,3 +235,7 @@
 .custom-control {
   margin-left: 12px;
 }
+.button-currancy-alignment{
+  height: fit-content;
+  margin-top: 39px;
+}

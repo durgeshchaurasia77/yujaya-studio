@@ -114,7 +114,7 @@ const AddCommision = () => {
     </Col>
 
     {/* SEARCH USER */}
-    <Col md="8">
+    <Col md="6">
       <div className="form-row">
         <div className="form-label-col">Search User</div>
         <div className="form-field-col">
@@ -127,13 +127,47 @@ const AddCommision = () => {
             onChange={setSearchUser}
             className={isSubmitted && searchUser.length === 0 ? 'is-invalid' : ''}
           />
-          <small className="text-muted mt-1">allow multiple</small>
+          {/* <small className="text-muted mt-1">allow multiple</small> */}
+        </div>
+      </div>
+    </Col>
+    {/* EVENT */}
+    <Col md="6">
+      <div className="form-row">
+        <div className="form-label-col">Event</div>
+
+        <div className="form-field-col" style={{ maxWidth: '300px' }}>
+          {/* <Input type="select">
+            <option>All Event</option>
+          </Input> */}
+          {/* <Select
+              options={combineClassOptions}
+              placeholder="Select Event"
+              classNamePrefix="select"
+              isSearchable={false}
+              menuPlacement="auto"
+              menuPortalTarget={document.body}
+              styles={{
+                menuPortal: base => ({
+                  ...base,
+                  zIndex: 9999
+                })
+              }}
+              required
+            /> */}
+            
+            <SelectAllMultiSelect
+              options={combineClassOptions}
+              placeholderText="Select Event"
+              classNamePrefix="select"
+              required
+            />
         </div>
       </div>
     </Col>
     {/* COMMISSION FOR */}
     
-    <Col md="12">
+    <Col md="6" className='mt-3'>
       <div className="form-row">
       <div className="form-label-col">Commission / Payment For</div>
 
@@ -168,36 +202,11 @@ const AddCommision = () => {
       </div>
       </div>
     </Col>
-    {/* EVENT */}
-    <Col md="6">
-      <div className="form-row">
-        <div className="form-label-col">Event</div>
-
-        <div className="form-field-col" style={{ maxWidth: '300px' }}>
-          {/* <Input type="select">
-            <option>All Event</option>
-          </Input> */}
-          <Select
-              options={combineClassOptions}
-              placeholder="Select Event"
-              classNamePrefix="select"
-              isSearchable={false}
-              menuPlacement="auto"
-              menuPortalTarget={document.body}
-              styles={{
-                menuPortal: base => ({
-                  ...base,
-                  zIndex: 9999
-                })
-              }}
-              required
-            />
-        </div>
-      </div>
-    </Col>
+    
+    
     {/* PAYMENT TYPE */}
    
-    <Col md="6">
+    <Col md="6" className='mt-3'>
       <div className="form-row">
       <div className="form-label-col">Payment Type</div>
         <div className="form-field-col">

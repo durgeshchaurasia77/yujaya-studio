@@ -5,8 +5,9 @@ import {
   Card,
   CardBody,
   Button,
-  Row, Col, FormGroup, Label, Input, CardFooter, InputGroup, InputGroupText, InputGroupAddon
+  Row, Col, FormGroup, Label, Input, CardFooter, InputGroup, InputGroupText, InputGroupAddon, Modal, ModalHeader, ModalBody
 } from 'reactstrap'
+
 import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
 import Select from 'react-select'
@@ -19,6 +20,8 @@ import 'flatpickr/dist/themes/material_blue.css'
 import { Calendar } from 'react-feather'
 import { Link } from "react-router-dom"
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
+import jsPDF from "jspdf"
+import html2canvas from "html2canvas"
 
 const optionsCountry = [
   { value: '', label: 'Please select one', isDisabled: true},
@@ -26,27 +29,57 @@ const optionsCountry = [
   { value: 'usa', label: 'USA' },
   { value: 'china', label: 'China' }
 ]
+const optionsState = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'Delhi', label: 'Delhi' },
+  { value: 'Andhra Pradeh', label: 'Andhra Pradeh' },
+  { value: 'Uttar Pradesh', label: 'Uttar Pradesh' }
+]
+const optionsCity = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'new_delhi', label: 'New Delhi' },
+  { value: 'dwarka', label: 'Dwarka' },
+  { value: 'rohini', label: 'Rohini' },
+  { value: 'saket', label: 'Saket' },
+  { value: 'visakhapatnam', label: 'Visakhapatnam' },
+  { value: 'vijayawada', label: 'Vijayawada' },
+  { value: 'guntur', label: 'Guntur' },
+  { value: 'tirupati', label: 'Tirupati' }
+]
 const optionsNationalId = [
   { value: '', label: 'Please select one', isDisabled: true},
   { value: 'Passport', label: 'Passport' },
   { value: 'National Id', label: 'National Id' },
   { value: 'Driving License', label: 'Driving License' }
 ]
+const optionsPromoCode = [
+  { value: '', label: 'Please select one', isDisabled: true},
+  { value: 'CODE200', label: 'CODE200' },
+  { value: 'CODE400', label: 'CODE400' },
+  { value: 'CODE800', label: 'CODE800' }
+]
 const optionsMembershipStatus = [
   { value: '', label: 'Please select one', isDisabled: true},
-  { value: 'active', label: 'Active' },
-  { value: 'InActive', label: 'InActive' }
+  { value: 'pending', label: 'Pending' },
+  { value: 'confirmed', label: 'Confirmed' },
+  { value: 'cancelled', label: 'Cancelled' },
+  { value: 'suspended', label: 'Suspended' },
+  { value: 'expired', label: 'Expired' },
+  { value: 'renewed', label: 'Renewed' },
+  { value: 'transferred', label: 'Transferred' },
+  { value: 'void', label: 'Void' }
 ]
 const includePackagesTierOptions = [
-  { value: 'silver', label: 'silver' },
-  { value: 'gold', label: 'Gold' },
-  { value: 'platinum', label: 'Platinum' }
+  { value: '1_month_limited', label: '1 Month Limited' },
+  { value: '1_month_unlimited', label: '1 Month Unlimited' },
+  { value: 'multi_class_bundles', label: 'Multi-Class Bundles' },
+  { value: 'online_only', label: 'Online-Only' },
+  { value: 'specialized', label: 'Specialized' }
 ]
 
 const includePackagesOptions = [
-  { value: 'beginer', label: 'Beginer' },
-  { value: 'intermediate', label: 'Intermediate' },
-  { value: 'advance', label: 'Advance' }
+  { value: 'All Existing And Future Classes', label: 'All Existing And Future Classes' },
+  { value: 'HIIT Workout', label: 'HIIT Workout' }
 ]
 
 const optionsDesignationType = [
@@ -80,15 +113,53 @@ const AddAnnoucement = () => {
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const [renewDate, setRenewDate] = useState(null)
+  const [signingDate, setSigningDate] = useState(new Date())
   const [picker, setPicker] = useState(new Date())
   const [isCustomDate, setIsCustomDate] = useState(false)
   const [validityStart, setValidityStart] = useState("purchase")
+  const [showModal, setShowModal] = useState(false)
+  const contractRef = useRef()
+  const [formData, setFormData] = useState({
+    agreementNo: "RD-17",
+    emergencyContactPerson: "",
+    emergencyRelationship: "",
+    emergencyContactNo: "",
+    guardianName: "",
+    guardianRelationship: "",
+    nationalIdType: "",
+    nationalIdNumber: "",
+    guardianContactNo: "",
+    address: "",
+    country: "",
+    state: "",
+    city: "",
+    zipCode: ""
+  })
+
+  const handleDownload = async () => {
+  const element = contractRef.current
+
+  const canvas = await html2canvas(element, {
+    scale: 2
+  })
+
+  const imgData = canvas.toDataURL("image/png")
+
+  const pdf = new jsPDF("p", "mm", "a4")
+
+  const imgWidth = 210
+  const pageHeight = 295
+  const imgHeight = (canvas.height * imgWidth) / canvas.width
+
+  pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight)
+
+  pdf.save(`Agreement-${formData.agreementNo}.pdf`)
+}
   return (
   <>
     <Card>
       <CardBody>
         <h4 className="mb-2 fw-bold">Add Member</h4>
-
         {/* Agreement Info */}
         <Row className="gy-3 mb-2">
           <Col md="3">
@@ -96,6 +167,15 @@ const AddAnnoucement = () => {
               <Label>Agreement No</Label>
               <Input type="text" value="RD-17" />
             </FormGroup>
+          </Col>
+          <Col md="6" className="text-end mt-2">
+            <Button color="link" onClick={() => setShowModal(true)}>
+              View Contract
+            </Button>
+            |
+            <Button color="link" onClick={handleDownload}>
+              Download Agreement
+            </Button>
           </Col>
         </Row>
 
@@ -184,7 +264,7 @@ const AddAnnoucement = () => {
                 placeholder="Select country"
                 className="react-select"
                 classNamePrefix="select"
-                isSearchable={false}
+                isSearchable={true}
                 required 
               />
             </FormGroup>
@@ -193,14 +273,30 @@ const AddAnnoucement = () => {
           <Col md="4">
             <FormGroup>
               <Label>State<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter state" required/>
+              {/* <Input type="text" placeholder="Enter state" required/> */}
+              <Select
+                options={optionsState}
+                placeholder="Select State"
+                className="react-select"
+                classNamePrefix="select"
+                isSearchable={true}
+                required 
+              />
             </FormGroup>
           </Col>
 
           <Col md="4">
             <FormGroup>
               <Label>City<span className="text-danger">*</span></Label>
-              <Input type="text" placeholder="Enter city" required/>
+              {/* <Input type="text" placeholder="Enter city" required/> */}
+              <Select
+                options={optionsCity}
+                placeholder="Select City"
+                className="react-select"
+                classNamePrefix="select"
+                isSearchable={true}
+                required 
+              />
             </FormGroup>
           </Col>
 
@@ -232,6 +328,12 @@ const AddAnnoucement = () => {
                 isSearchable={false}
                 required 
               />
+                {/* <SelectAllMultiSelect
+                  options={includePackagesTierOptions}
+                  placeholderText="Select Membership Tier"
+                  classNamePrefix="select"
+                  required
+                /> */}
             </FormGroup>
           </Col>
 
@@ -254,7 +356,7 @@ const AddAnnoucement = () => {
           </Col>
 
           {/* Package Selection (Checkboxes) */}
-          <Col md="12">
+          {/* <Col md="12">
             <FormGroup>
               <div className="d-flex flex-column gap-2">
                 <FormGroup check>
@@ -273,7 +375,7 @@ const AddAnnoucement = () => {
                 </FormGroup>
               </div>
             </FormGroup>
-          </Col>
+          </Col> */}
 
           {/* Membership Status */}
           <Col md="6">
@@ -298,7 +400,7 @@ const AddAnnoucement = () => {
 
             <InputGroup style={{ cursor: 'pointer' }}>
               <Flatpickr
-                value={startDate}
+                value={picker}
                 onChange={date => setPicker(date)}
                 className="form-control"
                 data-enable-time
@@ -400,11 +502,22 @@ const AddAnnoucement = () => {
 
                   <Col md="7">
                     <div className="d-flex gap-2">
-                      <Input
+                      {/* <Input
                         type="text"
                         placeholder="Enter promo code"
                         className="mr-2"
-                      />
+                      /> */}
+                      <div style={{ minWidth: "300px" }} className='mr-2'>
+                        <Select
+                          options={optionsPromoCode}
+                          placeholder="Select Promo Code"
+                          className="react-select"
+                          classNamePrefix="select"
+                          isSearchable={true}
+                          required 
+                          
+                        />
+                      </div>
                       <Button color="primary" style={{ minWidth: "90px" }}>
                         Apply
                       </Button>
@@ -581,7 +694,9 @@ const AddAnnoucement = () => {
 
                 <InputGroup>
                   <Flatpickr
+                  value={signingDate}
                     className="form-control"
+                    onChange={date => setSigningDate(date[0])}
                     options={{
                       enableTime: true,
                       dateFormat: "d-m-Y H:i",
@@ -606,7 +721,7 @@ const AddAnnoucement = () => {
               Proceed to Payment
             </Button>
 
-            <span className="text-muted">
+            {/* <span className="text-muted">
               Save and go to common
             </span>
                 <Link
@@ -616,14 +731,74 @@ const AddAnnoucement = () => {
                   </Link>
                   
             <span className="text-muted"> page
-            </span>
+            </span> */}
           </div>
 
         </CardBody>
       </Card>
     </Col>
   </Row>
+    <Modal isOpen={showModal} toggle={() => setShowModal(false)} size="lg">
+      <ModalHeader toggle={() => setShowModal(false)}>
+        Agreement Contract
+      </ModalHeader>
 
+      <ModalBody>
+        <h4>Agreement No: {formData.agreementNo}</h4>
+        <hr />
+
+        <h5>Emergency Contact</h5>
+        <p><strong>Name:</strong> {formData.emergencyContactPerson}</p>
+        <p><strong>Relationship:</strong> {formData.emergencyRelationship}</p>
+        <p><strong>Contact:</strong> {formData.emergencyContactNo}</p>
+
+        <h5 className="mt-3">Guardian Details</h5>
+        <p><strong>Name:</strong> {formData.guardianName}</p>
+        <p><strong>Relationship:</strong> {formData.guardianRelationship}</p>
+        <p><strong>ID Type:</strong> {formData.nationalIdType}</p>
+        <p><strong>ID Number:</strong> {formData.nationalIdNumber}</p>
+        <p><strong>Contact:</strong> {formData.guardianContactNo}</p>
+
+        <h5 className="mt-3">Address</h5>
+        <p>
+          {formData.address}, {formData.city}, {formData.state},{" "}
+          {formData.country} - {formData.zipCode}
+        </p>
+      </ModalBody>
+    </Modal>
+    <div
+      ref={contractRef}
+      style={{
+        position: "absolute",
+        left: "-9999px",
+        top: 0,
+        padding: "40px",
+        backgroundColor: "#fff",
+        width: "800px"
+      }}
+    >
+        <h2 style={{ textAlign: "center" }}>Membership Agreement</h2>
+        <hr />
+
+        <h5>Agreement No: {formData.agreementNo}</h5>
+
+        <h4>Emergency Contact</h4>
+        <p>Name: {formData.emergencyContactPerson}</p>
+        <p>Relationship: {formData.emergencyRelationship}</p>
+        <p>Contact: {formData.emergencyContactNo}</p>
+
+        <h4 style={{ marginTop: "20px" }}>Guardian Details</h4>
+        <p>Name: {formData.guardianName}</p>
+        <p>ID Type: {formData.nationalIdType}</p>
+        <p>ID Number: {formData.nationalIdNumber}</p>
+        <p>Contact: {formData.guardianContactNo}</p>
+
+        <h4 style={{ marginTop: "20px" }}>Address</h4>
+        <p>
+          {formData.address}, {formData.city}, {formData.state},{" "}
+          {formData.country} - {formData.zipCode}
+        </p>
+      </div>
   </>
   )
 }

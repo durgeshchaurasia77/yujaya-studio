@@ -10,6 +10,7 @@ import {
   FormGroup,
   CardFooter, InputGroup, InputGroupText, InputGroupAddon
 } from "reactstrap"
+import { useHistory } from 'react-router-dom'
 import "../styles.css"
 import "../../../assets/css.css"
 
@@ -51,6 +52,7 @@ const CreateGiftCard = () => {
   const [endDateTime, setEndDateTime] = useState(null)
   const [picker, setPicker] = useState(new Date())
   const [status, setStatus] = useState(true)
+  const history = useHistory()
 
   return (
   <Card>
@@ -67,7 +69,7 @@ const CreateGiftCard = () => {
             <Label>
                Enter Promo Code<span className="text-danger">*</span>
             </Label>
-            <Input type="text" required placeholder="RY-0203432" />
+            <Input type="text" required placeholder="RY-0203432" value='RY-020343' />
           </FormGroup>
         </Col>
 
@@ -193,13 +195,19 @@ const CreateGiftCard = () => {
         <Col md="6">
           <FormGroup>
             <Label>Eligible Class</Label>
-            <Select
+            {/* <Select
               options={combineClassOptions}
               placeholder="Select Eligible Class"
               className="react-select"
               classNamePrefix="select"
               isSearchable={false}
               required 
+            /> */}
+            <SelectAllMultiSelect
+              options={combineClassOptions}
+              placeholderText="Select Eligible Class"
+              classNamePrefix="select"
+              required
             />
           </FormGroup>
         </Col>
@@ -255,10 +263,12 @@ const CreateGiftCard = () => {
 
       </Row>
     </CardBody>
-
     <CardFooter className="text-end">
       <Button color="primary" className="button-alignment-accouncement">
         Add New Promo Code
+      </Button>
+      <Button color="secondary" className="button-alignment-accouncement mr-2" onClick={() => history.push('/studios/list-promo-code')}>
+        Back
       </Button>
     </CardFooter>
   </Card>

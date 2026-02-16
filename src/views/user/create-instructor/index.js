@@ -20,8 +20,8 @@ import { Calendar } from 'react-feather'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 
 const optionMaritalStatusList = [
+  { value: 'single', label: 'Single' },
   { value: 'married', label: 'Married' },
-  { value: 'unmarried', label: 'Unmarried' },
   { value: 'other', label: 'Other' }
 ]
 const optionlanguageList = [
@@ -203,13 +203,12 @@ const removeCourse = index => {
           <Card className="mt-0">
             <CardBody>
               <h5 className="fw-bold mb-3">Yoga Qualification Details</h5>
-              {/* Do you practice Yoga */}
               <FormGroup className="mb-3">
-                <Label className="fw-semibold">
+                {/* <Label className="fw-semibold">
                   Do you practice YOGA? <span className="text-danger">*</span>
-                </Label>
+                </Label> */}
 
-                <div className="d-flex custom-gap">
+                {/* <div className="d-flex custom-gap">
                   <FormGroup check>
                     <Input
                       type="radio"
@@ -229,12 +228,11 @@ const removeCourse = index => {
                     />
                     <Label check>No</Label>
                   </FormGroup>
-                </div>
+                </div> */}
               </FormGroup>
 
-              {practiceYoga && (
-                <>
-                  {/* Are you Instructor */}
+              {/* {practiceYoga && (
+                <> */}
                   <FormGroup className="mb-4">
                     <Label className="fw-semibold">
                       Are you a Yoga Instructor?
@@ -264,7 +262,6 @@ const removeCourse = index => {
                   </FormGroup>
                   {isInstructor && (
                     <>
-                      {/* Instructor Type */}
                       <FormGroup className="mb-4">
                         <Label className="fw-semibold">
                           Select Role <span className="text-danger">*</span>
@@ -455,7 +452,7 @@ const removeCourse = index => {
                       <hr className="my-4" />
                       <h6 className="fw-semibold mb-3">Yoga Information</h6>
                       <Row className="gy-3">
-                        <Col md="6">
+                        <Col md="3">
                           <FormGroup>
                             <Label>
                               Teaching Experience <span className="text-danger">*</span>
@@ -473,7 +470,7 @@ const removeCourse = index => {
                             </div>
                           </FormGroup>
                         </Col>
-                        <Col md="6">
+                        <Col md="3">
                           <FormGroup>
                             <Label>Area of Expertise <span className="text-danger">*</span></Label>
                             <SelectAllMultiSelect
@@ -484,7 +481,7 @@ const removeCourse = index => {
                             />
                           </FormGroup>
                         </Col>
-                        <Col md="6">
+                        <Col md="3">
                           <FormGroup>
                             <Label>Yoga Style <span className="text-danger">*</span></Label>
                             <SelectAllMultiSelect
@@ -495,7 +492,7 @@ const removeCourse = index => {
                               />
                           </FormGroup>
                         </Col>
-                        <Col md="6">
+                        <Col md="3">
                           <FormGroup>
                             <Label>Language Speak <span className="text-danger">*</span></Label>
                             <SelectAllMultiSelect
@@ -527,8 +524,8 @@ const removeCourse = index => {
                       </Row>
                     </>
                   )}
-                </>
-              )}
+                {/* </>
+              )} */}
             </CardBody>
           </Card>
         </Col>

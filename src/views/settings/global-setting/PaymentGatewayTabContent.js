@@ -29,6 +29,10 @@ import classnames from 'classnames'
 
 const PaymentGatewayTabContent = ({ data }) => {
   const [followMe, setFollowMe] = useState(data.followMe)
+  const [isPaypalEnabled, setIsPaypalEnabled] = useState(false)
+  const [isStripeEnabled, setIsStripeEnabled] = useState(false)
+  const [isRazorPayEnabled, setIsRazorPayEnabled] = useState(false)
+  const [isHitPayEnabled, setIsHitPayEnabled] = useState(false)
   const [activeTab, setActiveTab] = useState('payment_gateway')
   const toggleTab = tab => {
     if (activeTab !== tab) setActiveTab(tab)
@@ -69,6 +73,8 @@ return (
                 type="switch"
                 id="paypal-active"
                 label="PayPal Standard"
+                checked={isPaypalEnabled}
+                onChange={(e) => setIsPaypalEnabled(e.target.checked)}
               />
             </Col>
           </Row>
@@ -77,25 +83,25 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Gateway Account Email</Label>
-                <Input />
+                <Input disabled={!isPaypalEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Client ID</Label>
-                <Input />
+                <Input disabled={!isPaypalEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Client Secret</Label>
-                <Input type="password" />
+                <Input type="password" disabled={!isPaypalEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook ID</Label>
-                <Input />
+                <Input disabled={!isPaypalEnabled}/>
               </FormGroup>
             </Col>
           </Row>
@@ -109,6 +115,8 @@ return (
                 type="switch"
                 id="stripe-active"
                 label="Stripe"
+                checked={isStripeEnabled}
+                onChange={(e) => setIsStripeEnabled(e.target.checked)}
               />
             </Col>
           </Row>
@@ -117,19 +125,19 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Publishable Key</Label>
-                <Input />
+                <Input disabled={!isStripeEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Secret Key</Label>
-                <Input type="password" />
+                <Input type="password" disabled={!isStripeEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook Secret</Label>
-                <Input />
+                <Input disabled={!isStripeEnabled}/>
               </FormGroup>
             </Col>
           </Row>
@@ -143,6 +151,8 @@ return (
                 type="switch"
                 id="razorpay-active"
                 label="Razor Pay"
+                checked={isRazorPayEnabled}
+                onChange={(e) => setIsRazorPayEnabled(e.target.checked)}
               />
             </Col>
           </Row>
@@ -151,25 +161,25 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Key ID</Label>
-                <Input />
+                <Input disabled={!isRazorPayEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Key Secret</Label>
-                <Input type="password" />
+                <Input type="password" disabled={!isRazorPayEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook Secret</Label>
-                <Input />
+                <Input disabled={!isRazorPayEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Merchant Name</Label>
-                <Input />
+                <Input disabled={!isRazorPayEnabled}/>
               </FormGroup>
             </Col>
           </Row>
@@ -183,6 +193,8 @@ return (
                 type="switch"
                 id="hitpay-active"
                 label="Hit Pay"
+                checked={isHitPayEnabled}
+                onChange={(e) => setIsHitPayEnabled(e.target.checked)}
               />
             </Col>
           </Row>
@@ -191,19 +203,19 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>API Key</Label>
-                <Input />
+                <Input disabled={!isHitPayEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Salt Key</Label>
-                <Input type="password" />
+                <Input type="password" disabled={!isHitPayEnabled}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook URL</Label>
-                <Input />
+                <Input disabled={!isHitPayEnabled}/>
               </FormGroup>
             </Col>
           </Row>

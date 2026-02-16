@@ -49,7 +49,7 @@ const VideoPlateformTabContent = () => {
       </Row>
 
       {/* Video URLs */}
-      <Row className="mb-2">
+      {/* <Row className="mb-2">
         <Col md="6">
           <FormGroup>
             <Label>Vimeo Video URL</Label>
@@ -62,49 +62,77 @@ const VideoPlateformTabContent = () => {
             <Input placeholder="https://youtube.com/123456" />
           </FormGroup>
         </Col>
-      </Row>
+      </Row> */}
+      {integrationType === 'embed' && (
+        <Row className="mb-2">
+          <Col md="6">
+            <FormGroup>
+              <Label>Vimeo Video URL</Label>
+              <Input placeholder="https://vimeo.com/1234567" />
+            </FormGroup>
+          </Col>
 
+          <Col md="6">
+            <FormGroup>
+              <Label>YouTube Video URL</Label>
+              <Input placeholder="https://youtube.com/123456" />
+            </FormGroup>
+          </Col>
+        </Row>
+      )}
       {/* ================= VIMEO API ================= */}
-      <h6 className="mt-3 mb-1 font-weight-bold">Vimeo API Integration</h6>
+      {integrationType === 'api' && (
+        <>  
+          {/* ================= VIMEO API ================= */}
+          <h6 className="mt-3 mb-1 font-weight-bold">
+            Vimeo API Integration
+          </h6>
 
-      <Row>
-        <Col md="6">
-          <FormGroup>
-            <Label>Vimeo API</Label>
-            <Input />
-          </FormGroup>
-        </Col>
-        <Col md="6">
-          <FormGroup>
-            <Label>Vimeo Client ID</Label>
-            <Input />
-          </FormGroup>
-        </Col>
-        <Col md="6">
-          <FormGroup>
-            <Label>Client Secret</Label>
-            <Input />
-          </FormGroup>
-        </Col>
-        <Col md="6">
-          <FormGroup>
-            <Label>Access Token</Label>
-            <Input />
-          </FormGroup>
-        </Col>
-      </Row>
+          <Row>
+            <Col md="6">
+              <FormGroup>
+                <Label>Vimeo API</Label>
+                <Input />
+              </FormGroup>
+            </Col>
 
-      {/* ================= YOUTUBE API ================= */}
-      <h6 className="mt-3 mb-1 font-weight-bold">YouTube API Integration</h6>
+            <Col md="6">
+              <FormGroup>
+                <Label>Vimeo Client ID</Label>
+                <Input />
+              </FormGroup>
+            </Col>
 
-      <Row>
-        <Col md="6">
-          <FormGroup>
-            <Label>Google API Key</Label>
-            <Input />
-          </FormGroup>
-        </Col>
-      </Row>
+            <Col md="6">
+              <FormGroup>
+                <Label>Client Secret</Label>
+                <Input type="password" />
+              </FormGroup>
+            </Col>
+
+            <Col md="6">
+              <FormGroup>
+                <Label>Access Token</Label>
+                <Input />
+              </FormGroup>
+            </Col>
+          </Row>
+
+          {/* ================= YOUTUBE API ================= */}
+          <h6 className="mt-3 mb-1 font-weight-bold">
+            YouTube API Integration
+          </h6>
+
+          <Row>
+            <Col md="6">
+              <FormGroup>
+                <Label>Google API Key</Label>
+                <Input />
+              </FormGroup>
+            </Col>
+          </Row>
+        </>
+      )}
 
       {/* ================= VIRTUAL CLASS HOST ================= */}
       <h5 className="mt-3 mb-2">Virtual Class Host</h5>
@@ -156,6 +184,20 @@ const VideoPlateformTabContent = () => {
             <Col md="6">
               <FormGroup>
                 <Label>Refresh Token (encrypted)</Label>
+                <Input />
+              </FormGroup>
+            </Col>
+          </Row>
+        </>
+      )}
+      {hostType === 'google' && (
+        <>
+          <h6 className="mt-2 mb-1 font-weight-bold">Google Meet</h6>
+
+          <Row>
+            <Col md="6">
+              <FormGroup>
+                <Label>Google Meet Link</Label>
                 <Input />
               </FormGroup>
             </Col>

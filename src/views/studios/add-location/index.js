@@ -158,36 +158,83 @@ const AddLocation = () => {
           <div className="border rounded p-3 smooth-section">
             <h6 className="mb-2">Physical Location Details</h6>
 
-            <Row className="gy-2">
-              <Col md="6">
-                <Label>Address <span className="text-danger">*</span></Label>
-                <Input type="text" placeholder="Enter Address" required/>
-              </Col>
+            <Row className="alignment-row">
 
-              <Col md="6">
-                <Label>Country <span className="text-danger">*</span></Label>
-                <Select
-                  options={optionCountryList}
-                  classNamePrefix="select"
-                  required
-                />
-              </Col>
+            {/* 🔹 LEFT SIDE - All Fields */}
+            <Col md="8">
+              <Card className="h-100">
+                <CardBody>
 
-              <Col md="6">
-                <Label>State <span className="text-danger">*</span></Label>
-                <Input type="text" placeholder="Enter State" required/>
-              </Col>
+                  <Row className="gy-2">
 
-              <Col md="6">
-                <Label>City <span className="text-danger">*</span></Label>
-                <Input type="text" placeholder="Enter City" required/>
-              </Col>
+                    <Col md="6">
+                      <Label>Address <span className="text-danger">*</span></Label>
+                      <Input type="text" placeholder="Enter Address" required />
+                    </Col>
 
-              <Col md="6">
-                <Label>Zipcode <span className="text-danger">*</span></Label>
-                <Input type="text" placeholder="Enter Zipcode" required/>
-              </Col>
-            </Row>
+                    <Col md="6">
+                      <Label>Country <span className="text-danger">*</span></Label>
+                      <Select
+                        options={optionCountryList}
+                        classNamePrefix="select"
+                      />
+                    </Col>
+
+                    <Col md="6">
+                      <Label>State <span className="text-danger">*</span></Label>
+                      <Input type="text" placeholder="Enter State" required />
+                    </Col>
+
+                    <Col md="6">
+                      <Label>City <span className="text-danger">*</span></Label>
+                      <Input type="text" placeholder="Enter City" required />
+                    </Col>
+
+                    <Col md="6">
+                      <Label>Zipcode <span className="text-danger">*</span></Label>
+                      <Input type="text" placeholder="Enter Zipcode" required />
+                    </Col>
+
+                    <Col md="6">
+                      <FormGroup>
+                        <Label>Upload Location Photo</Label>
+                        <Input type="file" />
+                      </FormGroup>
+                    </Col>
+
+                  </Row>
+
+                </CardBody>
+              </Card>
+            </Col>
+
+
+            {/* 🔹 RIGHT SIDE - Amenities */}
+            <Col md="4">
+              <Card className="h-100">
+                <CardBody>
+
+                  <h5 className="fw-bold mb-3">Amenities</h5>
+
+                  <Row>
+                    {amenitiesList.map((item) => (
+                      <Col md="6" key={item} className="mb-2">
+                        <FormGroup check>
+                          <Input type="checkbox" className="custom-checkbox" />
+                          <Label check className="custom-lebal-style">
+                            {item}
+                          </Label>
+                        </FormGroup>
+                      </Col>
+                    ))}
+                  </Row>
+
+                </CardBody>
+              </Card>
+            </Col>
+
+          </Row>
+
 
             {/* ROOMS */}
             <hr className="my-3" />
@@ -216,28 +263,6 @@ const AddLocation = () => {
             </Button>
 
             </Col>
-
-            {/* PHOTO */}
-            <Col md="6">
-              <FormGroup className="mt-2">
-                <Label>Upload Location Photo</Label>
-                <Input type="file" />
-              </FormGroup>
-            </Col>
-            {/* AMENITIES */}
-            <FormGroup className="mt-3">
-              <Label>Amenities</Label>
-              <Row className="gy-2">
-                {amenitiesList.map(item => (
-                  <Col md="4" sm="6" xs="12" key={item} className="gap-2">
-                    <FormGroup check>
-                      <Input type="checkbox" className="custom-checkbox" checked/>
-                      <Label check className='custom-lebal-style'>{item}</Label>
-                    </FormGroup>
-                  </Col>
-                ))}
-              </Row>
-            </FormGroup>
             </Row>
           </div>
         )}

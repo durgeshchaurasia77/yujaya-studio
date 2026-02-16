@@ -74,7 +74,6 @@ const BookingHistoryList = () => {
     const [practice, setPractice] = useState(null)
     const [sequence, setSequence] = useState([])
 
-
 const parentCategoryOptions = [
   { label: "Limited", value: "limited" },
   { label: "Unlimited", value: "unlimited" },
@@ -92,8 +91,6 @@ const parentCategoryOptions = [
   { label: "Seminar", value: "seminar" },
   { label: "Specialized", value: "specialized" }
 ]
-
-
 const categoryOptions = [
   { label: "Specialized", value: "specialized" },
   { label: "Therapy", value: "therapy" }
@@ -109,7 +106,6 @@ const practiceOptions = [
   { label: "Bhujangasana", value: "bhujangasana" },
   { label: "Vajrasana", value: "vajrasana" }
 ]
-
 
   const openViewCategory = row => {
     setSelectedRow(row)
@@ -254,14 +250,15 @@ const columns = getColumns({
         {/* <SummaryCards /> */}
         <Card>
             <CardHeader>
-            <CardTitle tag="h4">Posture Sequnce</CardTitle>    
+            <CardTitle tag="h4">Posture Sequence</CardTitle>    
                 <Button
                   color="primary"
                   className="d-flex align-items-center"
-                      onClick={() => setAddCategoryModal(true)}
+                      onClick={() => history.push('/posture/posture-sequence/add')}
+                      // onClick={() => setAddCategoryModal(true)}
                 >
                   <Plus size={14} className="me-50" />
-                  Add Posture Sequnce
+                  Add Posture Sequence
                 </Button>
             </CardHeader>
             
@@ -345,7 +342,7 @@ const columns = getColumns({
       centered
     >
       <ModalHeader toggle={() => setAddCategoryModal(false)}>
-        Add Posture Sequnce
+        Add Posture Sequence
       </ModalHeader>
 
       <ModalBody>

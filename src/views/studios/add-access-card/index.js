@@ -41,7 +41,7 @@ const AddAccessCard = () => {
   const [uploadedDesign, setUploadedDesign] = useState(null)
   const [cardTitle, setCardTitle] = useState("")
   const [showTitle, setShowTitle] = useState(false)
-  const [terms, setTerms] = useState("")
+  const [terms, setTerms] = useState("This card is the property of Real Yoga. It must be returned upon request. Use of this card is subject to the terms and conditions.")
   const [textColor, setTextColor] = useState("#ffffff")
 
   const previewBackground =
@@ -75,8 +75,26 @@ const AddAccessCard = () => {
               />
             </FormGroup>
           </Col>
-
-          <Col md="6" className="d-flex align-items-center mt-4">
+          {/* TEXT COLOR */}
+          <Col md="6">
+            <FormGroup>
+              <Label className="fw-bold">Text Color</Label>
+              <div className="d-flex gap-2 flex-wrap mt-1">
+                {textColors.map(color => (
+                  <div
+                    key={color.id}
+                    className={`color-swatch ${
+                      textColor === color.value ? "active" : ""
+                    }`}
+                    style={{ backgroundColor: color.value }}
+                    onClick={() => setTextColor(color.value)}
+                    title={color.label}
+                  />
+                ))}
+              </div>
+            </FormGroup>
+          </Col>
+          <Col md="12" className="d-flex align-items-center">
             <FormGroup check>
               <Input
                 type="checkbox"
@@ -109,29 +127,25 @@ const AddAccessCard = () => {
               </small>
             </FormGroup>
           </Col>
-
-          {/* TEXT COLOR */}
+        {/* UPLOAD */}
           <Col md="6">
             <FormGroup>
-              <Label className="fw-bold">Text Color</Label>
-              <div className="d-flex gap-2 flex-wrap mt-1">
-                {textColors.map(color => (
-                  <div
-                    key={color.id}
-                    className={`color-swatch ${
-                      textColor === color.value ? "active" : ""
-                    }`}
-                    style={{ backgroundColor: color.value }}
-                    onClick={() => setTextColor(color.value)}
-                    title={color.label}
-                  />
-                ))}
-              </div>
+              <Label>Upload Own Card Design</Label>
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={handleUpload}
+              />
+              <small className="text-muted d-block mt-1">
+                1011 × 638 px | JPG / PNG
+              </small>
             </FormGroup>
           </Col>
-
-          {/* DESIGN SELECT */}
-          <Col md="6">
+        </Row>
+        {/* PREVIEW */}
+        <Row className="mb-3">
+        {/* DESIGN SELECT */}
+          <Col md="6" className="mt-4">
             <FormGroup>
               <Label className="fw-bold">Select Card Design</Label>
               <div className="d-flex gap-3 flex-wrap mt-1">
@@ -161,74 +175,60 @@ const AddAccessCard = () => {
               </div>
             </FormGroup>
           </Col>
-
-          {/* UPLOAD */}
+          
           <Col md="6">
-            <FormGroup>
-              <Label>Upload Own Card Design</Label>
-              <Input
-                type="file"
-                accept="image/*"
-                onChange={handleUpload}
-              />
-              <small className="text-muted d-block mt-1">
-                1011 × 638 px | JPG / PNG
-              </small>
-            </FormGroup>
+              <FormGroup >
+                <Label className="fw-bold">Preview Access Card</Label>
+
+                <div className="preview-wrapper mt-2">
+                  <div
+                    className="access-card-preview structured"
+                    style={{
+                      backgroundImage: `url(${previewBackground})`,
+                      color: textColor
+                    }}
+                  >
+                    {/* LEFT SIDE */}
+                    <div className="card-left">
+                      <img src={yogaLogo} className="logo" alt="Logo" />
+
+                      {/* <h5 className="member-name">Andrew Lim</h5> */}
+                      {showTitle && (
+                        <div className="member-name">{cardTitle}</div>
+                      )}
+
+                      <div className="member-details">
+                        <p>GOLD Member</p>
+                        <p>RY-23423456</p>
+                        <p>Validity: 12-11-2025 to 12-12-2027</p>
+                        <p>Prepaid 24 months Package</p>
+                      </div>
+                    </div>
+
+                    {/* RIGHT SIDE */}
+                    <div className="card-right">
+                      <img src={qrImg} className="qr-img" alt="QR Code" />
+
+                      <div className="right-details mt-2">
+                        <p>92234 23456 / 98123 22334</p>
+                        <p>www.realyoga.com.sg</p>
+                        <p>
+                          9 Tampines Grande Level 1, #01-14/15,
+                          Singapore
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* BOTTOM CENTER */}
+                    <div className="card-terms">
+                      {terms ||
+                        "This card is the property of Real Yoga. It must be returned upon request. Use of this card is subject to the terms and conditions."}
+                    </div>
+                  </div>
+                </div>
+              </FormGroup>
           </Col>
         </Row>
-        {/* PREVIEW */}
-        <FormGroup className="mt-4">
-          <Label className="fw-bold">Preview Access Card</Label>
-
-          <div className="preview-wrapper mt-2">
-            <div
-              className="access-card-preview structured"
-              style={{
-                backgroundImage: `url(${previewBackground})`,
-                color: textColor
-              }}
-            >
-              {/* LEFT SIDE */}
-              <div className="card-left">
-                <img src={yogaLogo} className="logo" alt="Logo" />
-
-                {/* <h5 className="member-name">Andrew Lim</h5> */}
-                {showTitle && (
-                  <div className="member-name">{cardTitle}</div>
-                )}
-
-                <div className="member-details">
-                  <p>GOLD Member</p>
-                  <p>RY-23423456</p>
-                  <p>Validity: 12-11-2025 to 12-12-2027</p>
-                  <p>Prepaid 24 months Package</p>
-                </div>
-              </div>
-
-              {/* RIGHT SIDE */}
-              <div className="card-right">
-                <img src={qrImg} className="qr-img" alt="QR Code" />
-
-                <div className="right-details mt-2">
-                  <p>92234 23456 / 98123 22334</p>
-                  <p>www.realyoga.com.sg</p>
-                  <p>
-                    9 Tampines Grande Level 1, #01-14/15,
-                    Singapore
-                  </p>
-                </div>
-              </div>
-
-              {/* BOTTOM CENTER */}
-              <div className="card-terms">
-                {terms ||
-                  "This card is the property of Real Yoga. It must be returned upon request. Use of this card is subject to the terms and conditions."}
-              </div>
-            </div>
-          </div>
-        </FormGroup>
-
       </CardBody>
 
       <CardFooter className="text-end">

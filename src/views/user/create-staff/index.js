@@ -20,8 +20,8 @@ import { Calendar } from 'react-feather'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 
 const optionMaritalStatusList = [
+  { value: 'single', label: 'Single' },
   { value: 'married', label: 'Married' },
-  { value: 'unmarried', label: 'Unmarried' },
   { value: 'other', label: 'Other' }
 ]
 const optionMobileType = [

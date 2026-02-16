@@ -7,6 +7,10 @@ const PostureRoutes = [
     component: lazy(() => import('../../views/posture/practice-category/list'))
   },
   {
+    path: '/posture/practice-category/add',
+    component: lazy(() => import('../../views/posture/practice-category/add'))
+  },
+  {
     path: '/posture/posture/list',
     component: lazy(() => import('../../views/posture/posture/list'))
   },
@@ -37,6 +41,10 @@ const PostureRoutes = [
   {
     path: '/posture/posture-sequence/list',
     component: lazy(() => import('../../views/posture/posture-sequence/list'))
+  },
+  {
+    path: '/posture/posture-sequence/add',
+    component: lazy(() => import('../../views/posture/posture-sequence/add'))
   },
   {
     path: '/posture/client-parameters/list',
