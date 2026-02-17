@@ -11,6 +11,16 @@ const statusType = [
   { value: 'inactive', label: 'In Active' }
 ]
 
+const optionUserType = [
+  // { value: '', label: 'Please select one' },
+  { value: '1', label: 'Zsazsa 1 -zmccleverty1@soundcloud.com(7899809090)' },
+  { value: '2', label: 'Zsazsa 2 -zmccleverty2@soundcloud.com(7899809091)' },
+  { value: '3', label: 'Zsazsa 3 -zmccleverty3@soundcloud.com(7899809092)' },
+  { value: '4', label: 'Zsazsa 4 -zmccleverty4@soundcloud.com(7899809093)' },
+  { value: '5', label: 'Zsazsa 5 -zmccleverty5@soundcloud.com(7899809094)' },
+  { value: '6', label: 'Zsazsa 6 -zmccleverty6@soundcloud.com(7899809095)' }
+]
+
 import {
   Row,
   Col,
@@ -29,11 +39,15 @@ import classnames from 'classnames'
 
 const PaymentGatewayTabContent = ({ data }) => {
   const [followMe, setFollowMe] = useState(data.followMe)
-  const [isPaypalEnabled, setIsPaypalEnabled] = useState(false)
-  const [isStripeEnabled, setIsStripeEnabled] = useState(false)
-  const [isRazorPayEnabled, setIsRazorPayEnabled] = useState(false)
-  const [isHitPayEnabled, setIsHitPayEnabled] = useState(false)
+  // const [isPaypalEnabled, setIsPaypalEnabled] = useState(false)
+  // const [isStripeEnabled, setIsStripeEnabled] = useState(false)
+  // const [isRazorPayEnabled, setIsRazorPayEnabled] = useState(false)
+  // const [isHitPayEnabled, setIsHitPayEnabled] = useState(false)
+  const [userType, setUserType] = useState('')
+  const [searchUser, setSearchUser] = useState([])
+  const [activeGateway, setActiveGateway] = useState(null)
   const [activeTab, setActiveTab] = useState('payment_gateway')
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const toggleTab = tab => {
     if (activeTab !== tab) setActiveTab(tab)
   }
@@ -69,12 +83,19 @@ return (
           {/* ================= PAYPAL ================= */}
           <Row className="mb-2">
             <Col md="12">
-              <CustomInput
+              {/* <CustomInput
                 type="switch"
                 id="paypal-active"
                 label="PayPal Standard"
                 checked={isPaypalEnabled}
                 onChange={(e) => setIsPaypalEnabled(e.target.checked)}
+              /> */}
+              <CustomInput
+                type="switch"
+                id="paypal-active"
+                label="PayPal Standard"
+                checked={activeGateway === "paypal"}
+                onChange={() => setActiveGateway(activeGateway === "paypal" ? null : "paypal")}
               />
             </Col>
           </Row>
@@ -83,25 +104,25 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Gateway Account Email</Label>
-                <Input disabled={!isPaypalEnabled}/>
+                <Input disabled={activeGateway !== "paypal"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Client ID</Label>
-                <Input disabled={!isPaypalEnabled}/>
+                <Input disabled={activeGateway !== "paypal"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Client Secret</Label>
-                <Input type="password" disabled={!isPaypalEnabled}/>
+                <Input type="password" disabled={activeGateway !== "paypal"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook ID</Label>
-                <Input disabled={!isPaypalEnabled}/>
+                <Input disabled={activeGateway !== "paypal"}/>
               </FormGroup>
             </Col>
           </Row>
@@ -111,12 +132,19 @@ return (
           {/* ================= STRIPE ================= */}
           <Row className="mb-2">
             <Col md="12">
-              <CustomInput
+              {/* <CustomInput
                 type="switch"
                 id="stripe-active"
                 label="Stripe"
                 checked={isStripeEnabled}
                 onChange={(e) => setIsStripeEnabled(e.target.checked)}
+              /> */}
+              <CustomInput
+                type="switch"
+                id="stripe-active"
+                label="Stripe"
+                checked={activeGateway === "stripe"}
+                onChange={() =>  setActiveGateway(activeGateway === "stripe" ? null : "stripe") }
               />
             </Col>
           </Row>
@@ -125,19 +153,19 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Publishable Key</Label>
-                <Input disabled={!isStripeEnabled}/>
+                <Input disabled={activeGateway !== "stripe"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Secret Key</Label>
-                <Input type="password" disabled={!isStripeEnabled}/>
+                <Input type="password" disabled={activeGateway !== "stripe"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook Secret</Label>
-                <Input disabled={!isStripeEnabled}/>
+                <Input disabled={activeGateway !== "stripe"}/>
               </FormGroup>
             </Col>
           </Row>
@@ -147,13 +175,20 @@ return (
           {/* ================= RAZOR PAY ================= */}
           <Row className="mb-2">
             <Col md="12">
-              <CustomInput
+              {/* <CustomInput
                 type="switch"
                 id="razorpay-active"
                 label="Razor Pay"
                 checked={isRazorPayEnabled}
                 onChange={(e) => setIsRazorPayEnabled(e.target.checked)}
-              />
+              /> */}
+              <CustomInput
+                  type="switch"
+                  id="razorpay-active"
+                  label="Razor Pay"
+                  checked={activeGateway === "razorpay"}
+                  onChange={() => setActiveGateway(activeGateway === "razorpay" ? null : "razorpay")}
+                />
             </Col>
           </Row>
 
@@ -161,25 +196,25 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>Key ID</Label>
-                <Input disabled={!isRazorPayEnabled}/>
+                <Input disabled={activeGateway !== "razorpay"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Key Secret</Label>
-                <Input type="password" disabled={!isRazorPayEnabled}/>
+                <Input type="password" disabled={activeGateway !== "razorpay"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook Secret</Label>
-                <Input disabled={!isRazorPayEnabled}/>
+                <Input disabled={activeGateway !== "razorpay"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Merchant Name</Label>
-                <Input disabled={!isRazorPayEnabled}/>
+                <Input disabled={activeGateway !== "razorpay"}/>
               </FormGroup>
             </Col>
           </Row>
@@ -189,12 +224,19 @@ return (
           {/* ================= HIT PAY ================= */}
           <Row className="mb-2">
             <Col md="12">
-              <CustomInput
+              {/* <CustomInput
                 type="switch"
                 id="hitpay-active"
                 label="Hit Pay"
                 checked={isHitPayEnabled}
                 onChange={(e) => setIsHitPayEnabled(e.target.checked)}
+              /> */}
+              <CustomInput
+                type="switch"
+                id="hitpay-active"
+                label="Hit Pay"
+                checked={activeGateway === "hitpay"}
+                onChange={() => setActiveGateway(activeGateway === "hitpay" ? null : "hitpay") }
               />
             </Col>
           </Row>
@@ -203,24 +245,23 @@ return (
             <Col md="6">
               <FormGroup>
                 <Label>API Key</Label>
-                <Input disabled={!isHitPayEnabled}/>
+                <Input disabled={activeGateway !== "hitpay"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Salt Key</Label>
-                <Input type="password" disabled={!isHitPayEnabled}/>
+                <Input type="password" disabled={activeGateway !== "hitpay"}/>
               </FormGroup>
             </Col>
             <Col md="6">
               <FormGroup>
                 <Label>Webhook URL</Label>
-                <Input disabled={!isHitPayEnabled}/>
+                <Input disabled={activeGateway !== "hitpay"}/>
               </FormGroup>
             </Col>
           </Row>
         </TabPane>
-
         {/* ================= CLASS TAB ================= */}
       <TabPane tabId="payment_terminal">
         <h5 className="mb-1">Payment Terminal</h5>
@@ -251,7 +292,15 @@ return (
           <Col md="6">
             <FormGroup>
               <Label>Payment To</Label>
-              <Input placeholder="Name / Mobile / Email" />
+              {/* <Input placeholder="Name / Mobile / Email" /> */}
+              <Select
+                  options={optionUserType}
+                  placeholder="Select User"
+                  classNamePrefix="select"
+                  value={searchUser}
+                  onChange={setSearchUser}
+                  className={isSubmitted && searchUser.length === 0 ? 'is-invalid' : ''}
+                />
             </FormGroup>
           </Col>
         </Row>

@@ -37,23 +37,29 @@ const Tabs = ({ activeTab, toggleTab }) => {
       <NavItem>
         <NavLink active={activeTab === '6'} onClick={() => toggleTab('6')}>
           <Shield size={18} className='mr-1' />
+          <span className='font-weight-bold'>Add Commission</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '7'} onClick={() => toggleTab('6')}>
+          <Shield size={18} className='mr-1' />
           <span className='font-weight-bold'>Roles & Permissions</span>
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink active={activeTab === '7'} onClick={() => toggleTab('7')}>
+        <NavLink active={activeTab === '8'} onClick={() => toggleTab('7')}>
           <Video size={18} className='mr-1' />
           <span className='font-weight-bold'>Video Platforms</span>
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink active={activeTab === '8'} onClick={() => toggleTab('8')}>
+        <NavLink active={activeTab === '9'} onClick={() => toggleTab('8')}>
           <FileText size={18} className='mr-1' />
           <span className='font-weight-bold'>Policy & Rules</span>
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink active={activeTab === '9'} onClick={() => toggleTab('9')}>
+        <NavLink active={activeTab === '10'} onClick={() => toggleTab('9')}>
           <UploadCloud size={18} className='mr-1' />
           <span className='font-weight-bold'>Import Members</span>
         </NavLink>

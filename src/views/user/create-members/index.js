@@ -717,10 +717,14 @@ const AddAnnoucement = () => {
 
           {/* Footer Action */}
           <div className="d-flex align-items-center gap-3 mt-4">
-            <Button color="primary">
-              Proceed to Payment
-            </Button>
-
+            <Link
+                    to="/membership/payment/add"
+                    className="text-primary fw-semibold"
+                  >
+              <Button color="primary">
+                Proceed to Payment
+              </Button>
+            </Link>
             {/* <span className="text-muted">
               Save and go to common
             </span>

@@ -7,6 +7,7 @@ import SocialTabContent from './SocialTabContent'
 import BillingPlans from './BillingPlans'
 import CurrencyAndTaxTabContent from './CurrencyAndTaxTabContent'
 import PaymentGatewayTabContent from './PaymentGatewayTabContent'
+import ComissionTabContent from './ComissionTabContent'
 import NotificationsTabContent from './NotificationsTabContent'
 import RolesPermissionTabContent from './RolesPermissionTabContent'
 import VideoPlateformTabContent from './VideoPlateformTabContent'
@@ -57,15 +58,18 @@ const GeneralSettings = () => {
                     <PaymentGatewayTabContent data={data.info} />
                   </TabPane>
                   <TabPane tabId='6'>
-                    <RolesPermissionTabContent data={data.info} />
+                    <ComissionTabContent data={data.info} />
                   </TabPane>
                   <TabPane tabId='7'>
-                    <VideoPlateformTabContent data={data.info} />
+                    <RolesPermissionTabContent data={data.info} />
                   </TabPane>
                   <TabPane tabId='8'>
-                    <PolicyRulesTabContent data={data.info} />
+                    <VideoPlateformTabContent data={data.info} />
                   </TabPane>
                   <TabPane tabId='9'>
+                    <PolicyRulesTabContent data={data.info} />
+                  </TabPane>
+                  <TabPane tabId='10'>
                     <ImportMembersTabContent data={data.info} />
                   </TabPane>
                 </TabContent>
