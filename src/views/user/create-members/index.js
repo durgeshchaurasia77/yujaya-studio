@@ -18,7 +18,7 @@ import CommonEditor from '../../../component/common/CommonEditor.js'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/material_blue.css'
 import { Calendar } from 'react-feather'
-import { Link } from "react-router-dom"
+import { Link, useHistory} from "react-router-dom"
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 import jsPDF from "jspdf"
 import html2canvas from "html2canvas"
@@ -97,6 +97,7 @@ const optionsDesignationType = [
 ]
 
 const AddAnnoucement = () => {
+    const history = useHistory()
   const [venue, setVenue] = useState('')
   const [feeType, setFeeType] = useState(null)
   const [isEarlyBird, setIsEarlyBird] = useState(false)
@@ -717,6 +718,9 @@ const AddAnnoucement = () => {
 
           {/* Footer Action */}
           <div className="d-flex align-items-center gap-3 mt-4">
+            <Button color="secondary" className='mr-2'  onClick={() => history.push('/user/list')}>
+                  Cancel
+                </Button>
             <Link
                     to="/membership/payment/add"
                     className="text-primary fw-semibold"

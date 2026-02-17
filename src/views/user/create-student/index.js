@@ -7,6 +7,7 @@ import {
   Button,
   Row, Col, FormGroup, Label, Input, CardFooter, InputGroup, InputGroupText, InputGroupAddon
 } from 'reactstrap'
+import { useHistory } from 'react-router-dom'
 import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
 import Select from 'react-select'
@@ -24,6 +25,7 @@ const optionMobileType = [
   { value: '1', label: 'SING(+65)' }
 ]
 const AddStudent = () => {
+    const history = useHistory()
   const [status, setStatus] = useState(true)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [startDate, setStartDate] = useState(null)
@@ -176,6 +178,9 @@ const AddStudent = () => {
         </CardBody>        
           <CardFooter className="text-end">
             <div className="d-flex justify-content-between align-end button-alignment-accouncement">
+              <Button color="secondary" className='mr-2'  onClick={() => history.push('/user/list')}>
+                  Cancel
+                </Button>
                 <Button color="primary">Add Student</Button>
               </div>
           </CardFooter>

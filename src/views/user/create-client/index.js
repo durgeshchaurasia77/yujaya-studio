@@ -17,6 +17,7 @@ import CommonEditor from '../../../component/common/CommonEditor.js'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/material_blue.css'
 import { Calendar } from 'react-feather'
+import { useHistory } from 'react-router-dom'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
 
 const optionMaritalStatusList = [
@@ -60,6 +61,7 @@ const optionsNationalId = [
   { value: 'Driving License', label: 'Driving License' }
 ]
 const AddClient = () => {
+    const history = useHistory()
   const [venue, setVenue] = useState('')
   const [feeType, setFeeType] = useState(null)
   const [isEarlyBird, setIsEarlyBird] = useState(false)
@@ -646,6 +648,9 @@ const AddClient = () => {
           </CardBody>
 
           <CardFooter className="text-end">
+            <Button color="secondary" className='mr-2'  onClick={() => history.push('/user/list')}>
+                  Cancel
+                </Button>
             <Button color="primary">Submit</Button>
           </CardFooter>
 

@@ -12,6 +12,7 @@ import {
 } from "reactstrap"
 import "../styles.css"
 import "../../../assets/css.css"
+import { Link, useHistory} from "react-router-dom"
 
 import Select from 'react-select'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
@@ -65,6 +66,7 @@ const combineClassOptions = [
 ]
 
 const CreateGiftCard = () => {
+    const history = useHistory()
   const [selectedDesign, setSelectedDesign] = useState(1)
   const [uploadedDesign, setUploadedDesign] = useState(null)
   const [giftType, setGiftType] = useState("package")
@@ -388,6 +390,9 @@ const CreateGiftCard = () => {
       <CardFooter className="text-end">
         <Button color="primary" className="button-alignment-accouncement">
           CREATE GIFT CARD
+        </Button>
+        <Button color="secondary" className='button-alignment-accouncement mr-2'  onClick={() => history.push('/studios/list-gift-card')}>
+            Cancel
         </Button>
       </CardFooter>
     </Card>

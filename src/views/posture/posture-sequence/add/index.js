@@ -279,6 +279,11 @@ useEffect(() => {
         </CardBody>
         <CardFooter className="text-end">
           <div className="d-flex justify-content-between align-end button-alignment-accouncement">
+            
+            <Button color="secondary" className="mr-1" onClick={() => history.push('/posture/posture-sequence/list')}>
+              Cancel
+            </Button>
+
               <Button color="primary"   onClick={() => history.push('/posture/posture-sequence/list')}>Submit</Button>
             </div>
         </CardFooter>

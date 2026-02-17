@@ -18,6 +18,7 @@ import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/themes/material_blue.css'
 import { Calendar } from 'react-feather'
 import SelectAllMultiSelect from "../../../component/SelectAllMultiSelect/SelectAllMultiSelect.js"
+import { useHistory } from 'react-router-dom'
 const optionUserType = [
   { value: '', label: 'Please select one' },
   { value: '1', label: 'Employee' },
@@ -96,6 +97,7 @@ const optionsPackageList = [
 ]
 
 const AddAccount = () => {
+    const history = useHistory()
   const [venue, setVenue] = useState('')
   const [feeType, setFeeType] = useState(null)
   const [isEarlyBird, setIsEarlyBird] = useState(false)
@@ -265,6 +267,9 @@ const AddAccount = () => {
         </CardBody>        
           <CardFooter className="text-end">
             <div className="d-flex justify-content-between align-end button-alignment-accouncement">
+               <Button color="secondary" className='mr-2'  onClick={() => history.push('/user/list')}>
+                  Cancel
+                </Button>
                 <Button color="primary">Create Account</Button>
               </div>
           </CardFooter>

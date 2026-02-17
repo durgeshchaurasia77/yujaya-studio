@@ -11,6 +11,7 @@ import Stepper from 'bs-stepper'
 import 'bs-stepper/dist/css/bs-stepper.min.css'
 import Select from 'react-select'
 import '../../../assets/css.css'
+import { useHistory } from 'react-router-dom'
 import { Editor } from 'react-draft-wysiwyg'
 import { EditorState } from 'draft-js'
 import CommonEditor from '../../../component/common/CommonEditor.js'
@@ -50,6 +51,7 @@ const optionsNationalId = [
 ]
 
 const AddInstructor = () => {
+    const history = useHistory()
   const [status, setStatus] = useState(true)
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [passingYearDate, setPassingYearDate] = useState(null)
@@ -662,6 +664,9 @@ const removeCourse = index => {
             </CardBody>
             <CardFooter className="text-end">
               <div className="d-flex justify-content-between align-end button-alignment-accouncement">
+                <Button color="secondary" className='mr-2'  onClick={() => history.push('/user/list')}>
+                  Cancel
+                </Button>
                   <Button color="primary">Submit</Button>
               </div>
             </CardFooter>
