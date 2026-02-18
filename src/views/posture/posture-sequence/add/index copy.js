@@ -249,40 +249,26 @@ const AddClass = () => {
       (!subCategory || item.subCategory === subCategory.value)
     )
   })
-// const addPractice = () => {
-//   if (!selectedPostures.length) {
-//     alert("Select at least one practice")
-//     return
-//   }
-
-//   const newItems = selectedPostures.filter(
-//     (item) => !sequence.find((p) => p.value === item.value)
-//   )
-
-//   if (!newItems.length) {
-//     alert("All selected practices already added")
-//     return
-//   }
-
-//   setSequence((prev) => [...prev, ...newItems])
-//   setPractice([]) // clear dropdown
-// }
 const addPractice = () => {
-  if (!selectedPostures.length) return
+  if (!selectedPostures.length) {
+    alert("Select at least one practice")
+    return
+  }
 
-  setSequence((prev) => {
-    const existingValues = prev.map((p) => p.value)
+  const newItems = selectedPostures.filter(
+    (item) => !sequence.find((p) => p.value === item.value)
+  )
 
-    const newItems = selectedPostures.filter(
-      (item) => !existingValues.includes(item.value)
-    )
+  if (!newItems.length) {
+    alert("All selected practices already added")
+    return
+  }
 
-    return [...prev, ...newItems]
-  })
-
-  // Clear selected after add
-  setSelectedPostures([])
+  // setSequence([...sequence, ...newItems])
+  setSequence((prev) => [...prev, ...newItems])
+  setPractice([]) // clear dropdown
 }
+
 const clearSequence = () => {
   setSequence([])
 }
@@ -295,6 +281,15 @@ const viewSequence = () => {
 
   alert(sequence.map((s, i) => `${i + 1}. ${s.label}`).join("\n"))
 }
+// const saveSequence = () => {
+//   const payload = {
+//     category: category?.value,
+//     subCategory: subCategory?.value,
+//     sequence: sequence.map(s => s.value)
+//   }
+//   console.log("SAVE PAYLOAD:", payload)
+//   alert("Sequence Saved (dummy)")
+// }
 const saveSequence = () => {
   if (!category || !subCategory || sequence.length === 0) {
     alert("Please complete required fields")
@@ -353,6 +348,16 @@ useEffect(() => {
                 placeholder="Please Select"
               />
             </FormGroup>
+
+            {/* <FormGroup>
+              <Label>Practice <span className="text-danger">*</span></Label>
+              <Select
+                value={practice}
+                onChange={setPractice}
+                options={practiceOptions}
+                placeholder="Select Practice"
+              />
+            </FormGroup> */}
             <FormGroup>
               <Label>Practice <span className="text-danger">*</span></Label>
               <Select
@@ -363,6 +368,23 @@ useEffect(() => {
                 isMulti
               />
             </FormGroup>
+            {/* <Row>
+              {filteredPostures.map(item => (
+                <Col md={3} key={item.value} className="mb-3">
+                  <div
+                    className={`border p-2 text-center practice-border cursor-pointer ${practice?.value === item.value ? "border-primary" : ""}`}
+                    onClick={() => setPractice(item)}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.label}
+                      style={{ width: "50%", minHeight:"100px", maxHeight: "100px", objectFit: "contain" }}
+                    />
+                    <div style={{ width: "100px", fontSize:"small", fontWeight:"500" }} className="mt-1">{item.label}</div>
+                  </div>
+                </Col>
+              ))}
+              </Row> */}
               <Row>
                 {filteredPostures.map((item) => {
                   const isSelected = selectedPostures.find(
@@ -371,24 +393,22 @@ useEffect(() => {
 
                   return (
                     <Col md={4} key={item.value} className="mb-3">
-                      {/* <div
+                      <div
                         className={`border p-2 text-center cursor-pointer ${
                           isSelected ? "practice-border bg-light" : ""
                         }`}
                         onClick={() => togglePostureSelection(item)}
                         style={{ position: "relative" }}
-                      > */}
-                      <div
-                          className={`practice-card ${isSelected ? "active" : ""}`}
-                          onClick={() => togglePostureSelection(item)}
-                          style={{ position: "relative" }}
-                        >
+                      >
                         {isSelected && (
                         <div
                           style={{
                             position: "absolute",
                             top: 5,
                             right: 5,
+                            // border: "1px solid #c3a9ef",
+                            // background: "#c3a9ef",
+                            // color: "#fff",
                             padding: "2px 6px",
                             fontSize: "12px",
                             borderRadius: "4px"
@@ -412,6 +432,13 @@ useEffect(() => {
                   )
                 })}
               </Row>
+            {/* <Button
+              color="secondary"
+              disabled={!practice}
+              onClick={addPractice}
+            >
+              ADD PRACTICE
+            </Button> */}
             <Button
               color="secondary"
               disabled={!selectedPostures.length}
@@ -422,151 +449,130 @@ useEffect(() => {
           </Col>
 
           {/* RIGHT */}
-          {/* RIGHT SIDE */}
-          
-           <Col md={6}>
-            <div
-              style={{
-                background: "#ffffff",
-                borderRadius: "18px",
-                padding: "25px",
-                boxShadow: "0 6px 20px rgba(0,0,0,0.05)",
-                minHeight: "100%"
-              }}
-            >
-
-              {/* 🔹 TOP INPUT SECTION */}
-              <Row className="mb-4">
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>Sequence Name</Label>
-                    <Input placeholder="Enter sequence name" />
-                  </FormGroup>
-                </Col>
-
-                <Col md={12}>
-                  <FormGroup>
-                    <Label>Description</Label>
-                    <CommonEditor height={120} />
-                  </FormGroup>
-                </Col>
-              </Row>
-
-              {/* 🔹 HEADER */}
-              <div className="d-flex justify-content-between align-items-center mb-4">
-                <h5 className="mb-0">Preset Sequence</h5>
-                <div
-                  style={{
-                    background: "#c3a9ef",
-                    color: "#fff",
-                    padding: "5px 14px",
-                    borderRadius: "25px",
-                    fontSize: "13px",
-                    fontWeight: 500
-                  }}
-                >
-                  {sequence.length} Added
-                </div>
-              </div>
-
-              {/* 🔹 ACTION BUTTONS */}
-              <div className="d-flex justify-content-between mb-4">
-                <Button color="link" onClick={viewSequence}>
-                  View
-                </Button>
-
-                <Button
-                  color="link"
-                  className="text-danger"
-                  disabled={!sequence.length}
-                  onClick={clearSequence}
-                >
-                  Clear
-                </Button>
-
-                <Button
-                  color="secondary"
-                  disabled={!sequence.length}
-                  onClick={saveSequence}
-                >
-                  Save
-                </Button>
-              </div>
-
-              {/* 🔹 GRID */}
-              {sequence.length === 0 ? (
-                <div className="text-center text-muted py-5">
-                  No practices added
-                </div>
-              ) : (
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
-                    gap: "20px"
-                  }}
-                >
-                  {sequence.map((item, index) => (
-                    <div
-                      key={item.value}
-                      style={{
-                        background: "#f9f7ff",
-                        borderRadius: "14px",
-                        padding: "15px",
-                        textAlign: "center",
-                        position: "relative"
-                      }}
-                    >
-                      <span
-                        onClick={() => setSequence(sequence.filter(p => p.value !== item.value))}
-                        style={{
-                          position: "absolute",
-                          top: 8,
-                          right: 10,
-                          cursor: "pointer",
-                          color: "#ff4d4f",
-                          fontWeight: "bold"
-                        }}
-                      >
-                        ×
-                      </span>
-
-                      <div
-                        style={{
-                          height: "120px",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center"
-                        }}
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.label}
-                          style={{
-                            maxHeight: "100px",
-                            maxWidth: "100%",
-                            objectFit: "contain"
-                          }}
-                        />
-                      </div>
-
-                      <div
-                        style={{
-                          marginTop: "10px",
-                          fontWeight: 500,
-                          fontSize: "14px"
-                        }}
-                      >
-                        {index + 1}. {item.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+          <Col md={6} className="text-right">
+            <div className="mb-2">
+              <strong>Preset Sequence</strong>
             </div>
-          </Col>
 
+            <div className="mb-2">
+              Practice Added: <b>{sequence.length}</b>
+            </div>
+
+            <div className="mb-3">
+              <Button color="link" onClick={viewSequence}>
+                View Sequence
+              </Button>
+              <Button
+                color="link"
+                className="text-danger"
+                disabled={!sequence.length}
+                onClick={clearSequence}
+              >
+                Clear Sequence
+              </Button>
+            </div>
+
+            <Button
+              color="secondary"
+              disabled={!sequence.length}
+              onClick={saveSequence}
+            >
+              SAVE
+            </Button>
+          </Col>
         </Row>
+
+        {/* Preset Sequence List */}
+        {/* <Row className="mt-4">
+          <Col md={12}>
+            <Label className="font-weight-bold">Preset Sequence:</Label>
+            {sequence.length === 0 ? (
+              <div className="text-muted">No practices added</div>
+            ) : (
+              <Row>
+                {sequence.map((item, index) => (
+                  <Col md={4} key={item.value} className="mb-3">
+                    <div className="border p-2 text-center">
+                      <img
+                        src={item.image}
+                        alt={item.label}
+                        style={{ width: "100%", height: "100px", objectFit: "contain" }}
+                      />
+                      <div>{index + 1}. {item.label}</div>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            )}
+          </Col>
+        </Row> */}
+        <Row className="mt-4">
+        <Col md={12}>
+          <Label className="font-weight-bold mb-3">
+            Preset Sequence:
+          </Label>
+
+          {sequence.length === 0 ? (
+            <div className="text-muted">No practices added</div>
+          ) : (
+            <Row>
+              {sequence.map((item, index) => (
+                <Col md={3} sm={4} xs={6} key={item.value} className="mb-4">
+                  {/* <div
+                    className="shadow-sm border rounded text-center h-100 d-flex flex-column justify-content-between"
+                    style={{ padding: "10px" }}
+                  >
+                    <div>
+                      <img
+                        src={item.image}
+                        alt={item.label}
+                        style={{
+                          width: "100%",
+                          height: "120px",
+                          objectFit: "contain"
+                        }}
+                      />
+                    </div>
+
+                    <div
+                      className="mt-2 font-weight-500"
+                      style={{ fontSize: "14px" }}
+                    >
+                      {index + 1}. {item.label}
+                    </div>
+                  </div> */}
+                  <div
+                  className="shadow-sm border rounded text-center d-flex flex-column"
+                  style={{
+                    padding: "12px",
+                    height: "220px",
+                    justifyContent: "space-between"
+                  }}
+                  >
+                  <div className="d-flex justify-content-center align-items-center" style={{ height: "140px" }}>
+                    <img
+                      src={item.image}
+                      alt={item.label}
+                      style={{
+                        maxHeight: "120px",
+                        maxWidth: "100%",
+                        objectFit: "contain"
+                      }}
+                    />
+                  </div>
+
+                  <div className="mt-2 font-weight-500" style={{ fontSize: "14px" }}>
+                    {index + 1}. {item.label}
+                  </div>
+                  </div>
+
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Col>
+      </Row>
+
         </Form>
         </CardBody>
         <CardFooter className="text-end">

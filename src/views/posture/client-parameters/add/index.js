@@ -34,6 +34,7 @@ const AddClientParameter = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [admissionDate, setAdmissionDate] = useState(new Date())
   const [dischargeDate, setDischargeDate] = useState(null)
+  const [selectedTreatments, setSelectedTreatments] = useState([])
   // const [selectedCountry, setSelectedCountry] = useState(
   //   optionsCountry.find(o => o.value === 'india')
   // )
@@ -47,6 +48,15 @@ const [parameters, setParameters] = useState({
   medication: { by: "", ay: "" }
 })
 
+const handleTreatmentChange = (treatment) => {
+  setSelectedTreatments((prev) => {
+    if (prev.includes(treatment)) {
+      return prev.filter((item) => item !== treatment)
+    } else {
+      return [...prev, treatment]
+    }
+  })
+}
 const calculateChange = (by, ay) => {
   if (!by || !ay || Number(by) === 0) return ""
   return (((by - ay) / by) * 100).toFixed(2)
@@ -171,7 +181,7 @@ const optionaUserList = [
                     <th>Variable</th>
                     <th>Before Yoga (BY)</th>
                     <th>After Yoga (AY)</th>
-                    <th>% Change</th>
+                    <th>% Change (BY-AY/BY X 100)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -220,47 +230,113 @@ const optionaUserList = [
             </Col>
           </Row>
           <Row className='mt-2'>
-            <Col md={6}>
+            <Col md={12}>
               <FormGroup>
                 <div className="mt-2">
                 <Label className="font-weight-bold">Pathogenesis</Label>
                 </div>
               </FormGroup>
             </Col>
-            
-            <Col md={6}>
-              <FormGroup>
-                <Label className="font-weight-bold">Treatment</Label>
-                <div className="ml-2">
-                  <Input type="checkbox" className="custom-checkbox"/>
-                  <Label check className="mr-3 custom-lebal-style"> Physical</Label>
-                  <Input type="checkbox" className="custom-checkbox"/>
-                  <Label check className="mr-3 custom-lebal-style"> Vital</Label>
-                  <Input type="checkbox" className="custom-checkbox"/>
-                  <Label check className="mr-3 custom-lebal-style"> Mental</Label>
-                  <Input type="checkbox" className="custom-checkbox"/>
-                  <Label check className="mr-3 custom-lebal-style"> Intellectual</Label>
-                  <Input type="checkbox" className="custom-checkbox"/> 
-                  <Label check className="mr-3 custom-lebal-style">Bliss</Label>
-                </div>
-              </FormGroup>
-            </Col>
-          </Row>
-          {/* Discussion */}
-          <Row>
-            <Col md={6}>
+        
+            <Col md={12}>
               <FormGroup>
                 <CommonEditor height={180} />
               </FormGroup>
             </Col>
-
-            <Col md={6}>
+            
+          </Row>
+          {/* Discussion */}
+          <Row>
+            <Col md={12}>
+              <FormGroup>
+                <Label className="font-weight-bold">Treatment</Label>
+                <div className="ml-2">
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("physical")}
+                    onChange={() => handleTreatmentChange("physical")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Physical</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("vital")}
+                    onChange={() => handleTreatmentChange("vital")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Vital</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("mental")}
+                    onChange={() => handleTreatmentChange("mental")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Mental</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("intellectual")}
+                    onChange={() => handleTreatmentChange("intellectual")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Intellectual</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("bliss")}
+                    onChange={() => handleTreatmentChange("bliss")}
+                  /> 
+                  <Label check className="mr-3 custom-lebal-style">Bliss</Label>
+                </div>
+              </FormGroup>
+            </Col>
+            {/* <Col md={6}>
               <FormGroup>
                 <div className="">
                 <CommonEditor height={180} />
                 </div>
               </FormGroup>
-            </Col>
+            </Col> */}
+            {selectedTreatments.includes("physical") && (
+              // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label>Physical Details</Label>
+                    <Input />
+                  </FormGroup>
+                </Col>
+              // </Row>
+            )}
+            {selectedTreatments.includes("vital") && (
+              // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label>Vital Details</Label>
+                    <Input />
+                  </FormGroup>
+                </Col>
+              // </Row>
+            )}
+            {selectedTreatments.includes("mental") && (
+            // <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Mental Details</Label>
+                  <Input />
+                </FormGroup>
+              </Col>
+            // </Row>
+          )}
+            {selectedTreatments.includes("intellectual") && (
+            // <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Intellectual Details</Label>
+                  <Input />
+                </FormGroup>
+              </Col>
+            // </Row>
+          )}
+            {selectedTreatments.includes("bliss") && (
+            // <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Bliss Details</Label>
+                  <Input />
+                </FormGroup>
+              </Col>
+            // </Row>
+          )}
+
           </Row>
 
           {/* Dates */}

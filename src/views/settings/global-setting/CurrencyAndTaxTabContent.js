@@ -85,6 +85,7 @@ const {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+        <h5 className="mb-2">Currency And Tax</h5>
       <Row>
         {/* TIME ZONE */}
         <Col md="6">
@@ -196,6 +197,7 @@ const {
       <Button
         color="danger"
         type="button"
+        className='cross-button-style'
         onClick={() => remove(index)}
       >
         X
