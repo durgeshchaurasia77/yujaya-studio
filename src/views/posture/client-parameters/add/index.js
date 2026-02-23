@@ -291,7 +291,7 @@ const optionaUserList = [
                 <Col md={6}>
                   <FormGroup>
                     <Label>Physical Details</Label>
-                    <Input />
+                    <CommonEditor height={180} />
                   </FormGroup>
                 </Col>
               // </Row>
@@ -300,40 +300,40 @@ const optionaUserList = [
               // <Row>
                 <Col md={6}>
                   <FormGroup>
-                    <Label>Vital Details</Label>
-                    <Input />
+                     <Label>Vital Details</Label>
+                    <CommonEditor height={180} />
                   </FormGroup>
                 </Col>
               // </Row>
             )}
             {selectedTreatments.includes("mental") && (
             // <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Mental Details</Label>
-                  <Input />
-                </FormGroup>
-              </Col>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Mental Details</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
             // </Row>
           )}
             {selectedTreatments.includes("intellectual") && (
             // <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Intellectual Details</Label>
-                  <Input />
-                </FormGroup>
-              </Col>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Intellectual Details</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
             // </Row>
           )}
             {selectedTreatments.includes("bliss") && (
             // <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Bliss Details</Label>
-                  <Input />
-                </FormGroup>
-              </Col>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Bliss Details</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
             // </Row>
           )}
 

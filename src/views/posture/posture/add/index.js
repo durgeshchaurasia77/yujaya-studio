@@ -117,9 +117,21 @@ const AddPosture = () => {
   const [limitations, setLimitations] = useState()
   const [subtlePoints, setSubtlePoints] = useState()
   const [remarks, setRemarks] = useState()
+  const [selectedTreatments, setSelectedTreatments] = useState([])
   // const [selectedCountry, setSelectedCountry] = useState(
   //   optionsCountry.find(o => o.value === 'india')
   // )
+
+const handleTreatmentChange = (treatment) => {
+  setSelectedTreatments((prev) => {
+    if (prev.includes(treatment)) {
+      return prev.filter((item) => item !== treatment)
+    } else {
+      return [...prev, treatment]
+    }
+  })
+}
+
 useEffect(() => {
   if (!isEarlyBird) {
     setOfflineEarlyBirdFee('')
@@ -324,7 +336,7 @@ useEffect(() => {
               <Col md={12}>
                 <FormGroup>
                   <div className="mt-2 ml-2">
-                    <Label check className="mr-3">
+                    {/* <Label check className="mr-3">
                       <Input type="checkbox" /> Cultural
                     </Label>
                     <Label check className="mr-3">
@@ -335,11 +347,32 @@ useEffect(() => {
                     </Label>
                     <Label check>
                       <Input type="checkbox" /> Spiritual
-                    </Label>
+                    </Label> */}
+                    
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("cultural")}
+                    onChange={() => handleTreatmentChange("cultural")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Cultural</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("anatomicalfocus")}
+                    onChange={() => handleTreatmentChange("anatomicalfocus")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Anatomical Focus</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("therapeutic")}
+                    onChange={() => handleTreatmentChange("therapeutic")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Therapeutic</Label>
+                  <Input type="checkbox" className="custom-checkbox"
+                    checked={selectedTreatments.includes("spiritual")}
+                    onChange={() => handleTreatmentChange("spiritual")}
+                  />
+                  <Label check className="mr-3 custom-lebal-style"> Spiritual</Label>
                   </div>
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              {/* <Col md={6}>
                 <FormGroup>
                   <Label className="font-weight-bold">Add Benefits</Label>
                   <CommonEditor
@@ -348,7 +381,48 @@ useEffect(() => {
                     height={180}
                   />
                 </FormGroup>
-              </Col>
+              </Col> */}
+              {selectedTreatments.includes("cultural") && (
+              // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label>Cultural Benefits</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
+              // </Row>
+            )}
+            {selectedTreatments.includes("anatomicalfocus") && (
+              // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Anatomical Focus Benefits</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
+              // </Row>
+            )}
+            {selectedTreatments.includes("therapeutic") && (
+            // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Therapeutic Benefits</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
+            // </Row>
+          )}
+            {selectedTreatments.includes("spiritual") && (
+            // <Row>
+                <Col md={6}>
+                  <FormGroup>
+                     <Label>Spiritual Benefits</Label>
+                    <CommonEditor height={180} />
+                  </FormGroup>
+                </Col>
+            // </Row>
+          )}
+
               <Col md={6}>
                 <FormGroup>
                   <Label className="font-weight-bold">Any Limitation</Label>
