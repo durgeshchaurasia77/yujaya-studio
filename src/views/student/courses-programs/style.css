@@ -16,6 +16,10 @@
   object-fit: cover;       /* no stretch */
   object-position: center;
 }
+img.img-design {
+    background-size: inherit;
+    height: auto;
+}
 
 /* Optional hover effect */
 .class-img-wrapper:hover .class-img {
@@ -72,3 +76,5 @@
 .header-back-button{
   float: right;
 }
+
+

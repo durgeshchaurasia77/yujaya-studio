@@ -155,7 +155,7 @@ const columns = getColumns({
             <CardHeader>
               <CardTitle tag="h4">Earnings History</CardTitle>
                 <Row className="table-header-style mb-2">
-                  <Col md="2">
+                  <Col md="3">
                       <Input type="select">
                       <option>10</option>
                       <option>25</option>

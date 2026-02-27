@@ -18,7 +18,7 @@ const ClassCard = ({ item }) => {
             <img
                 src={item.image}
                 alt={item.title}
-                className='class-img'
+                className='class-img img-design'
             />
         </div>
 

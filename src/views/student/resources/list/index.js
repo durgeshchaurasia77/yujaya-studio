@@ -149,7 +149,7 @@ const columns = getColumns({
             <CardHeader>
               <CardTitle tag="h4">Resources</CardTitle>
                 <Row className="table-header-style mb-2">
-                  <Col md="2">
+                  <Col md="3">
                       <Input type="select">
                       <option>10</option>
                       <option>25</option>
@@ -163,7 +163,7 @@ const columns = getColumns({
                       onChange={e => setSearchValue(e.target.value)}
                       />
                   </Col>
-                  <Col md="3" className="table-header-alignment ml-2 header-option-export">
+                  <Col md="3" className="table-header-alignment ml-2 header-option-export resourece-export-tab">
                       {/* 🔹 Export Dropdown */}
                       <UncontrolledButtonDropdown>
                       <DropdownToggle
