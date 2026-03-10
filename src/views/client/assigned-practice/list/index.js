@@ -258,12 +258,11 @@ const columns = getColumns({
                 <Button
                   color="primary"
                   className="d-flex align-items-center"
-                      onClick={() => history.push('/therapist-auth/client/therapy-plan/add')}>
+                      onClick={() => history.push('/client-auth/assigned-practice/add')}>
                   <Plus size={14} className="me-50" />
                   Add Plan
                 </Button>
             </CardHeader>
-            
             <CardBody>
 
             <Row className="table-header-style mb-2">

@@ -233,7 +233,10 @@
 }
 
 .custom-control {
-  margin-left: 12px;
+  margin-left: 35px;
+}
+.select-all-style .custom-control-label{
+  width: max-content;
 }
 .button-currancy-alignment{
   height: fit-content;
@@ -345,4 +348,7 @@ gap: 20px;
 .cross-button-style{
 
 margin-bottom: 15px;
+}
+.import-member-email .custom-control-label{
+  width: max-content;
 }

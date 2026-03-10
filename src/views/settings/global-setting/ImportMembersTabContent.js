@@ -1,5 +1,5 @@
 import { Form, Row, Col, FormGroup, Label, Input, Button, CustomInput } from 'reactstrap'
-
+import './style.css'
 const ImportMembersTabContent = () => {
   return (
     <Form>
@@ -77,11 +77,13 @@ const ImportMembersTabContent = () => {
 
       {/* EMAIL OPTION */}
       <FormGroup>
-        <CustomInput
-          type="checkbox"
-          id="send-email"
-          label="Send email to members on how to redeem their migrated package"
-        />
+        <div className='import-member-email'>
+          <CustomInput
+            type="checkbox"
+            id="send-email"
+            label="Send email to members on how to redeem their migrated package"
+          />
+        </div>
       </FormGroup>
 
       {/* ACTION */}

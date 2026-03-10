@@ -410,7 +410,7 @@ const CustomMultiValueLabel = (props) => (
         <h5 className="mb-3 mt-2">Location / Platform</h5>
         <Row className="gx-4">
           {/* Physical */}
-          {(venue === "online" || venue === 'hybrid') && (
+          {(venue === "offline" || venue === 'hybrid') && (
             <>
               <Col md="6">
                 <FormGroup>
@@ -435,7 +435,7 @@ const CustomMultiValueLabel = (props) => (
               </Col> 
             </>
           )}
-          {(venue === "offline" || venue === 'hybrid') && (
+          {(venue === "online" || venue === 'hybrid') && (
             <>
               {/* Online */}
               <Col md="4">

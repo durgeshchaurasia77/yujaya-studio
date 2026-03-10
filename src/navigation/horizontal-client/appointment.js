@@ -2,7 +2,7 @@ import { Calendar, Clock } from 'react-feather'
 
 export default [
   {
-    id: 'clientAppointment',
+    id: 'client-appointment',
     title: 'Appointment History',
     icon: <Calendar size={20} />,
     navLink: '/client-auth/therapy-session/list',

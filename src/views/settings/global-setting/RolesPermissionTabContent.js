@@ -286,7 +286,7 @@ const openEditRole = role => {
       <Col md="4" className="font-weight-bold">
         Administrator Access
       </Col>
-      <Col md="8" className="d-flex justify-content-end">
+      <Col md="6" className="d-flex justify-content-end select-all-style">
         <CustomInput
           type="checkbox"
           id="select-all"
@@ -300,16 +300,18 @@ const openEditRole = role => {
     {permissionsList.map((item, index) => (
       <Row key={index} className="align-items-center mb-50">
         <Col md="4">{item}</Col>
-        <Col md="8" className="d-flex justify-content-end">
+        <Col md="6" className="d-flex justify-content-end">
           <CustomInput
             type="checkbox"
             label="Read"
+            id={`read-${index}`}
             checked={permissions[index].read}
             onChange={() => handlePermissionChange(index, 'read')}
             className="mr-1"
           />
           <CustomInput
             type="checkbox"
+            id={`write-${index}`}
             label="Write"
             checked={permissions[index].write}
             onChange={() => handlePermissionChange(index, 'write')}
@@ -317,6 +319,7 @@ const openEditRole = role => {
           />
           <CustomInput
             type="checkbox"
+            id={`create-${index}`}
             label="Create"
             checked={permissions[index].create}
             onChange={() => handlePermissionChange(index, 'create')}

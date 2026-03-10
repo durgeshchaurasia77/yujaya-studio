@@ -92,9 +92,42 @@ const Router = () => {
         !route.meta.authRoute &&
         !route.meta.publicRoute)
     ) {
+        if (isStudentRoute) {
+        window.location.href = '/student-auth/login'
+        return null
+      }
+
+      if (isInstructorRoute) {
+        window.location.href = '/instructor-auth/login'
+        return null
+      }
+
+      if (isTherapistRoute) {
+        window.location.href = '/therapist-auth/login'
+        return null
+      }
+
+      if (isClientRoute) {
+        window.location.href = '/client-auth/login'
+        return null
+      }
+
+      if (isStaffRoute) {
+        window.location.href = '/staff-auth/login'
+        return null
+      }
+
+      if (isLandingRoute) {
+        window.location.href = '/landing-page'
+        return null
+      }
+
+      // Default → Admin login inside studio
+      return <Redirect to="/login" />
+    }
       // return <Redirect to={isStudentRoute ? '/student-auth/login' : '/login'} />
-      return (<Redirect to={ isStudentRoute ? '/student-auth/login' : isInstructorRoute ? '/instructor-auth/login' : isTherapistRoute ? '/therapist-auth/login'  : isClientRoute ? '/client-auth/login' : isStaffRoute ? '/staff-auth/login' : isLandingRoute ? '/landing-page' : '/login' }/>
-      )
+      // return (<Redirect to={ isStudentRoute ? '/student-auth/login' : isInstructorRoute ? '/instructor-auth/login' : isTherapistRoute ? '/therapist-auth/login'  : isClientRoute ? '/client-auth/login' : isStaffRoute ? '/staff-auth/login' : isLandingRoute ? '/landing-page' : '/login' }/>
+      // )
     }
 
     // 🚫 Logged in → trying to access login page

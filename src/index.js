@@ -1,7 +1,7 @@
 // ** React Imports
 import { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom'
-
+import { BrowserRouter } from 'react-router-dom' 
 // ** Redux Imports
 import { Provider } from 'react-redux'
 import { store } from './redux/storeConfig/store'
@@ -44,13 +44,34 @@ import * as serviceWorker from './serviceWorker'
 
 // ** Lazy load app
 const LazyApp = lazy(() => import('./App'))
-
+const basename = process.env.NODE_ENV === 'production' ? '/studio' : '/'
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <Suspense fallback={<Spinner />}>
+//       <AbilityContext.Provider value={ability}>
+//         <ThemeContext>
+//           <IntlProviderWrapper>
+//             <LazyApp />
+//             <ToastContainer newestOnTop />
+//           </IntlProviderWrapper>
+//         </ThemeContext>
+//       </AbilityContext.Provider>
+//     </Suspense>
+//   </Provider>,
+//   document.getElementById('root')
+// )
 ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<Spinner />}>
       <AbilityContext.Provider value={ability}>
         <ThemeContext>
           <IntlProviderWrapper>
+
+            {/* ✅ ADD BrowserRouter WITH BASENAME */}
+            {/* <BrowserRouter basename={basename}>
+              <LazyApp />
+              <ToastContainer newestOnTop />
+            </BrowserRouter> */}
             <LazyApp />
             <ToastContainer newestOnTop />
           </IntlProviderWrapper>
