@@ -27,7 +27,7 @@ const EcommerceDashboard = () => {
             <h4 className='mb-0'>Overview</h4>
             <small className='text-muted'>Your learning at a glance</small>
           </div>
-          <StatsCard cols={{ xl: '4', sm: '6' }} data={dashboardStats} />
+          <StatsCard cols={{ xl: '3', sm: '6' }} data={dashboardStats} />
         </Col>
 
         <Col xl='6'>

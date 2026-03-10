@@ -9,25 +9,25 @@ const StatsCard = ({ cols }) => {
       title: '230k',
       subtitle: 'Sales',
       color: 'light-primary',
-      icon: <TrendingUp size={24} />
+      icon: <TrendingUp size={20} />
     },
     {
       title: '8.549k',
       subtitle: 'Customers',
       color: 'light-info',
-      icon: <User size={24} />
+      icon: <User size={20} />
     },
     {
       title: '1.423k',
       subtitle: 'Products',
       color: 'light-danger',
-      icon: <Box size={24} />
+      icon: <Box size={20} />
     },
     {
       title: '$9745',
       subtitle: 'Revenue',
       color: 'light-success',
-      icon: <DollarSign size={24} />
+      icon: <DollarSign size={20} />
     }
   ]
 

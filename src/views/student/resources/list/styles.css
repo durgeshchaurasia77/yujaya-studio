@@ -151,6 +151,7 @@ button.btn {
     transform: scale(1);
   }
 }
+
 [dir] .dropdown-menu .dropdown-item {
     width: 100%;
 }

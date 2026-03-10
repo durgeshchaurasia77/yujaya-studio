@@ -124,7 +124,7 @@ const columns = getColumns({
 
         <Card>
             <CardHeader>
-            <CardTitle tag="h4">Filters</CardTitle>
+            <CardTitle tag="h4">Filter</CardTitle>
             </CardHeader>
 
             <CardBody>
